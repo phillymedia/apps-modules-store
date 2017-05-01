@@ -1,0 +1,74 @@
+{
+  "private": true,
+  "name": "store",
+  "version": "1.0.0",
+  "description": "A group of hopefully-reusable store functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ejbaker",
+  "license": "MIT",
+  "config": {
+    "environment": "test"
+  },
+  "dependencies": {
+    "async": "^2.4.0",
+    "helpers": "git+ssh://git@github.com:phillymedia/apps-modules-helpers.git",
+    "lodash": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.1.2"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "rules": {
+      "brace-style": [
+        "error",
+        "stroustrup"
+      ],
+      "consistent-return": 0,
+      "global-require": "off",
+      "import/extensions": [
+        "error",
+        "always",
+        {
+          "js": "never"
+        }
+      ],
+      "import/newline-after-import": "off",
+      "import/no-dynamic-require": "off",
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "no-param-reassign": 0,
+      "no-shadow": 0,
+      "no-tabs": "off",
+      "no-underscore-dangle": 0,
+      "no-use-before-define": [
+        "error",
+        "nofunc"
+      ],
+      "no-console": 0,
+      "no-plusplus": 0,
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    }
+  }
+}
