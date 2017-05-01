@@ -8,13 +8,11 @@
 // =============================================================================
 // APP -------------------------------
 // config
-const conf = require("../../config");
+// const conf = require("../../config");
 // helpers
 const helpers = require("helpers");
 // main core
 const core = require("../core");
-// feed sub-modules
-const path = conf.paths.store.feed; // eslint-disable-line no-unused-vars
 // pcSns
 // const sns = app.sns;
 // mongo
