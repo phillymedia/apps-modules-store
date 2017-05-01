@@ -23,7 +23,13 @@ const debug = process.env.DEBUG
 const Main = {
 	env,
 	debug,
+	models: [
+		"./models/Feed",
+		"./models/Log",
+		"./models/Stat",
+	],
 };
+
 // print information about environment.
 if (Main.debug) {
 	console.log("Running helpers app in", Main.env, "mode. Debug is on.");

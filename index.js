@@ -4,7 +4,18 @@
  * Hopefully reusable class of functions.
  **/
 
-// MOST DEPENDENCIES
+// CONFIG
+// =============================================================================
+const conf = require("./config");
+
+// REGISTER MODELS
+// =============================================================================
+// models
+_.forEach(conf.models, (path) => {
+	require(path);
+});
+
+// DEPENDENCIES
 // =============================================================================
 const feed = require("./controllers/feed");
 const stats = require("./controllers/stats");
