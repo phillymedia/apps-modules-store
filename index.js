@@ -20,13 +20,13 @@ module.exports = {
 	// feed store
 	feed: {
 		// philly.com
-		getCurrArticlesPhilly: feed.getArticlesPhilly,
-		setCurrArticlesPhilly: feed.setArticlesPhilly,
-		getCurrArticlesPhillyBrief: feed.getArticlesPhillyBrief,
-		setCurrArticlesPhillyBrief: feed.setArticlesPhillyBrief,
+		getArticlesPhilly: feed.getArticlesPhilly,
+		setArticlesPhilly: feed.setArticlesPhilly,
+		getArticlesPhillyBrief: feed.getArticlesPhillyBrief,
+		setArticlesPhillyBrief: feed.setArticlesPhillyBrief,
 		// sports now
-		getCurrSportsFeed: feed.getSportsFeed,
-		setCurrSportsFeed: feed.setSportsFeed,
+		getSportsFeed: feed.getSportsFeed,
+		setSportsFeed: feed.setSportsFeed,
 		getSportsTweets: feed.getSportsTweets,
 		setSportsTweets: feed.setSportsTweets,
 		getSportsGames: feed.getSportsGames,
