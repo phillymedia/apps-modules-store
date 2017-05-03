@@ -12,8 +12,8 @@
 // feed sub-modules
 const ses = require("./ses");
 const subscriptions = require("./subscriptions");
-const users = require("./users");
 const terms = require("./terms");
+const users = require("./users");
 
 // THIRD PARTY LIBRARIES -------------------------------
 // asyncronous functionality (async.each, etc) for performance
@@ -73,14 +73,15 @@ module.exports = {
 	setSesCount: ses.setCount,
 	getSesData: ses.getData,
 	setSesData: ses.setData,
+	clearSes: ses.clear,
 	// terms
 	getTerms: terms.get,
 	setTerms: terms.set,
 	clearTerms: terms.clear,
 	// subscriptions
 	getSubscriptions: subscriptions.get,
-	setSubscriptions: subscriptions.get,
-	clearSubscriptions: subscriptions.get,
+	setSubscriptions: subscriptions.set,
+	clearSubscriptions: subscriptions.clear,
 	// users
 	getUsers: users.get,
 	setUsers: users.set,

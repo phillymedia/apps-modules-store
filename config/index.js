@@ -1,5 +1,5 @@
 /**
- * HELPERS APP
+ * STORE APP
  * configure settings
 */
 
@@ -19,16 +19,9 @@ const debug = process.env.DEBUG
 	|| (process.env.npm_config_debugmode === "true");
 
 // import config based on environment
-// const Main = require(`./${env}`);
-const Main = {
-	env,
-	debug,
-	models: [
-		"./models/Feed",
-		"./models/Log",
-		"./models/Stat",
-	],
-};
+const Main = require(`./${env}`);
+// add debug from command line
+Main.debug = debug;
 
 // print information about environment.
 if (Main.debug) {

@@ -75,13 +75,13 @@ function set(content, callback) {
 *
 * @method clear
 * @param {Function} callback				A callback function.
-* @return {Function} core.add				The shared setter.
+* @return {Function} core.remove			The shared remover.
 */
 function clear(callback) {
 	const settings = {
 		name: _name,
 	};
-	return core.add(settings, callback);
+	return core.remove(settings, callback);
 }
 
 

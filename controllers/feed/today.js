@@ -53,7 +53,7 @@ function getArticlesPhilly(name, callback) {
 		type: _type,
 		name,
 	};
-	return core._find(settings, callback);
+	return core.find(settings, callback);
 }
 
 /**
@@ -73,7 +73,23 @@ function setArticlesPhilly(name, content, callback) {
 		name,
 		content,
 	};
-	return core._add(settings, callback);
+	return core.add(settings, callback);
+}
+
+/**
+* Remove from store.
+*
+* @method removeArticles
+* @param {String} name 						Name of the store.
+* @return {Function} core.remove
+*/
+function removeArticlesPhilly(name, callback) {
+	const settings = {
+		source: _source,
+		type: _type,
+		name,
+	};
+	return core.remove(settings, callback);
 }
 
 
@@ -85,4 +101,5 @@ function setArticlesPhilly(name, content, callback) {
 module.exports = {
 	getArticlesPhilly,
 	setArticlesPhilly,
+	removeArticlesPhilly,
 };

@@ -3,27 +3,21 @@ const mongoose = require("mongoose");
 const schemaName = "Log";
 
 // create the schema
-const Schema = new mongoose.Schema(
-	{
-		date: {
-			type: Date,
-			default: Date.now,
-		},
-		target: {
-			type: String,
-			// enum: conf.schema.target,
-			required: true,
-		},
-		message: {
-			type: String,
-			required: true,
-		},
+const Schema = new mongoose.Schema({
+	date: {
+		type: Date,
+		default: Date.now,
 	},
-	// mongoose assumes the collection will be the plural of the schema name
-	// e.g., Log => logs
-	// specify collection name otherwise
-	// { collection: 'data' },
-);
+	target: {
+		type: String,
+		// enum: conf.schema.target,
+		required: true,
+	},
+	message: {
+		type: String,
+		required: true,
+	},
+});
 
 // Create a compound unique index over _userId and document number
 // Schema.index({ "_id": 1, "project_alias": 1 }, { unique: true });
@@ -72,4 +66,4 @@ Schema.pre("update", (next) => {
 //*/
 
 // save as a model
-mongoose.model(schemaName, Schema);
+module.exports = mongoose.model(schemaName, Schema);

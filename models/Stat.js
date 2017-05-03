@@ -27,8 +27,7 @@ const Schema = new mongoose.Schema(
 	// specify collection name otherwise
 	{
 		collection: "notif_stats",
-	},
-);
+	});
 
 // Create a compound unique index over _userId and document number
 // Schema.index({ "_id": 1, "project_alias": 1 }, { unique: true });
@@ -77,4 +76,4 @@ Schema.pre("update", (next) => {
 //*/
 
 // save as a model
-mongoose.model(schemaName, Schema);
+module.exports = mongoose.model(schemaName, Schema);

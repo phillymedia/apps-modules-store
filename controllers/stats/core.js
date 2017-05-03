@@ -12,13 +12,13 @@
 // helpers
 const helpers = require("helpers");
 // main core
-const core = require("./core");
+const core = require("../core");
 
 // third-party libraries
 // utilities
 const _ = require("lodash");
 // database
-const db = require("mongoose");
+const db = core.db;
 // model
 const _schema = db.model("Stat");
 
@@ -122,12 +122,12 @@ function exists(settings, callback) {
 /**
 * Clear out items.
 *
-* @method clear
+* @method remove
 * @param {Object} settings			Request settings.
 * @param {Function} callback		A callback function.
 * @return {Object} 					Returns error object on failure, null on success.
 */
-function clear(settings, callback) {
+function remove(settings, callback) {
 	// set up parameters
 	const params = {
 		name: settings.name,
@@ -145,6 +145,6 @@ function clear(settings, callback) {
 module.exports = {
 	find,
 	add,
-	clear,
+	remove,
 	exists,
 };

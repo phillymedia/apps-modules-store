@@ -13,7 +13,8 @@ const conf = require("../../config");
 const core = require("./core");
 
 // third-party
-const async = require("async"); // eslint-disable-line no-unused-vars
+const { parallel } = require("async");
+
 
 // CONFIG
 // =============================================================================
@@ -37,6 +38,34 @@ const _feeds = conf.feeds; // eslint-disable-line no-unused-vars
 * function _privateBar(){ var self = this; return this.foo; }
 */
 
+/**
+ * Remove store.
+ *
+ * @method removeCount
+ * @param {function} callback
+ * @return {Function} core.remove				The shared remover.
+ */
+function removeCount(callback) {
+	const settings = {
+		name: _nameCount,
+	};
+	return core.remove(settings, callback);
+}
+
+/**
+ * Remove store.
+ *
+ * @method removeData
+ * @param {function} callback
+ * @return {Function} core.remove				The shared remover.
+ */
+function removeData(callback) {
+	const settings = {
+		name: _nameData,
+	};
+	return core.remove(settings, callback);
+}
+
 
 /*
 * PUBLIC METHODS
@@ -54,7 +83,7 @@ function getCount(callback) {
 	const settings = {
 		name: _nameCount,
 	};
-	return core._find(settings, callback);
+	return core.find(settings, callback);
 }
 
 /**
@@ -71,7 +100,7 @@ function setCount(content, callback) {
 		name: _nameCount,
 		content,
 	};
-	return core._add(settings, callback);
+	return core.add(settings, callback);
 }
 
 /**
@@ -84,7 +113,7 @@ function getData(callback) {
 	const settings = {
 		name: _nameData,
 	};
-	return core._find(settings, callback);
+	return core.find(settings, callback);
 }
 
 /**
@@ -101,7 +130,22 @@ function setData(content, callback) {
 		name: _nameData,
 		content,
 	};
-	return core._add(settings, callback);
+	return core.add(settings, callback);
+}
+
+/**
+* Clear store.
+*
+* @method clear
+* @param {Function} callback				A callback function.
+* @return {Function} core._add				The shared setter.
+*/
+function clear(callback) {
+	// combined feed, games, tweets
+	parallel([
+		next => removeCount(next),
+		next => removeData(next),
+	], callback);
 }
 
 
@@ -115,4 +159,5 @@ module.exports = {
 	setCount,
 	getData,
 	setData,
+	clear,
 };

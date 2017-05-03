@@ -18,7 +18,7 @@ const core = require("../core");
 // mongo
 // const mongo = require("mongodb");
 // third-party libraries
-const db = require("mongoose");
+const db = core.db;
 // model
 const _schema = db.model("Feed");
 
@@ -128,6 +128,26 @@ function add(settings, callback) {
 	});
 }
 
+
+/**
+* Insert a new item.
+*
+* @method remove
+* @param {Object} req				Original request.
+* @param {Function} callback		Returns error or result
+* @return {Function}
+*/
+function remove(settings, callback) {
+	// set up parameters
+	const params = {
+		source: settings.source,
+		type: settings.type,
+		name: settings.name,
+	};
+	// insert document
+	core.remove(_schema, params, callback);
+}
+
 /**
 * Does an item already exist?
 *
@@ -157,6 +177,6 @@ module.exports = {
 	find,
 	// findById,
 	add,
-	// remove,
+	remove,
 	exists,
 };

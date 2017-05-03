@@ -17,6 +17,9 @@ const sports = require("./sports");
 const today = require("./today");
 const watch = require("./watch");
 
+// third-party
+const { parallel } = require("async");
+
 
 // CONFIG
 // =============================================================================
@@ -41,6 +44,32 @@ const watch = require("./watch");
 * Foo.prototype.publicBar = function(){ const self = this; return self.foo; }
 * Foo.prototype.publicShell = function(){ return _privateBar.call(this, // any other variables); }
 */
+
+/*
+* PUBLIC METHODS
+* Foo.prototype.publicBar = function(){ const self = this; return self.foo; }
+* Foo.prototype.publicShell = function(){ return _privateBar.call(this, // any other variables); }
+*/
+
+/**
+ * Flush stats.
+ *
+ * @method clearStats
+ * @param {string} name						Content identifier.
+ * @param {Function} callback				A callback function.
+ * @return {Function}
+**/
+function clearArticlesPhilly(name, callback) {
+	// run parallel
+	parallel([
+	// individual calls
+		next => philly.removeArticles(name, next),
+		next => watch.removeArticlesPhilly(name, next),
+		next => today.removeArticlesPhilly(name, next),
+	],
+	// ready to re-create the caches
+	callback);
+}
 
 /*
 // ADMIN
@@ -90,19 +119,23 @@ module.exports = {
 	// philly.com
 	getArticlesPhilly: philly.getArticles,
 	setArticlesPhilly: philly.setArticles,
+	removeArticlesPhilly: philly.removeArticles,
 	getArticlesPhillyBrief: philly.getArticlesBrief,
 	setArticlesPhillyBrief: philly.setArticlesBrief,
 	// sports now
 	getSportsFeed: sports.getFeed,
 	setSportsFeed: sports.setFeed,
-	getSportsGames: philly.getGames,
-	setSportsGames: philly.setGames,
-	getSportsTweets: philly.getTweets,
-	setSportsTweets: philly.setTweets,
+	getSportsGames: sports.getGames,
+	setSportsGames: sports.setGames,
+	getSportsTweets: sports.getTweets,
+	setSportsTweets: sports.setTweets,
+	clearSports: sports.clear,
 	// today
 	getArticlesTodayPhilly: today.getArticlesPhilly,
 	setArticlesTodayPhilly: today.setArticlesPhilly,
 	// watch
 	getArticlesWatchPhilly: watch.getArticlesPhilly,
 	setArticlesWatchPhilly: watch.setArticlesPhilly,
+	// clear articles
+	clearArticlesPhilly,
 };

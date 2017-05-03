@@ -55,7 +55,7 @@ function getArticles(name, callback) {
 		type: _type,
 		name,
 	};
-	return core._find(settings, callback);
+	return core.find(settings, callback);
 }
 
 /**
@@ -75,7 +75,23 @@ function setArticles(name, content, callback) {
 		name,
 		content,
 	};
-	return core._add(settings, callback);
+	return core.add(settings, callback);
+}
+
+/**
+* Remove from store.
+*
+* @method removeArticles
+* @param {String} name 						Name of the store.
+* @return {Function} core.remove
+*/
+function removeArticles(name, callback) {
+	const settings = {
+		source: _source,
+		type: _type,
+		name,
+	};
+	return core.remove(settings, callback);
 }
 
 
@@ -95,7 +111,7 @@ function getArticlesBrief(name, callback) {
 		type: _type,
 		name,
 	};
-	return core._find(settings, callback);
+	return core.find(settings, callback);
 }
 
 /**
@@ -115,7 +131,7 @@ function setArticlesBrief(name, content, callback) {
 		name,
 		content,
 	};
-	return core._add(settings, callback);
+	return core.add(settings, callback);
 }
 
 
@@ -127,6 +143,7 @@ function setArticlesBrief(name, content, callback) {
 module.exports = {
 	getArticles,
 	setArticles,
+	removeArticles,
 	getArticlesBrief,
 	setArticlesBrief,
 };

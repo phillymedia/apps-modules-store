@@ -3,40 +3,34 @@ const mongoose = require("mongoose");
 const schemaName = "Feed";
 
 // create the schema
-const Schema = new mongoose.Schema(
-	{
-		// time stamp for the cache
-		expireAt: {
-			type: Date,
-			default: Date.now,
-		},
-		// watch, app?
-		source: {
-			type: String,
-			required: true,
-		},
-		// articles, games, tweets? detail as separate?
-		type: {
-			type: String,
-			required: true,
-		},
-		// sports, news, business, health
-		// detail as a name
-		name: {
-			type: String,
-			required: true,
-		},
-		// actual content
-		content: {
-			type: Object,
-			required: true,
-		},
+const Schema = new mongoose.Schema({
+	// time stamp for the cache
+	expireAt: {
+		type: Date,
+		default: Date.now,
 	},
-	// mongoose assumes the collection will be the plural of the schema name
-	// e.g., Log => logs
-	// specify collection name otherwise
-	// { collection: 'data' },
-);
+	// watch, app?
+	source: {
+		type: String,
+		required: true,
+	},
+	// articles, games, tweets? detail as separate?
+	type: {
+		type: String,
+		required: true,
+	},
+	// sports, news, business, health
+	// detail as a name
+	name: {
+		type: String,
+		required: true,
+	},
+	// actual content
+	content: {
+		type: Object,
+		required: true,
+	},
+});
 
 // Create a compound unique index over _userId and document number
 // Schema.index({ "_id": 1, "project_alias": 1 }, { unique: true });
@@ -85,4 +79,4 @@ Schema.pre("update", (next) => {
 //*/
 
 // save as a model
-mongoose.model(schemaName, Schema);
+module.exports = mongoose.model(schemaName, Schema);

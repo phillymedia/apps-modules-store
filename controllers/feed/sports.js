@@ -11,6 +11,8 @@
 const conf = require("../../config");
 // main core
 const core = require("./core");
+// third-party libraries
+const { parallel } = require("async");
 
 // CONFIG
 // =============================================================================
@@ -38,6 +40,55 @@ const _feeds = conf.feeds; // eslint-disable-line no-unused-vars
 * function _privateBar(){ var self = this; return this.foo; }
 */
 
+/**
+* Remove from store.
+*
+* @method removeFeed
+* @param {function} callback
+* @return {Function} core.remove
+*/
+function removeFeed(callback) {
+	const settings = {
+		source: _source,
+		type: _typeCombined,
+		name: _name,
+	};
+	return core.remove(settings, callback);
+}
+
+/**
+* Remove from store.
+*
+* @method removeTweets
+* @param {function} callback
+* @return {Function} core.remove
+*/
+function removeTweets(callback) {
+	const settings = {
+		source: _source,
+		type: _typeTweets,
+		name: _name,
+	};
+	return core.remove(settings, callback);
+}
+
+/**
+* Remove from store.
+*
+* @method removeGames
+* @param {function} callback
+* @return {Function} core.remove
+*/
+function removeGames(callback) {
+	const settings = {
+		source: _source,
+		type: _typeGames,
+		name: _name,
+	};
+	return core.remove(settings, callback);
+}
+
+
 /*
 * PUBLIC METHODS
 * Foo.prototype.publicBar = function(){ var self = this; return self.foo; }
@@ -47,18 +98,19 @@ const _feeds = conf.feeds; // eslint-disable-line no-unused-vars
 // COMBINED FEED
 // =============================================================================
 /**
-* Get store.
-*
-* @method getFeed
-* @return {Function} core._find				The shared getter.
-*/
+ * Get store.
+ *
+ * @method getFeed
+ * @param {function} callback				The callback function.
+ * @return {function}
+ */
 function getFeed(callback) {
 	const settings = {
 		source: _source,
 		type: _typeCombined,
 		name: _name,
 	};
-	return core._find(settings, callback);
+	return core.find(settings, callback);
 }
 
 /**
@@ -67,7 +119,7 @@ function getFeed(callback) {
 * @method setFeed
 * @param {Object} content 					Data to store.
 * @param {Function} callback				A callback function.
-* @return {Function} core._add				The shared setter.
+* @return {Function}
 */
 function setFeed(content, callback) {
 	const settings = {
@@ -77,7 +129,7 @@ function setFeed(content, callback) {
 		name: _name,
 		content,
 	};
-	return core._add(settings, callback);
+	return core.add(settings, callback);
 }
 
 
@@ -88,6 +140,7 @@ function setFeed(content, callback) {
 * Get store.
 *
 * @method getTweets
+* @param {function} callback
 * @return {Function} core._find				The shared getter.
 */
 function getTweets(callback) {
@@ -96,7 +149,7 @@ function getTweets(callback) {
 		type: _typeTweets,
 		name: _name,
 	};
-	return core._find(settings, callback);
+	return core.find(settings, callback);
 }
 
 /**
@@ -115,7 +168,7 @@ function setTweets(content, callback) {
 		name: _name,
 		content,
 	};
-	return core._add(settings, callback);
+	return core.add(settings, callback);
 }
 
 
@@ -126,6 +179,7 @@ function setTweets(content, callback) {
 * Get store.
 *
 * @method getGames
+* @param {function} callback
 * @return {Function} core._find				The shared getter.
 */
 function getGames(callback) {
@@ -134,7 +188,7 @@ function getGames(callback) {
 		type: _typeGames,
 		name: _name,
 	};
-	return core._find(settings, callback);
+	return core.find(settings, callback);
 }
 
 /**
@@ -153,7 +207,23 @@ function setGames(content, callback) {
 		name: _name,
 		content,
 	};
-	return core._add(settings, callback);
+	return core.add(settings, callback);
+}
+
+/**
+* Clear store.
+*
+* @method clear
+* @param {Function} callback				A callback function.
+* @return {Function} core._add				The shared setter.
+*/
+function clear(callback) {
+	// combined feed, games, tweets
+	parallel([
+		next => removeFeed(next),
+		next => removeGames(next),
+		next => removeTweets(next),
+	], callback);
 }
 
 
@@ -169,4 +239,5 @@ module.exports = {
 	setGames,
 	getTweets,
 	setTweets,
+	clear,
 };
