@@ -4,9 +4,9 @@
 // dependencies
 const { expect } = require("chai");
 const app = require("../index");
-const conf = require("../config");
+const conf = require("../src/config");
 const feed = app.feed;
-const db = require("../controllers/core").db;
+const db = require("../src/controllers/core").db;
 
 // clean-up
 let deleteAfterRun = false;

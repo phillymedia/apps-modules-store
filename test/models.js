@@ -6,14 +6,14 @@ const mongoose = require("mongoose");
 const { expect } = require("chai");
 const sinon = require("sinon");
 require("sinon-mongoose");
-
+const modelsPath = "../src/models";
 
 /**
  * Test feed model.
  */
 
 // model
-const Feed = require("../models/Feed");
+const Feed = require(`${modelsPath}/Feed`);
 // reusable variables for testing.
 const testFeed = {
 	source: "philly_app",
@@ -88,7 +88,7 @@ describe("Feed Model", () => {
  */
 
 // model
-const Log = require("../models/Log");
+const Log = require(`${modelsPath}/Log`);
 // reusable variables for testing.
 const testLog = {
 	date: new Date(),
@@ -186,7 +186,7 @@ describe("Log Model", () => {
  */
 
 // model
-const Stat = require("../models/Stat");
+const Stat = require(`${modelsPath}/Stat`);
 // reusable variables for testing.
 const testStatContent = { count: { total: 324, withSubs: 189, withoutSubs: 135 } };
 const testStat = {

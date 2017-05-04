@@ -10,7 +10,7 @@
 const Main = {};
 
 // DB - MODELS -------------------------------
-const modelsPath = "./models/";
+const modelsPath = "./src/models/";
 Main.models = [
 	`${modelsPath}Feed`,
 	`${modelsPath}Log`,

@@ -1,8 +1,8 @@
 /**
- * PHILLY STORE APP
+ * The Philly.com store module, for use with the Philly.com and Sports Now apps.
  *
- * Hopefully reusable class of functions.
- **/
+ * @module store
+ */
 
 // DEPENDENCIES
 // =============================================================================
@@ -13,7 +13,7 @@ const dotenv = require("dotenv");
 // CONFIG
 // =============================================================================
 dotenv.load({ path: ".env" });
-const conf = require("./config");
+const conf = require("./src/config");
 
 // REGISTER MODELS
 // =============================================================================
@@ -24,9 +24,9 @@ _.forEach(conf.models, (path) => {
 
 // DEPENDENCIES
 // =============================================================================
-const feed = require("./controllers/feed");
-const stats = require("./controllers/stats");
-const logs = require("./controllers/logs");
+const feed = require("./src/controllers/feed");
+const stats = require("./src/controllers/stats");
+const logs = require("./src/controllers/logs");
 
 
 /*
