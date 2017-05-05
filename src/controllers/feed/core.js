@@ -7,18 +7,17 @@
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------
+const app = require("../../");
 // config
 // const conf = require("../../config");
 // helpers
 const helpers = require("helpers");
-// main core
+// sub-modules
 const core = require("../core");
 // pcSns
 // const sns = app.sns;
-// mongo
-// const mongo = require("mongodb");
-// third-party libraries
-const db = core.db;
+// database
+const db = app.db;
 // model
 const _schema = db.model("Feed");
 
@@ -32,7 +31,7 @@ const _schema = db.model("Feed");
 
 // asyncronous functionality (async.each, etc) for performance
 // const async = require("async");
-const _ = require("lodash");
+const { isEmpty } = require("lodash");
 
 
 // CONFIG
@@ -92,7 +91,7 @@ function find(settings, callback) {
 		}
 		// mongoose always returns an array, but there should only be one item
 		// so, peel off content
-		if (!_.isEmpty(data)) {
+		if (!isEmpty(data)) {
 			data = data[0].content;
 		}
 		// otherwise...

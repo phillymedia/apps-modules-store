@@ -17,6 +17,7 @@ Main.database.db = "notifications";
 Main.database.logs = {};
 Main.database.logs.view = 5;
 Main.database.user = "notifsUser";
+Main.database.url = `mongodb://${Main.database.user}:${process.env.MONGO_DB_PASS}@${Main.database.server}:${Main.database.port}/${Main.database.db}`;
 
 
 // EXPORT

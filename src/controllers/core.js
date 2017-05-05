@@ -6,59 +6,13 @@
 
 // DEPENDENCIES
 // =============================================================================
-const helpers = require("helpers");
 // APP -------------------------------
-// const app = require("_");
-// config
-const conf = require("../config");
+// const app = require("../../src/");
+// helpers
+const helpers = require("helpers");
 
 // THIRD PARTY LIBRARIES -------------------------------
-// database
-const db = require("mongoose");
-// lodash
-const _ = require("lodash");
-
-
-// CONFIG
-// =============================================================================
-// LOAD CONFIG FILE  -------------------------------
-const _debug = conf.debug;
-
-// CONNECT TO THE DATABASE
-// =============================================================================
-if (_debug) {
-	db.set("debug", true);
-}
-// use ES6 promises
-db.Promise = global.Promise;
-// connect
-const connection = db.connect(conf.database.url).connection;
-if (_debug) {
-	connection.once("open", () => {
-		console.log("Mongoose connection open.");
-	});
-}
-// handle errors
-connection.on("error", (err) => {
-	console.log(`Mongoose default connection error: ${err}`);
-	throw new Error("Unable to connect to database!");
-});
-// when the connection is disconnected
-connection.on("disconnected", () => {
-	if (_debug) {
-		console.log("Mongoose default connection disconnected.");
-	}
-});
-// if the Node process ends, close the Mongoose connection
-process.on("SIGINT", () => {
-	connection.close(() => {
-		if (_debug) {
-			console.log("Mongoose default connection disconnected through app termination.");
-		}
-		process.exit(0);
-	});
-});
-
+const { unset } = require("lodash");
 
 /*
 * PRIVATE PROPERTIES
@@ -131,15 +85,15 @@ function find(Schema, params, callback) {
 	// pull limit if it exists
 	const limit = params.limit || 0;
 	// remove limit from params
-	_.unset(params, ["limit"]);
+	unset(params, ["limit"]);
 	// pull sort if it exists
 	const sort = params.sort || false;
 	// remove sort from params
-	_.unset(params, ["sort"]);
+	unset(params, ["sort"]);
 	// pull skip if it exists
 	const skip = params.skip || false;
 	// remove skip from params
-	_.unset(params, ["skip"]);
+	unset(params, ["skip"]);
 	// find the items
 	const query = Schema.find(params);
 	// sort
@@ -249,7 +203,6 @@ function clearOld(Schema, params, callback) {
 */
 
 module.exports = {
-	db,
 	add,
 	remove,
 	find,

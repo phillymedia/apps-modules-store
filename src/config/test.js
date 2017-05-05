@@ -16,7 +16,6 @@ Main.env = "test";
 // DB -------------------------------
 // put it all together...
 Main.database.logs.limit = 10;
-Main.database.url = `mongodb://${Main.database.user}:${process.env.MONGO_DB_TEST_PASS}@${Main.database.server}:${Main.database.port}/${Main.database.db}`;
 
 
 // EXPORT

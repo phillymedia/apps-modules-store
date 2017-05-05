@@ -1,5 +1,5 @@
 const conf = require("../config"); // eslint-disable-line no-unused-vars
-const mongoose = require("mongoose");
+const mongoose = require("../../src/").db;
 const schemaName = "Log";
 
 // create the schema

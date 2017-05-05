@@ -7,20 +7,23 @@
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------
-// config
-// const conf = require("../../config");
+const app = require("../../");
 // helpers
 const helpers = require("helpers");
-// main core
+// config
+// const conf = require("../../config");
+// sub-modules
 const core = require("../core");
-
-// third-party libraries
-// utilities
-const _ = require("lodash");
+// pcSns
+// const sns = app.sns;
 // database
-const db = core.db;
+const db = app.db;
 // model
 const _schema = db.model("Stat");
+
+// THIRD PARTY LIBRARIES -------------------------------
+// lodash
+const { isEmpty } = require("lodash");
 
 
 // CONFIG
@@ -68,7 +71,7 @@ function find(settings, callback) {
 		}
 		// mongoose always returns an array, but there should only be one item
 		// so, peel off content
-		if (!_.isEmpty(data)) {
+		if (!isEmpty(data)) {
 			data = data[0].content;
 		}
 		// otherwise...
