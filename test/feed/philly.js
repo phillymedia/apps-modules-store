@@ -3,7 +3,7 @@
 
 // dependencies
 const { expect } = require("chai");
-const app = require("@/app.js");
+const app = require("app.js");
 const feed = app.feed;
 
 // test category
