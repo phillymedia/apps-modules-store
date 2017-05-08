@@ -6,6 +6,9 @@ npm-debug.log*
 # Environment variables
 .env
 
+# dist
+dist
+
 # Runtime data
 pids
 *.pid

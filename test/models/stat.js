@@ -4,17 +4,15 @@
 // DEPENDENCIES
 // =============================================================================
 // eslint-disable-next-line no-unused-vars
-const mongoose = require("../../src/").db;
+const mongoose = require("app").db;
 const { expect } = require("chai");
 const sinon = require("sinon");
 require("sinon-mongoose");
 
 // PRIVATE VARIABLES
 // =============================================================================
-// path
-const modelsPath = "../../src/models";
 // model
-const Stat = require(`${modelsPath}/Feed`);
+const Stat = require("models/Stat");
 // reusable variables for testing.
 const testStatContent = { count: { total: 324, withSubs: 189, withoutSubs: 135 } };
 const testStat = {

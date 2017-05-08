@@ -3,8 +3,8 @@
 
 // dependencies
 const { expect } = require("chai");
-const app = require("../../src");
-const conf = require("../../src/config");
+const app = require("app");
+const conf = require("config");
 const stats = app.stats;
 const db = app.db;
 
@@ -101,17 +101,14 @@ function setCount(done) {
 		// data has value (expected)
 		if (data) {
 			// set with returned data
-			stats.setSesCount(data, (err, newData) => {
-				expect(err).to.be.null;
+			return stats.setSesCount(data, (newErr, newData) => {
+				expect(newErr).to.be.null;
 				expect(newData).to.be.an("array");
 				return done();
 			});
 		}
-		// no value? problem!
-		else {
-			console.error("Data didn't get set!");
-			return done();
-		}
+		console.error("Data didn't get set!");
+		return done();
 	});
 }
 
@@ -144,17 +141,14 @@ function setData(done) {
 		// data has value (expected)
 		if (data) {
 			// set with returned data
-			stats.setSesData(data, (err, newData) => {
-				expect(err).to.be.null;
+			return stats.setSesData(data, (newErr, newData) => {
+				expect(newErr).to.be.null;
 				expect(newData).to.be.an("array");
 				return done();
 			});
 		}
-		// no value? problem!
-		else {
-			console.error("Data didn't get set!");
-			return done();
-		}
+		console.error("Data didn't get set!");
+		return done();
 	});
 }
 

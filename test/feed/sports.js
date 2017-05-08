@@ -3,8 +3,8 @@
 
 // dependencies
 const { expect } = require("chai");
-const app = require("../../src");
-const conf = require("../../src/config");
+const app = require("@/app");
+const conf = require("@/config");
 const feed = app.feed;
 const db = app.db;
 
@@ -52,7 +52,7 @@ function callAfter(done) {
 		// delete test content inserted into the databases
 		console.log("Deleting test sports now content...");
 		// clear sports feed
-		feed.clearSports((err) => {
+		return feed.clearSports((err) => {
 			// handle errors
 			if (err) {
 				console.error(err);
@@ -64,9 +64,7 @@ function callAfter(done) {
 		});
 	}
 	// otherwise...
-	else {
-		return done();
-	}
+	return done();
 }
 
 
@@ -103,17 +101,14 @@ function setFeed(done) {
 		// data has value (expected)
 		if (data) {
 			// set with returned data
-			feed.setSportsFeed(data, (err, newData) => {
-				expect(err).to.be.null;
+			return feed.setSportsFeed(data, (newErr, newData) => {
+				expect(newErr).to.be.null;
 				expect(newData).to.be.an("array");
 				return done();
 			});
 		}
-		// no value? problem!
-		else {
-			console.error("Data didn't get set!");
-			return done();
-		}
+		console.error("Data didn't get set!");
+		return done();
 	});
 }
 
@@ -146,17 +141,15 @@ function setGames(done) {
 		// data has value (expected)
 		if (data) {
 			// set with returned data
-			feed.setSportsGames(data, (err, newData) => {
-				expect(err).to.be.null;
+			return feed.setSportsGames(data, (newErr, newData) => {
+				expect(newErr).to.be.null;
 				expect(newData).to.be.an("array");
 				return done();
 			});
 		}
 		// no value? problem!
-		else {
-			console.error("Data didn't get set!");
-			return done();
-		}
+		console.error("Data didn't get set!");
+		return done();
 	});
 }
 
@@ -189,17 +182,14 @@ function setTweets(done) {
 		// data has value (expected)
 		if (data) {
 			// set with returned data
-			feed.setSportsTweets(data, (err, newData) => {
-				expect(err).to.be.null;
+			return feed.setSportsTweets(data, (newErr, newData) => {
+				expect(newErr).to.be.null;
 				expect(newData).to.be.an("array");
 				return done();
 			});
 		}
-		// no value? problem!
-		else {
-			console.error("Data didn't get set!");
-			return done();
-		}
+		console.error("Data didn't get set!");
+		return done();
 	});
 }
 
