@@ -1,6 +1,6 @@
 {
 	"private": true,
-	"name": "store",
+	"name": "philly-store",
 	"version": "2.0.1",
 	"description": "A group of hopefully-reusable store functions.",
 	"repository": {
