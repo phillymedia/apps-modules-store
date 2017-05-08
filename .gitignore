@@ -1,13 +1,9 @@
 # Logs
-logs
 *.log
 npm-debug.log*
 
 # Environment variables
 .env
-
-# dist
-dist
 
 # Runtime data
 pids
