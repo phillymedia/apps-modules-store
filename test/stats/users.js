@@ -3,8 +3,8 @@
 
 // dependencies
 import { expect } from "chai";
-const app = require("app");
-const conf = require("config");
+const app = require("MAIN");
+const conf = require("APP/config");
 const stats = app.stats;
 const db = app.db;
 

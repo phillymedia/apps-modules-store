@@ -5,7 +5,12 @@
 	],
 	"plugins": [
     ["module-resolver", {
-      "root": ["./lib"]
+      "root": ["./"],
+	  "alias": {
+		"APP": "./lib",
+		"MAIN": "./lib/app",
+		"COMP": "./lib/controllers"
+	  }
     }]
   ]
 }
