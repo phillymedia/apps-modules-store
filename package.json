@@ -9,7 +9,7 @@
 	},
 	"main": "./dist/app.js",
 	"scripts": {
-		"dev": "nodemon lib/app.js --exec babel-node",
+		"dev": "nodemon lib/index.js --exec babel-node",
 		"dist": "babel lib -d dist",
 		"start": "node dist/app.js",
 		"test": "mocha --compilers js:babel-register --reporter spec"
