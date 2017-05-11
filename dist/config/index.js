@@ -23,10 +23,9 @@ var debug = process.env.DEBUG
 var Main = require("./" + env);
 // add debug from command line
 Main.debug = debug;
-
 // print information about environment.
 if (Main.debug) {
-	console.log("Running helpers app in", Main.env, "mode. Debug is on.");
+	console.log("Running store app in", Main.env, "mode. Debug is on.");
 }
 // export completed config file
 module.exports = Main;
