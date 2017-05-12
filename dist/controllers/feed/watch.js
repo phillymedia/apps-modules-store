@@ -54,7 +54,7 @@ function getArticlesPhilly(name, callback) {
 		type: _type,
 		name: name
 	};
-	return core.find(settings, callback);
+	core.find(settings, callback);
 }
 
 /**
@@ -74,7 +74,7 @@ function setArticlesPhilly(name, content, callback) {
 		name: name,
 		content: content
 	};
-	return core.add(settings, callback);
+	core.add(settings, callback);
 }
 
 /**
@@ -90,7 +90,7 @@ function removeArticlesPhilly(name, callback) {
 		type: _type,
 		name: name
 	};
-	return core.remove(settings, callback);
+	core.remove(settings, callback);
 }
 
 /*
