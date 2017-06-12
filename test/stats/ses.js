@@ -1,5 +1,6 @@
 /* eslint-env mocha */
 /* eslint-disable no-unused-expressions */
+/* eslint-disable prefer-arrow-callback */
 
 // dependencies
 const { expect } = require("chai");

@@ -1,21 +1,21 @@
 "use strict";
 
+var _logging = require("./controllers/logging");
+
+var _logging2 = _interopRequireDefault(_logging);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  * The Philly.com store module, for use with the Philly.com and Sports Now apps.
  *
  * @module store
  */
 
-// DEPENDENCIES
-// =============================================================================
-// lodash
-// const { forEach } = require("lodash");
-var dotenv = require("dotenv");
-
 // CONFIG
 // =============================================================================
-dotenv.load({ path: ".env" });
 var conf = require("./config");
+
 
 // CONNECT TO DATABASE
 // =============================================================================
@@ -37,28 +37,22 @@ if (_debug) {
 db.Promise = global.Promise;
 // connect
 var connection = db.connect(conf.database.url).connection;
-if (_debug) {
-	connection.once("open", function () {
-		console.log("Mongoose connection open.");
-	});
-}
+connection.once("open", function () {
+	_logging2.default.debug("Mongoose connection open.");
+});
 // handle errors
 connection.on("error", function (err) {
-	console.log("Mongoose default connection error: " + err);
+	_logging2.default.info("Mongoose default connection error: " + err);
 	throw new Error("Unable to connect to database!");
 });
 // when the connection is disconnected
 connection.on("disconnected", function () {
-	if (_debug) {
-		console.log("Mongoose default connection disconnected.");
-	}
+	_logging2.default.debug("Mongoose default connection disconnected.");
 });
 // if the Node process ends, close the Mongoose connection
 process.on("SIGINT", function () {
 	connection.close(function () {
-		if (_debug) {
-			console.log("Mongoose default connection disconnected through app termination.");
-		}
+		_logging2.default.debug("Mongoose default connection disconnected through app termination.");
 		process.exit(0);
 	});
 });

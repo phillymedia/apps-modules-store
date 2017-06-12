@@ -6,7 +6,7 @@
 * Sets up the Node server with Express.
 **/
 
-// import the DEV version of global settings
+// import global settings
 var Main = require("./global");
 
 // TEST

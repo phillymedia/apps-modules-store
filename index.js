@@ -4,16 +4,23 @@
  * @module store
  */
 
+// DEPENDENCIES
+// =============================================================================
+// lodash
+const _ = require("lodash");
+const dotenv = require("dotenv");
+
 // CONFIG
 // =============================================================================
-const conf = require("APP/config");
-import log from "COMP/logging";
+dotenv.load({ path: ".env" });
+const conf = require("./src/config");
 
 // CONNECT TO DATABASE
 // =============================================================================
 // THIRD PARTY LIBRARIES -------------------------------
 // database
 const db = require("mongoose");
+
 
 // CONFIG
 // =============================================================================
@@ -29,42 +36,44 @@ if (_debug) {
 db.Promise = global.Promise;
 // connect
 const connection = db.connect(conf.database.url).connection;
-connection.once("open", () => {
-	log.debug("Mongoose connection open.");
-});
+if (_debug) {
+	connection.once("open", () => {
+		console.log("Mongoose connection open.");
+	});
+}
 // handle errors
 connection.on("error", (err) => {
-	log.info(`Mongoose default connection error: ${err}`);
+	console.log(`Mongoose default connection error: ${err}`);
 	throw new Error("Unable to connect to database!");
 });
 // when the connection is disconnected
 connection.on("disconnected", () => {
-	log.debug("Mongoose default connection disconnected.");
+	if (_debug) {
+		console.log("Mongoose default connection disconnected.");
+	}
 });
 // if the Node process ends, close the Mongoose connection
 process.on("SIGINT", () => {
 	connection.close(() => {
-		log.debug("Mongoose default connection disconnected through app termination.");
+		if (_debug) {
+			console.log("Mongoose default connection disconnected through app termination.");
+		}
 		process.exit(0);
 	});
 });
 
-// export database
-exports.db = db;
-// changes
-
 // REGISTER MODELS
 // =============================================================================
 // models
-require("APP/models/Feed");
-require("APP/models/Stat");
-require("APP/models/Log");
+_.forEach(conf.models, (path) => {
+	require(path);
+});
 
-// IMPORT MODULES
+// DEPENDENCIES
 // =============================================================================
-const feed = require("COMP/feed");
-const stats = require("COMP/stats");
-const logs = require("COMP/logs");
+const feed = require("./src/controllers/feed");
+const stats = require("./src/controllers/stats");
+const logs = require("./src/controllers/logs");
 
 
 /*
@@ -72,6 +81,15 @@ const logs = require("COMP/logs");
 * module.exports = className;
 */
 
-exports.feed = feed;
-exports.stats = stats;
-exports.logs = logs;
+console.log("Exporting db...", db);
+
+module.exports = {
+	// database
+	db,
+	// feed store
+	feed,
+	// logs store
+	logs,
+	// stats store
+	stats,
+};
