@@ -1,8 +1,26 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _logging = require("./controllers/logging");
 
 var _logging2 = _interopRequireDefault(_logging);
+
+var _aws = require("./controllers/aws");
+
+var _feed = require("./controllers/feed");
+
+var _feed2 = _interopRequireDefault(_feed);
+
+var _logs = require("./controllers/logs");
+
+var _logs2 = _interopRequireDefault(_logs);
+
+var _stats = require("./controllers/stats");
+
+var _stats2 = _interopRequireDefault(_stats);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67,18 +85,17 @@ exports.db = db;
 require("./models/Feed");
 require("./models/Stat");
 require("./models/Log");
+// aws models
+require("./models/Application");
+require("./models/Topic");
+require("./models/Endpoint"); // might be a bad idea
+require("./models/Subscription"); // might be a bad idea
 
-// IMPORT MODULES
+// EXPORTS
 // =============================================================================
-var feed = require("./controllers/feed");
-var stats = require("./controllers/stats");
-var logs = require("./controllers/logs");
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-exports.feed = feed;
-exports.stats = stats;
-exports.logs = logs;
+exports.default = {
+	feed: _feed2.default,
+	logs: _logs2.default,
+	stats: _stats2.default,
+	sns: _aws.sns
+};
