@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _core = require("../../core");
+var _core = require("../core");
 
 var _core2 = _interopRequireDefault(_core);
 
-var _config = require("../../../config");
+var _config = require("../../config");
 
 var _schema2 = require("./schema");
 
@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // =============================================================================
 
 // config
-var _store = _config.store.detail;
+var _store = _config.store.log;
 // model
 // DEPENDENCIES
 // =============================================================================
@@ -28,8 +28,8 @@ var _store = _config.store.detail;
 // sub-modules
 
 var _name = _store.collectionName;
-var _size = _store.collectionSize;
 var _max = _store.collectionMax;
+var _size = _store.collectionSize;
 
 // METHODS
 // =============================================================================

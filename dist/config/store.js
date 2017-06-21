@@ -48,10 +48,17 @@ Main.store.watch = {
 };
 // admin section
 Main.store.admin = {};
+// log section
+Main.store.log = {
+	collectionName: "logs",
+	collectionSize: 5242880,
+	collectionMax: 40
+};
 // detail section
 Main.store.detail = {
 	collectionName: "details",
-	collectionSize: 5
+	collectionSize: 5242880,
+	collectionMax: 5
 };
 
 // EXPORT

@@ -2,3 +2,4 @@
 --reporter spec
 --bail
 --recursive
+--timeout 0

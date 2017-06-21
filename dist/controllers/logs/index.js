@@ -16,9 +16,9 @@ var _exists = require("./exists");
 
 var _exists2 = _interopRequireDefault(_exists);
 
-var _remove = require("./remove");
+var _recreateCollection = require("./recreateCollection");
 
-var _remove2 = _interopRequireDefault(_remove);
+var _recreateCollection2 = _interopRequireDefault(_recreateCollection);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32,5 +32,5 @@ exports.default = {
 	get: _findAll2.default,
 	add: _add2.default,
 	exists: _exists2.default,
-	drop: _remove2.default
+	recreateCollection: _recreateCollection2.default
 };

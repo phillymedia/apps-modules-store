@@ -40,11 +40,11 @@ const testLog = {
 function callAfter(done) {
 	// announce clean-up job
 	log.debug("Deleting test logs content...");
-	// clear sports log
-	logs.drop((err) => {
+	// clear log
+	logs.recreateCollection((err) => {
 		// handle errors
 		if (err) {
-			log.error(err);
+			return done(err);
 		}
 		// otherwise...
 		log.debug("Successfully deleted.");
