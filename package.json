@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "philly-store",
-	"version": "3.0.6",
+	"version": "3.2.0",
 	"description": "A group of hopefully-reusable store functions.",
 	"repository": {
 		"type": "git",
@@ -23,7 +23,7 @@
 	"dependencies": {
 		"async": "^2.4.0",
 		"lodash": "*",
-		"mongoose": "*",
+		"mongoose": "^4.10.7",
 		"philly-helpers": "git+ssh://git@github.com:phillymedia/apps-modules-helpers.git"
 	},
 	"devDependencies": {

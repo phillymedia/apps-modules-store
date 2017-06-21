@@ -1,13 +1,14 @@
-/* eslint-env mocha */
 /* eslint-disable no-unused-expressions */
-/* eslint-disable prefer-arrow-callback */
 
-// dependencies
-const { expect } = require("chai");
-const app = require("MAIN");
-const conf = require("APP/config");
+// DEPENDENCIES
+// =============================================================================
+
+import { expect } from "chai";
+import app from "MAIN";
+import { store as _store } from "APP/config";
+import log from "COMP/logging";
+import _schema from "./schema";
 const stats = app.stats;
-const db = app.db;
 
 // BEFORE AND AFTER
 // =============================================================================
@@ -24,8 +25,7 @@ let deleteAfterRun = false;
  */
 function callBefore(done) {
 	// test if database is populated
-	const Stat = db.model("Stat");
-	Stat.count({ source: conf.store.admin })
+	_schema.count({ source: _store.admin })
 	.then((count) => {
 		if (count === 0) {
 			// no content so safe to delete
@@ -34,7 +34,7 @@ function callBefore(done) {
 			// return fixtures.ensureTestData();
 		}
 		else {
-			console.log("Test database already exists");
+			log.debug("Test database already exists");
 		}
 	})
 	.then(done);
@@ -51,15 +51,15 @@ function callAfter(done) {
 	// delete after run
 	if (deleteAfterRun) {
 		// delete test content inserted into the databases
-		console.log("Deleting test SES content...");
+		log.debug("Deleting test SES content...");
 		// clear ses
 		stats.clearSes((err) => {
 			// handle errors
 			if (err) {
-				console.error(err);
+				log.error(err);
 			}
 			// otherwise...
-			console.log("Successfully deleted.");
+			log.debug("Successfully deleted.");
 			// callback
 			return done();
 		});
@@ -108,7 +108,7 @@ function setCount(done) {
 				return done();
 			});
 		}
-		console.error("Data didn't get set!");
+		log.error("Data didn't get set!");
 		return done();
 	});
 }
@@ -148,7 +148,7 @@ function setData(done) {
 				return done();
 			});
 		}
-		console.error("Data didn't get set!");
+		log.error("Data didn't get set!");
 		return done();
 	});
 }
@@ -157,12 +157,10 @@ function setData(done) {
 // TESTS
 // =============================================================================
 
-/**
- * SES test methods.
- *
- * @method tests
- */
-function tests() {
+// run once before all tests
+before(callBefore);
+// describe the stats store
+describe("SES Stats Store", () => {
 	// getter - count
 	describe("Get SES Count", () => {
 		it("gets the SES count", getCount);
@@ -182,16 +180,6 @@ function tests() {
 	describe("Set SES Data", () => {
 		it("gets the current data and immediately sets it", setData);
 	});
-}
-
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-module.exports = {
-	callBefore,
-	tests,
-	callAfter,
-};
+});
+// run once callAfter all tests
+after(callAfter);

@@ -1,47 +1,32 @@
 "use strict";
 
-/**
-* PHILLY STORE APP
-* a feed sub-class
-* Contains methods and variables for stats-related functions.
-**/
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
-// DEPENDENCIES
+var _async = require("async");
+
+var _ses = require("./ses");
+
+var _ses2 = _interopRequireDefault(_ses);
+
+var _subscriptions = require("./subscriptions");
+
+var _subscriptions2 = _interopRequireDefault(_subscriptions);
+
+var _terms = require("./terms");
+
+var _terms2 = _interopRequireDefault(_terms);
+
+var _users = require("./users");
+
+var _users2 = _interopRequireDefault(_users);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// METHODS
 // =============================================================================
-// APP -------------------------------
-// config
-// const conf = require("APP/config");
-// feed sub-modules
-var ses = require("./ses");
-var subscriptions = require("./subscriptions");
-var terms = require("./terms");
-var users = require("./users");
-
-// THIRD PARTY LIBRARIES -------------------------------
-// asyncronous functionality (async.each, etc) for performance
-var async = require("async");
-
-// CONFIG
-// =============================================================================
-// LOAD CONFIG FILE  -------------------------------
-// const _debug = conf.debug;
-
-
-/*
-* PRIVATE PROPERTIES
-* const _privateBar;
-*/
-
-/*
-* PRIVATE METHODS
-* function _privateBar(){ const self = this; return this.foo; }
-*/
-
-/*
-* PUBLIC METHODS
-* Foo.prototype.publicBar = function(){ const self = this; return self.foo; }
-* Foo.prototype.publicShell = function(){ return _privateBar.call(this, // any other variables); }
-*/
+// PUBLIC -------------------------------
 
 /**
  * Flush stats.
@@ -51,39 +36,45 @@ var async = require("async");
  * @param {Function} callback				A callback function.
  * @return {Function}
 **/
+
+
+// APP -------------------------------
+// siblings
 function clearStats(content, callback) {
 	// run parallel
-	async.parallel([
+	(0, _async.parallel)([
 	// individual calls
-	users.clear, subscriptions.clear, terms.clear],
+	_users2.default.clear, _subscriptions2.default.clear, _terms2.default.clear],
 	// ready to re-create the caches
 	callback);
 }
 
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
+// EXPORTS
+// =============================================================================
 
-module.exports = {
+// DEPENDENCIES
+// =============================================================================
+// THIRD PARTY LIBRARIES -------------------------------
+// asyncronous functionality (async.each, etc) for performance
+exports.default = {
 	// ses
-	getSesCount: ses.getCount,
-	setSesCount: ses.setCount,
-	getSesData: ses.getData,
-	setSesData: ses.setData,
-	clearSes: ses.clear,
+	getSesCount: _ses2.default.getCount,
+	setSesCount: _ses2.default.setCount,
+	getSesData: _ses2.default.getData,
+	setSesData: _ses2.default.setData,
+	clearSes: _ses2.default.clear,
 	// terms
-	getTerms: terms.get,
-	setTerms: terms.set,
-	clearTerms: terms.clear,
+	getTerms: _terms2.default.get,
+	setTerms: _terms2.default.set,
+	clearTerms: _terms2.default.clear,
 	// subscriptions
-	getSubscriptions: subscriptions.get,
-	setSubscriptions: subscriptions.set,
-	clearSubscriptions: subscriptions.clear,
+	getSubscriptions: _subscriptions2.default.get,
+	setSubscriptions: _subscriptions2.default.set,
+	clearSubscriptions: _subscriptions2.default.clear,
 	// users
-	getUsers: users.get,
-	setUsers: users.set,
-	clearUsers: users.clear,
+	getUsers: _users2.default.get,
+	setUsers: _users2.default.set,
+	clearUsers: _users2.default.clear,
 	// misc
 	clearStats: clearStats
 };

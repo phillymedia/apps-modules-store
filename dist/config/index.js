@@ -1,10 +1,5 @@
 "use strict";
 
-/**
- * STORE APP
- * configure settings
-*/
-
 // grab environment variables
 // grab environment
 var env = process.env.NODE_ENV

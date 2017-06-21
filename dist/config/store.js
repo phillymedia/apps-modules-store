@@ -48,6 +48,11 @@ Main.store.watch = {
 };
 // admin section
 Main.store.admin = {};
+// detail section
+Main.store.detail = {
+	collectionName: "details",
+	collectionSize: 5
+};
 
 // EXPORT
 // =============================================================================

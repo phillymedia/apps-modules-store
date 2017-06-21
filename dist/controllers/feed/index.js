@@ -1,56 +1,32 @@
 "use strict";
 
-/**
-* PHILLY STORE APP
-* a feed sub-class
-* Contains methods and variables for sports-feed-related functions.
-**/
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
-// DEPENDENCIES
+var _async = require("async");
+
+var _philly = require("./philly");
+
+var _philly2 = _interopRequireDefault(_philly);
+
+var _sports = require("./sports");
+
+var _sports2 = _interopRequireDefault(_sports);
+
+var _today = require("./today");
+
+var _today2 = _interopRequireDefault(_today);
+
+var _watch = require("./watch");
+
+var _watch2 = _interopRequireDefault(_watch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// METHODS
 // =============================================================================
-// APP -------------------------------
-// config
-// const conf = require("@/config");
-/*
-const admin = require("./admin");
-*/
-var philly = require("./philly");
-var sports = require("./sports");
-var today = require("./today");
-var watch = require("./watch");
-
-// third-party
-
-var _require = require("async"),
-    parallel = _require.parallel;
-
-// CONFIG
-// =============================================================================
-// LOAD CONFIG FILE  -------------------------------
-// const _debug = conf.debug;
-
-
-/*
-* PRIVATE PROPERTIES
-* const _privateBar;
-*/
-
-/*
-* PRIVATE METHODS
-* function _privateBar(){ const self = this; return this.foo; }
-*/
-
-/*
-* PUBLIC METHODS
-* Foo.prototype.publicBar = function(){ const self = this; return self.foo; }
-* Foo.prototype.publicShell = function(){ return _privateBar.call(this, // any other variables); }
-*/
-
-/*
-* PUBLIC METHODS
-* Foo.prototype.publicBar = function(){ const self = this; return self.foo; }
-* Foo.prototype.publicShell = function(){ return _privateBar.call(this, // any other variables); }
-*/
+// PUBLIC  -------------------------------
 
 /**
  * Flush stats.
@@ -61,17 +37,20 @@ var _require = require("async"),
  * @return {Function}
 **/
 
-
+// SIBLINGS -------------------------------
+/*
+const admin = require("./admin");
+*/
 function clearArticlesPhilly(name, callback) {
 	// run parallel
-	parallel([
+	(0, _async.parallel)([
 	// individual calls
 	function (next) {
-		return philly.removeArticles(name, next);
+		return _philly2.default.removeArticles(name, next);
 	}, function (next) {
-		return watch.removeArticlesPhilly(name, next);
+		return _watch2.default.removeArticlesPhilly(name, next);
 	}, function (next) {
-		return today.removeArticlesPhilly(name, next);
+		return _today2.default.removeArticlesPhilly(name, next);
 	}],
 	// ready to re-create the caches
 	callback);
@@ -116,32 +95,33 @@ Main.prototype.flushCurrEndpoints = admin.flushCurrEndpoints;
 Main.prototype.flushStores = admin.flushStores;
 */
 
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
+// EXPORTS
+// =============================================================================
 
-module.exports = {
+// DEPENDENCIES
+// =============================================================================
+// THIRD-PARTY -------------------------------
+exports.default = {
 	// philly.com
-	getArticlesPhilly: philly.getArticles,
-	setArticlesPhilly: philly.setArticles,
-	removeArticlesPhilly: philly.removeArticles,
-	getArticlesPhillyBrief: philly.getArticlesBrief,
-	setArticlesPhillyBrief: philly.setArticlesBrief,
+	getArticlesPhilly: _philly2.default.getArticles,
+	setArticlesPhilly: _philly2.default.setArticles,
+	removeArticlesPhilly: _philly2.default.removeArticles,
+	getArticlesPhillyBrief: _philly2.default.getArticlesBrief,
+	setArticlesPhillyBrief: _philly2.default.setArticlesBrief,
 	// sports now
-	getSportsFeed: sports.getFeed,
-	setSportsFeed: sports.setFeed,
-	getSportsGames: sports.getGames,
-	setSportsGames: sports.setGames,
-	getSportsTweets: sports.getTweets,
-	setSportsTweets: sports.setTweets,
-	clearSports: sports.clear,
+	getSportsFeed: _sports2.default.getFeed,
+	setSportsFeed: _sports2.default.setFeed,
+	getSportsGames: _sports2.default.getGames,
+	setSportsGames: _sports2.default.setGames,
+	getSportsTweets: _sports2.default.getTweets,
+	setSportsTweets: _sports2.default.setTweets,
+	clearSports: _sports2.default.clear,
 	// today
-	getArticlesTodayPhilly: today.getArticlesPhilly,
-	setArticlesTodayPhilly: today.setArticlesPhilly,
+	getArticlesTodayPhilly: _today2.default.getArticlesPhilly,
+	setArticlesTodayPhilly: _today2.default.setArticlesPhilly,
 	// watch
-	getArticlesWatchPhilly: watch.getArticlesPhilly,
-	setArticlesWatchPhilly: watch.setArticlesPhilly,
+	getArticlesWatchPhilly: _watch2.default.getArticlesPhilly,
+	setArticlesWatchPhilly: _watch2.default.setArticlesPhilly,
 	// clear articles
 	clearArticlesPhilly: clearArticlesPhilly
 };

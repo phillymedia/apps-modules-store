@@ -1,0 +1,28 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _add = require("./add");
+
+var _add2 = _interopRequireDefault(_add);
+
+var _find = require("./find");
+
+var _recreateCollection = require("./recreateCollection");
+
+var _recreateCollection2 = _interopRequireDefault(_recreateCollection);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// EXPORTS
+// =============================================================================
+
+exports.default = {
+	findOne: _find.findOne,
+	add: _add2.default,
+	recreateCollection: _recreateCollection2.default,
+	exists: _find.exists
+}; // DEPENDENCIES
+// =============================================================================

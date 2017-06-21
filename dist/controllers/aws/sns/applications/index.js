@@ -4,67 +4,28 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _core = require("../../core");
+var _get = require("./get");
 
-var _core2 = _interopRequireDefault(_core);
+var _get2 = _interopRequireDefault(_get);
+
+var _set = require("./set");
+
+var _set2 = _interopRequireDefault(_set);
+
+var _remove = require("./remove");
+
+var _remove2 = _interopRequireDefault(_remove);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// METHODS
-// =============================================================================
-// PUBLIC -------------------------------
-
-/**
- * Get a list of applications.
- *
- * @method getApplications
- * @param {function} callback
- */
-function getApplications(callback) {
-	// get the app, if it's in oure store
-	return _core2.default.findAll(callback);
-}
-
-/**
- * Get app ARN from hint.
- *
- * @method getApplicationByHint
- * @param {string} appHint
- * @param {function} callback
- */
-// DEPENDENCIES
-// =============================================================================
-function getApplicationByHint(appHint, callback) {
-	// settings
-	var settings = {
-		hint: appHint,
-		field: "arn"
-	};
-	// get the app, if it's in oure store
-	return _core2.default.findByHint(settings, callback);
-}
-
-/**
- * Add an SNS application to the list.
- *
- * @method addApplication
- * @param {object} application
- * @param {function} callback
- */
-function addApplication(application, callback) {
-	// settings
-	var settings = {
-		hint: application
-	};
-	// get the app, if it's in oure store
-	return _core2.default.add(settings, callback);
-}
 
 // EXPORTS
 // =============================================================================
 
 exports.default = {
-	addApplication: addApplication,
-	getApplications: getApplications,
-	getApplicationByHint: getApplicationByHint
-};
+	add: _set2.default.add,
+	get: _get2.default.all,
+	getByHint: _get2.default.byHint,
+	remove: _remove2.default.all,
+	removeByArn: _remove2.default.byArn
+}; // DEPENDENCIES
+// =============================================================================

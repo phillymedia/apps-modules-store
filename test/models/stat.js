@@ -1,12 +1,11 @@
-/* eslint-env mocha */
 /* eslint-disable no-unused-expressions */
 
 // DEPENDENCIES
 // =============================================================================
 // eslint-disable-next-line no-unused-vars
-const mongoose = require("MAIN").db;
-const { expect } = require("chai");
-const sinon = require("sinon");
+import { db as mongoose } from "COMP/db";
+import { expect } from "chai";
+import sinon from "sinon";
 require("sinon-mongoose");
 
 // PRIVATE VARIABLES
@@ -104,29 +103,16 @@ function findByParams(done) {
 	});
 }
 
+
 // TESTS
 // =============================================================================
 
-/**
- * Logs test methods.
- *
- * @method tests
- */
-function tests() {
+// stat
+describe("Stat Model", () => {
 	// add
 	it("should create a new stat entry", add);
 	// error if add fails
 	it("should return error if stat entry is not created", addError);
 	// find
 	it("should find stat by name", findByParams);
-}
-
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-module.exports = {
-	tests,
-};
+});

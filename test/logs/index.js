@@ -1,11 +1,13 @@
-/* eslint-env mocha */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
 
 // DEPENDENCIES
 // =============================================================================
-const { expect } = require("chai");
-const app = require("MAIN");
-const conf = require("APP/config");
+
+import { expect } from "chai";
+import app from "MAIN";
+import { database as _database } from "APP/config";
+import log from "COMP/logging";
 const logs = app.logs;
 
 // PRIVATE VARIABLES
@@ -37,15 +39,15 @@ const testLog = {
  */
 function callAfter(done) {
 	// announce clean-up job
-	console.log("Deleting test logs content...");
+	log.debug("Deleting test logs content...");
 	// clear sports log
-	logs.remove(expectedLog, (err) => {
+	logs.drop((err) => {
 		// handle errors
 		if (err) {
-			console.error(err);
+			log.error(err);
 		}
 		// otherwise...
-		console.log("Successfully deleted.");
+		log.debug("Successfully deleted.");
 		// callback
 		return done();
 	});
@@ -63,7 +65,7 @@ function callAfter(done) {
  * @return {function}
  */
 function get(done) {
-	logs.get({ limit: conf.database.logs.view }, (err, data) => {
+	logs.get({ limit: _database.logs.view }, (err, data) => {
 		expect(err).to.be.null;
 		expect(data).to.be.an("array");
 		return done();
@@ -106,12 +108,8 @@ function exists(done) {
 // TESTS
 // =============================================================================
 
-/**
- * Logs test methods.
- *
- * @method tests
- */
-function tests() {
+// describe the logs store
+describe("Logs Store", function () {
 	// getter - data
 	describe("Get", () => {
 		it("gets the most recent logs", get);
@@ -124,15 +122,6 @@ function tests() {
 	describe("Exists", () => {
 		it("checks to see if a message has already been sent", exists);
 	});
-}
-
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-module.exports = {
-	tests,
-	callAfter,
-};
+});
+// run once after all tests
+after(callAfter);

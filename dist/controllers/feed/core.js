@@ -1,72 +1,26 @@
 "use strict";
 
-/**
-* PHILLY STORE APP
-* a feed sub-class
-* Contains methods and variables for sports-feed-related functions.
-**/
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
-// DEPENDENCIES
+var _phillyHelpers = require("philly-helpers");
+
+var _core = require("../core");
+
+var _core2 = _interopRequireDefault(_core);
+
+var _schema2 = require("./schema");
+
+var _schema3 = _interopRequireDefault(_schema2);
+
+var _lodash = require("lodash");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// METHODS
 // =============================================================================
-// APP -------------------------------
-var app = require("../../app");
-// config
-// const conf = require("APP/config");
-// helpers
-var helpers = require("philly-helpers");
-// sub-modules
-// sub-modules
-var core = require("../core");
-// pcSns
-// const sns = app.sns;
-// database
-var db = app.db;
-// model
-var _schema = db.model("Feed");
-
-// THIRD PARTY LIBRARIES -------------------------------
-// amazon web services
-// const aws = require("aws-sdk");
-// this library calls AWS directly, because we're working with such big
-// data sets that it isn't performat to use pcSNS. We need paged data
-// sets.
-
-// asyncronous functionality (async.each, etc) for performance
-// const async = require("async");
-
-var _require = require("lodash"),
-    isEmpty = _require.isEmpty;
-
-// CONFIG
-// =============================================================================
-// LOAD CONFIG FILE  -------------------------------
-// const _debug = conf.debug;
-
-// get port, db name from conf
-
-/**
-* PRIVATE PROPERTIES
-* const _privateBar;
-**/
-
-/**
-* PRIVATE METHODS
-* function privateBar(){ var self = this; return this.foo; }
-**/
-
-/**
-* PUBLIC METHODS
-* Foo.prototype.publicBar = function(){ const self = this; return self.foo; }
-* Foo.prototype.publicShell = function(){ return _privateBar.call(this, // any other variables); }
-**/
-
-// -> check for existing data
-// -> check existing data's date
-// -> save new data only if no non-expired existing data
-// -> pull data if there is non-expired existing data
-
-// -> save most-recent detail pull, too
-// (notifications going out will mean lots of people accessing the same ID)
+// PUBLIC -------------------------------
 
 /**
 * Get item(s).
@@ -77,7 +31,11 @@ var _require = require("lodash"),
 * @return {Function}
 */
 
-
+// model
+// DEPENDENCIES
+// =============================================================================
+// APP -------------------------------
+// helpers
 function find(settings, callback) {
 	// set up parameters
 	var params = {
@@ -87,14 +45,14 @@ function find(settings, callback) {
 		limit: 1
 	};
 	// find a document!
-	core.find(_schema, params, function (err, data) {
+	_core2.default.find(_schema3.default, params, function (err, data) {
 		// handle errors
 		if (err) {
 			return callback(err);
 		}
 		// mongoose always returns an array, but there should only be one item
 		// so, peel off content
-		if (!isEmpty(data)) {
+		if (!(0, _lodash.isEmpty)(data)) {
 			data = data[0].content;
 		}
 		// otherwise...
@@ -110,17 +68,23 @@ function find(settings, callback) {
 * @param {Function} callback		Returns error or result
 * @return {Function}
 */
+
+
+// THIRD PARTY LIBRARIES -------------------------------
+// lodash
+
+// sub-modules
 function add(settings, callback) {
 	// set up parameters
 	var params = {
-		expireAt: helpers.minutesFromNow(settings.delay),
+		expireAt: (0, _phillyHelpers.minutesFromNow)(settings.delay),
 		source: settings.source,
 		type: settings.type,
 		name: settings.name,
 		content: settings.content
 	};
 	// insert document
-	core.add(_schema, params, function (err, data) {
+	_core2.default.add(_schema3.default, params, function (err, data) {
 		// handle errors
 		if (err) {
 			return callback(err);
@@ -146,7 +110,7 @@ function remove(settings, callback) {
 		name: settings.name
 	};
 	// insert document
-	core.remove(_schema, params, callback);
+	_core2.default.remove(_schema3.default, params, callback);
 }
 
 /**
@@ -165,15 +129,13 @@ function exists(settings, callback) {
 		name: settings.name
 	};
 	// search
-	core.exists(_schema, params, callback);
+	_core2.default.exists(_schema3.default, params, callback);
 }
 
-/**
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-**/
+// EXPORTS
+// =============================================================================
 
-module.exports = {
+exports.default = {
 	find: find,
 	// findById,
 	add: add,

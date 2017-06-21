@@ -12,6 +12,7 @@ module.exports = {
 	env: {
 		node: true,
 		es6: true,
+		mocha: true,
 	},
 	// check if imports actually resolve
 	"settings": {

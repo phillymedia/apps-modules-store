@@ -1,12 +1,16 @@
-/* eslint-env mocha */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
 
-// dependencies
-const { expect } = require("chai");
-const app = require("MAIN");
-const conf = require("APP/config");
+// DEPENDENCIES
+// =============================================================================
+
+import { expect } from "chai";
+import app from "MAIN";
+import { store as _store } from "APP/config";
+import log from "COMP/logging";
+import _schema from "./schema";
 const feed = app.feed;
-const db = app.db;
+
 
 // BEFORE AND AFTER
 // =============================================================================
@@ -23,8 +27,7 @@ let deleteAfterRun = false;
  */
 function callBefore(done) {
 	// test if database is populated
-	const Feed = db.model("Feed");
-	Feed.count({ source: conf.store.sports.source })
+	_schema.count({ source: _store.sports.source })
 	.then((count) => {
 		if (count === 0) {
 			// no content so safe to delete
@@ -33,7 +36,7 @@ function callBefore(done) {
 			// return fixtures.ensureTestData();
 		}
 		else {
-			console.log("Test database already exists");
+			log.debug("Test database already exists");
 		}
 	})
 	.then(done);
@@ -50,15 +53,15 @@ function callAfter(done) {
 	// delete after run
 	if (deleteAfterRun) {
 		// delete test content inserted into the databases
-		console.log("Deleting test sports now content...");
+		log.debug("Deleting test sports now content...");
 		// clear sports feed
 		return feed.clearSports((err) => {
 			// handle errors
 			if (err) {
-				console.error(err);
+				log.error(err);
 			}
 			// otherwise...
-			console.log("Successfully deleted.");
+			log.debug("Successfully deleted.");
 			// callback
 			return done();
 		});
@@ -107,7 +110,7 @@ function setFeed(done) {
 				return done();
 			});
 		}
-		console.error("Data didn't get set!");
+		log.error("Data didn't get set!");
 		return done();
 	});
 }
@@ -148,7 +151,7 @@ function setGames(done) {
 			});
 		}
 		// no value? problem!
-		console.error("Data didn't get set!");
+		log.error("Data didn't get set!");
 		return done();
 	});
 }
@@ -188,7 +191,7 @@ function setTweets(done) {
 				return done();
 			});
 		}
-		console.error("Data didn't get set!");
+		log.error("Data didn't get set!");
 		return done();
 	});
 }
@@ -197,12 +200,10 @@ function setTweets(done) {
 // TESTS
 // =============================================================================
 
-/**
- * Sports Now test methods.
- *
- * @method tests
- */
-function tests() {
+// run once after all tests
+before(callBefore);
+// describe the feed store
+describe("Sports Now Feed Store", function () {
 	// getter - main feed
 	describe("Get Sports Feed", () => {
 		it("gets the current combined feed", getFeed);
@@ -229,16 +230,6 @@ function tests() {
 	describe("Set Sports Tweets", () => {
 		it("gets the current tweets and immediately sets them", setTweets);
 	});
-}
-
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-module.exports = {
-	callBefore,
-	tests,
-	callAfter,
-};
+});
+// run once after all tests
+after(callAfter);

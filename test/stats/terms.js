@@ -1,12 +1,14 @@
-/* eslint-env mocha */
 /* eslint-disable no-unused-expressions */
 
-// dependencies
-const { expect } = require("chai");
-const app = require("MAIN");
-const conf = require("APP/config");
+// DEPENDENCIES
+// =============================================================================
+
+import { expect } from "chai";
+import app from "MAIN";
+import { store as _store } from "APP/config";
+import log from "COMP/logging";
+import _schema from "./schema";
 const stats = app.stats;
-const db = app.db;
 
 // BEFORE AND AFTER
 // =============================================================================
@@ -23,8 +25,7 @@ let deleteAfterRun = false;
  */
 function callBefore(done) {
 	// test if database is populated
-	const Stat = db.model("Stat");
-	Stat.count({ source: conf.store.admin })
+	_schema.count({ source: _store.admin })
 	.then((count) => {
 		if (count === 0) {
 			// no content so safe to delete
@@ -33,7 +34,7 @@ function callBefore(done) {
 			// return fixtures.ensureTestData();
 		}
 		else {
-			console.log("Test database already exists");
+			log.debug("Test database already exists");
 		}
 	})
 	.then(done);
@@ -50,15 +51,15 @@ function callAfter(done) {
 	// delete after run
 	if (deleteAfterRun) {
 		// delete test content inserted into the databases
-		console.log("Deleting test Terms content...");
+		log.debug("Deleting test Terms content...");
 		// clear terms
 		stats.clearTerms((err) => {
 			// handle errors
 			if (err) {
-				console.error(err);
+				log.error(err);
 			}
 			// otherwise...
-			console.log("Successfully deleted.");
+			log.debug("Successfully deleted.");
 			// callback
 			return done();
 		});
@@ -107,7 +108,7 @@ function set(done) {
 			});
 		}
 		// no value? problem!
-		console.error("Data didn't get set!");
+		log.error("Data didn't get set!");
 		return done();
 	});
 }
@@ -116,12 +117,10 @@ function set(done) {
 // TESTS
 // =============================================================================
 
-/**
- * Terms test methods.
- *
- * @method tests
- */
-function tests() {
+// before
+before(callBefore);
+// describe the stats store
+describe("Terms Stats Store", () => {
 	// getter - data
 	describe("Get Terms", () => {
 		it("gets the current data", get);
@@ -131,16 +130,6 @@ function tests() {
 	describe("Set Terms", () => {
 		it("gets the current data and immediately sets it", set);
 	});
-}
-
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-module.exports = {
-	callBefore,
-	tests,
-	callAfter,
-};
+});
+// after
+after(callAfter);

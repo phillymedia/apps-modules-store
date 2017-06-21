@@ -1,39 +1,36 @@
 "use strict";
 
-/**
-* PHILLY STORE APP
-* a feed sub-class
-* Contains methods and variables for sports-feed-related functions.
-**/
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _findAll = require("./findAll");
+
+var _findAll2 = _interopRequireDefault(_findAll);
+
+var _add = require("./add");
+
+var _add2 = _interopRequireDefault(_add);
+
+var _exists = require("./exists");
+
+var _exists2 = _interopRequireDefault(_exists);
+
+var _remove = require("./remove");
+
+var _remove2 = _interopRequireDefault(_remove);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// EXPORTS
+// =============================================================================
 
 // DEPENDENCIES
 // =============================================================================
-// APP -------------------------------
-// config
-// const conf = require("APP/config");
-/*
-const admin = require("./admin");
-*/
-var core = require("./core");
 
-// third-party
-// const { parallel } = require("async");
-
-
-// CONFIG
-// =============================================================================
-// LOAD CONFIG FILE  -------------------------------
-// const _debug = conf.debug;
-
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-module.exports = {
-	get: core.findAll,
-	add: core.add,
-	exists: core.exists,
-	remove: core.remove
+exports.default = {
+	get: _findAll2.default,
+	add: _add2.default,
+	exists: _exists2.default,
+	drop: _remove2.default
 };

@@ -1,12 +1,11 @@
-/* eslint-env mocha */
 /* eslint-disable no-unused-expressions */
 
 // DEPENDENCIES
 // =============================================================================
 // eslint-disable-next-line no-unused-vars
-const mongoose = require("MAIN").db;
-const { expect } = require("chai");
-const sinon = require("sinon");
+import { db as mongoose } from "COMP/db";
+import { expect } from "chai";
+import sinon from "sinon";
 require("sinon-mongoose");
 
 // PRIVATE VARIABLES
@@ -108,26 +107,12 @@ function findByParams(done) {
 // TESTS
 // =============================================================================
 
-/**
- * Logs test methods.
- *
- * @method tests
- */
-function tests() {
+// model
+describe("Feed Model", () => {
 	// add
 	it("should create a new feed entry", add);
 	// error if add fails
 	it("should return error if feed is not created", addError);
 	// find
 	it("should find feed by params", findByParams);
-}
-
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-module.exports = {
-	tests,
-};
+});

@@ -1,12 +1,11 @@
-/* eslint-env mocha */
 /* eslint-disable no-unused-expressions */
 
 // DEPENDENCIES
 // =============================================================================
 // eslint-disable-next-line no-unused-vars
-const mongoose = require("MAIN").db;
-const { expect } = require("chai");
-const sinon = require("sinon");
+import { db as mongoose } from "COMP/db";
+import { expect } from "chai";
+import sinon from "sinon";
 require("sinon-mongoose");
 
 // PRIVATE VARIABLES
@@ -136,12 +135,8 @@ function findRecent(done) {
 // TESTS
 // =============================================================================
 
-/**
- * Logs test methods.
- *
- * @method tests
- */
-function tests() {
+// log
+describe("Log Model", () => {
 	// add
 	it("should create a new log", add);
 	// error if add fails
@@ -150,14 +145,4 @@ function tests() {
 	it("should find log by target and message", findByParams);
 	// find most x recent
 	it("should find the most recent logs", findRecent);
-}
-
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-module.exports = {
-	tests,
-};
+});

@@ -1,9 +1,12 @@
-/* eslint-env mocha */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
 
-// dependencies
-const { expect } = require("chai");
-const app = require("MAIN");
+// DEPENDENCIES
+// =============================================================================
+
+import { expect } from "chai";
+import app from "MAIN";
+import log from "COMP/logging";
 const feed = app.feed;
 
 // test category
@@ -12,6 +15,7 @@ const expectedContent = [];
 expectedContent.push({
 	testValue: "Working.",
 });
+
 
 // BEFORE AND AFTER
 // =============================================================================
@@ -25,15 +29,15 @@ expectedContent.push({
  */
 function callAfter(done) {
 	// delete test content inserted into the databases
-	console.log("Deleting test philly.com content...");
+	log.debug("Deleting test philly.com content...");
 	// fake philly articles
 	feed.clearArticlesPhilly(testCat, (err) => {
 		// handle errors
 		if (err) {
-			console.error(err);
+			log.error(err);
 		}
 		// otherwise...
-		console.log("Successfully deleted.");
+		log.debug("Successfully deleted.");
 		// callback
 		return done();
 	});
@@ -140,12 +144,8 @@ function setArticlesWatch(done) {
 // TESTS
 // =============================================================================
 
-/**
- * Philly.com test methods.
- *
- * @method tests
- */
-function tests() {
+// describe the feed store
+describe("Philly.com Feed Store", function () {
 	// main app
 	// getter
 	describe("Get Articles Philly", () => {
@@ -173,15 +173,6 @@ function tests() {
 	describe("Get Articles Watch Philly", () => {
 		it("sets the current watch articles", setArticlesWatch);
 	});
-}
-
-
-/*
-* EXPORT THE FINISHED CLASS
-* module.exports = className;
-*/
-
-module.exports = {
-	tests,
-	callAfter,
-};
+});
+// run once after all tests
+after(callAfter);

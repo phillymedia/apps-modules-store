@@ -11,7 +11,6 @@ var dbpass = process.env.MONGO_DB_PASS
 || process.env.npm_config_db_pass || process.env.npm_package_config_db_pass;
 
 // third-party libraries
-// const _ = require("lodash");
 // this module
 var Main = {};
 
@@ -24,6 +23,10 @@ Main.database.logs = {};
 Main.database.logs.view = 5;
 Main.database.user = "notifsUser";
 Main.database.url = "mongodb://" + Main.database.user + ":" + dbpass + "@" + Main.database.server + ":" + Main.database.port + "/" + Main.database.db;
+
+Main.database.errors = {
+	duplicate: 11000
+};
 
 // EXPORT
 // =============================================================================

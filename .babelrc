@@ -9,7 +9,8 @@
 	  "alias": {
 		"APP": "./lib",
 		"MAIN": "./lib/app",
-		"COMP": "./lib/controllers"
+		"COMP": "./lib/controllers",
+		"TEST": "./test"
 	  }
     }]
   ]

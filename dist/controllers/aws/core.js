@@ -4,48 +4,19 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _lodash = require("lodash");
+
+var _config = require("../../config");
+
 var _logging = require("../logging");
 
 var _logging2 = _interopRequireDefault(_logging);
 
-var _app = require("../../app");
+var _core = require("../core");
 
-var _app2 = _interopRequireDefault(_app);
-
-var _lodash = require("lodash");
+var _core2 = _interopRequireDefault(_core);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// sub-modules
-/**
-* PHILLY STORE APP
-* a feed sub-class
-* Contains methods and variables for sports-feed-related functions.
-**/
-
-// DEPENDENCIES
-// =============================================================================
-// logging
-var core = require("../core");
-// pcSns
-// const sns = app.sns;
-// database
-
-// APP -------------------------------
-var db = _app2.default.db;
-// model
-var _schema = db.model("Feed");
-
-// THIRD PARTY LIBRARIES -------------------------------
-// amazon web services
-// const aws = require("aws-sdk");
-// this library calls AWS directly, because we're working with such big
-// data sets that it isn't performat to use pcSNS. We need paged data
-// sets.
-
-// asyncronous functionality (async.each, etc) for performance
-// const async = require("async");
-
 
 // METHODS
 // =============================================================================
@@ -59,13 +30,23 @@ var _schema = db.model("Feed");
  * @param {function} callback		Returns error or result
  * @return {function}
  */
+
+// logging
+// DEPENDENCIES
+// =============================================================================
+// THIRD-PARTY -------------------------------
 function findByHint(settings, callback) {
 	// turn the hint into a regular expression
 	var hintEx = new RegExp(settings.hint, "gi");
 	// find the item
-	core.find(_schema, { arn: hintEx }, function (err, data) {
+	_core2.default.find(settings.schema, { arn: hintEx }, function (err, data) {
 		if (err) {
 			return callback(err);
+		}
+		// mongoose always returns an array, but there should only be one item
+		// so, peel off content
+		if (!(0, _lodash.isEmpty)(data)) {
+			data = data[0];
 		}
 		// otherwise...
 		_logging2.default.debug("Finding by hint...", data);
@@ -81,9 +62,14 @@ function findByHint(settings, callback) {
  * @param {function} callback		Returns error or result
  * @return {function}
  */
-function findAll(callback) {
+
+// sub-modules
+
+// APP -------------------------------
+// config
+function findAll(settings, callback) {
 	// find a document!
-	core.find(_schema, {}, function (err, data) {
+	_core2.default.find(settings.schema, {}, function (err, data) {
 		// handle errors
 		if (err) {
 			return callback(err);
@@ -109,7 +95,7 @@ function find(settings, callback) {
 		limit: 1
 	};
 	// find a document!
-	core.find(_schema, params, function (err, data) {
+	_core2.default.find(settings.schema, params, function (err, data) {
 		// handle errors
 		if (err) {
 			return callback(err);
@@ -139,9 +125,17 @@ function add(settings, callback) {
 		attributes: settings.attributes
 	};
 	// insert document
-	core.add(_schema, params, function (err, data) {
+	_core2.default.add(settings.schema, params, function (err, data) {
 		// handle errors
 		if (err) {
+			// duplicate entry -- fall through!
+			if (err.code === _config.database.errors.duplicate) {
+				// set arn to hint
+				settings.hint = settings.arn;
+				// find by hint/arn
+				return findByHint(settings, callback);
+			}
+			// otherwise, pass error back
 			return callback(err);
 		}
 		// otherwise...
@@ -159,11 +153,13 @@ function add(settings, callback) {
  */
 function remove(settings, callback) {
 	// set up parameters
-	var params = {
-		arn: settings.arn
-	};
-	// insert document
-	core.remove(_schema, params, callback);
+	var params = {};
+	// add arn if it exists...
+	if (settings.arn) {
+		params.arn = settings.arn;
+	}
+	// remove document
+	_core2.default.remove(settings.schema, params, callback);
 }
 
 /**
@@ -180,7 +176,7 @@ function exists(settings, callback) {
 		arn: settings.arn
 	};
 	// search
-	core.exists(_schema, params, callback);
+	_core2.default.exists(settings.schema, params, callback);
 }
 
 // EXPORTS
