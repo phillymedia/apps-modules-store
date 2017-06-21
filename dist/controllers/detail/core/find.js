@@ -42,8 +42,13 @@ function findOne(settings, callback) {
 		if (err) {
 			return callback(err);
 		}
+		// if data...
+		if (data && data.content) {
+			// otherwise...
+			return callback(null, data.content);
+		}
 		// otherwise...
-		return callback(null, data.content);
+		return callback(null, false);
 	});
 }
 

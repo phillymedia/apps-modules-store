@@ -11,6 +11,7 @@ const detail = app.detail;
 
 // test category
 const testId = "00000006";
+const badId = "10000006";
 const expectedContent = {
 	article: {
 		item_id: testId,
@@ -116,6 +117,27 @@ function getDetail(done) {
 }
 
 /**
+ * Test the getDetail method.
+ *
+ * @method getBadDetail
+ * @param {function} done
+ * @return {function}
+ */
+function getBadDetail(done) {
+	detail.getDetail(badId, (err, data) => {
+		// handle errors
+		if (err) {
+			return done(err);
+		}
+		// otherwise...
+		expect(err).to.not.exist;
+		expect(data).to.be.false
+		;
+		return done();
+	});
+}
+
+/**
  * Test the addDetail method.
  *
  * @method addDetail
@@ -155,9 +177,17 @@ describe("Philly.com Detail Store", function () {
 	describe("Add Detail", () => {
 		it("adds a detail, pushing out the oldest item", addDetail);
 	});
-	// getter
-	describe("Get Detail", () => {
-		it("gets by ID", getDetail);
+	context("when searching for an article that exists", function () {
+		// getter
+		describe("Get Detail", () => {
+			it("gets by ID", getDetail);
+		});
+	});
+	context("when searching for an article that doesn't exist", function () {
+		// getter
+		describe("Get Detail", () => {
+			it("returns false", getBadDetail);
+		});
 	});
 });
 // run once after all tests
