@@ -31,6 +31,10 @@ function add(content, callback) {
 	if (content.article) {
 		settings.id = content.article.item_id || content.article.guid;
 	}
+	// same but from gallery
+	else if (content.galleries) {
+			settings.id = content.galleries.item_id || content.galleries.guid;
+		}
 	// add
 	return _core2.default.add(settings, callback);
 }
