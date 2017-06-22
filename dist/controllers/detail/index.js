@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _get = require("./get");
 
-var _get2 = _interopRequireDefault(_get);
-
 var _recreateCollection = require("./recreateCollection");
 
 var _recreateCollection2 = _interopRequireDefault(_recreateCollection);
@@ -22,7 +20,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // =============================================================================
 
 exports.default = {
-	getDetail: _get2.default,
+	getDetail: _get.get,
+	getDetails: _get.getMany,
 	addDetail: _add2.default,
 	recreateCollectionDetail: _recreateCollection2.default
 }; // DEPENDENCIES

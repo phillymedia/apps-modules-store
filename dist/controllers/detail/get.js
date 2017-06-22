@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.getMany = exports.get = undefined;
 
 var _core = require("./core");
 
@@ -29,11 +30,29 @@ function get(id, callback) {
 	return _core2.default.findOne(settings, callback);
 }
 
-// EXPORT
-// =============================================================================
-
+/**
+ * Get store.
+ *
+ * @method getMany
+ * @param {array} ids
+ * @param {function} callback
+ */
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------
 // main core
-exports.default = get;
+function getMany(ids, callback) {
+	console.log(ids);
+	// settings
+	var settings = {
+		id: ids
+	};
+	// find
+	return _core2.default.findMany(settings, callback);
+}
+
+// EXPORT
+// =============================================================================
+
+exports.get = get;
+exports.getMany = getMany;

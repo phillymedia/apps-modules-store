@@ -5,9 +5,8 @@
 // =============================================================================
 
 import { expect } from "chai";
-import app from "MAIN";
 import log from "COMP/logging";
-const feed = app.feed;
+import { feed } from "MAIN";
 
 // test category
 const testCat = "test_category";

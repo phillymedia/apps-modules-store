@@ -21,6 +21,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
 	findOne: _find.findOne,
+	findMany: _find.findMany,
 	add: _add2.default,
 	recreateCollection: _recreateCollection2.default,
 	exists: _find.exists

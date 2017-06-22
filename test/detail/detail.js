@@ -3,14 +3,18 @@
 
 // DEPENDENCIES
 // =============================================================================
+import { some } from "lodash";
 import { whilst } from "async";
 import { expect } from "chai";
-import app from "MAIN";
+import { detail } from "MAIN";
 import log from "COMP/logging";
-const detail = app.detail;
 
 // test category
 const testId = "00000006";
+const testIds = [
+	testId,
+	"00000005",
+];
 const badId = "10000006";
 const expectedContent = {
 	article: {
@@ -119,6 +123,31 @@ function getDetail(done) {
 /**
  * Test the getDetail method.
  *
+ * @method getDetails
+ * @param {function} done
+ * @return {function}
+ */
+function getDetails(done) {
+	detail.getDetails(testIds, (err, data) => {
+		// handle errors
+		if (err) {
+			return done(err);
+		}
+		// otherwise...
+		expect(err).to.not.exist;
+		expect(data).to.be.an("array");
+		expect(some(data, {
+			article: {
+				item_id: testId,
+			},
+		})).to.be.true;
+		return done();
+	});
+}
+
+/**
+ * Test the getDetail method.
+ *
  * @method getBadDetail
  * @param {function} done
  * @return {function}
@@ -181,6 +210,10 @@ describe("Philly.com Detail Store", function () {
 		// getter
 		describe("Get Detail", () => {
 			it("gets by ID", getDetail);
+		});
+		// detter (array)
+		describe("Get Details", () => {
+			it("gets by ID array", getDetails);
 		});
 	});
 	context("when searching for an article that doesn't exist", function () {

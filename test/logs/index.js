@@ -5,10 +5,9 @@
 // =============================================================================
 
 import { expect } from "chai";
-import app from "MAIN";
+import { logs } from "MAIN";
 import { database as _database } from "APP/config";
 import log from "COMP/logging";
-const logs = app.logs;
 
 // PRIVATE VARIABLES
 // =============================================================================

@@ -5,11 +5,10 @@
 // =============================================================================
 
 import { expect } from "chai";
-import app from "MAIN";
+import { feed } from "MAIN";
 import { store as _store } from "APP/config";
 import log from "COMP/logging";
 import _schema from "./schema";
-const feed = app.feed;
 
 
 // BEFORE AND AFTER

@@ -3,7 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.exists = exports.findOne = undefined;
+exports.exists = exports.findOne = exports.findMany = undefined;
+
+var _lodash = require("lodash");
 
 var _core = require("../../core");
 
@@ -20,24 +22,69 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // PUBLIC -------------------------------
 
 /**
- * Get item(s).
+ * Get items.
+ *
+ * @method findMany
+ * @param {object} settings
+ * @param {function} callback
+ * @return {function}
+ */
+
+// APP -------------------------------
+// sub-modules
+function findMany(settings, callback) {
+	// only use findMany for arrays!
+	if (!(0, _lodash.isArray)(settings.id)) {
+		return findOne(settings, callback);
+	}
+	// set up parameters
+	var params = {
+		id: {
+			$in: settings.id
+		}
+	};
+	// find a document!
+	return _core2.default.find(_schema3.default, params, function (err, data) {
+		// handle errors
+		if (err) {
+			return callback(err);
+		}
+		// if data...
+		if ((0, _lodash.isEmpty)(data)) {
+			// otherwise...
+			return callback(null, false);
+		}
+		// otherwise...
+		return callback(null, (0, _lodash.map)(data, function (datum) {
+			return datum.content;
+		}));
+	});
+}
+
+/**
+ * Get item.
  *
  * @method findOne
  * @param {object} settings				Request settings.
  * @param {function} callback			A callback function.
  * @return {function} 					Returns error object on failure, null on success.
  */
+
+// model
 // DEPENDENCIES
 // =============================================================================
-// APP -------------------------------
-// sub-modules
+// THIRD-PARTY -------------------------------
 function findOne(settings, callback) {
+	// don't use findOne on arrays!
+	if ((0, _lodash.isArray)(settings.id)) {
+		return findMany(settings, callback);
+	}
 	// set up parameters
 	var params = {
 		id: settings.id
 	};
 	// find a document!
-	_core2.default.findOne(_schema3.default, params, function (err, data) {
+	return _core2.default.findOne(_schema3.default, params, function (err, data) {
 		// handle errors
 		if (err) {
 			return callback(err);
@@ -60,8 +107,6 @@ function findOne(settings, callback) {
  * @param {function} callback			A callback function.
  * @return {function} 					Returns error object on failure, null on success.
  */
-
-// model
 function exists(settings, callback) {
 	// set up parameters
 	var params = {
@@ -74,5 +119,6 @@ function exists(settings, callback) {
 // EXPORTS
 // =============================================================================
 
+exports.findMany = findMany;
 exports.findOne = findOne;
 exports.exists = exists;
