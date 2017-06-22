@@ -1,14 +1,7 @@
 "use strict";
 
-/**
-* STORE APP
-* configure settings
-* Global settings, imported by other configs.
-**/
-
-// third-party libraries
-// const _ = require("lodash");
-// this module
+// PROPERTIES
+// =============================================================================
 var Main = {};
 
 // DB - STORES -------------------------------
@@ -51,14 +44,14 @@ Main.store.admin = {};
 // log section
 Main.store.log = {
 	collectionName: "logs",
-	collectionSize: 5242880,
+	collectionSize: 10485760, // 10MB
 	collectionMax: 40
 };
 // detail section
 Main.store.detail = {
 	collectionName: "details",
-	collectionSize: 5242880,
-	collectionMax: 5
+	collectionSize: 10485760, // 10MB
+	collectionMax: 100
 };
 
 // EXPORT
