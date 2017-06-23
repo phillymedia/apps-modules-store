@@ -12,8 +12,6 @@ var _recreateCollection2 = _interopRequireDefault(_recreateCollection);
 
 var _add = require("./add");
 
-var _add2 = _interopRequireDefault(_add);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // EXPORT
@@ -22,7 +20,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
 	getDetail: _get.get,
 	getDetails: _get.getMany,
-	addDetail: _add2.default,
+	addDetail: _add.add,
+	addDetails: _add.addMany,
 	recreateCollectionDetail: _recreateCollection2.default
 }; // DEPENDENCIES
 // =============================================================================

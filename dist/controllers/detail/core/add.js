@@ -3,6 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.addMany = exports.add = undefined;
+
+var _lodash = require("lodash");
+
+var _async = require("async");
 
 var _phillyHelpers = require("philly-helpers");
 
@@ -22,10 +27,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // =============================================================================
 
 // sub-modules
-// DEPENDENCIES
-// =============================================================================
+
 // APP -------------------------------
 // helpers
+// DEPENDENCIES
+// =============================================================================
+// THIRD-PARTY -------------------------------
 var _store = _config.store.detail;
 // model
 
@@ -63,7 +70,67 @@ function add(settings, callback) {
 	});
 }
 
+/**
+ * Insert a new item.
+ *
+ * @method addMany
+ * @param {array} contents				Array of documents to format and insert.
+ * @param {function} callback			A callback function.
+ * @return {function} 					Returns error object on failure, null on success.
+ */
+function addMany(documents, callback) {
+	// peel off and add each ID
+	(0, _async.map)(documents, function (document, next) {
+		// settings
+		var params = {
+			expireAt: (0, _phillyHelpers.minutesFromNow)(_delay)
+		};
+		// peel off and add ID and content
+		if (document.article) {
+			params.id = document.article.item_id || document.article.guid;
+			params.content = {
+				article: document.article
+			};
+		}
+		// same but from gallery
+		else if (document.galleries) {
+				params.id = document.galleries.item_id || document.galleries.guid;
+				params.content = {
+					galleries: document.galleries
+				};
+			} else {
+				return next((0, _phillyHelpers.makeError)("BadContent", "Tried to add something other than an article or a gallery."));
+			}
+		// add to array
+		return next(null, params);
+	},
+	// done!
+	function (mapErr, mapped) {
+		// handle errors
+		if (mapErr) {
+			return callback(mapErr);
+		}
+		// otherwise...
+		return _core2.default.addMany(_schema3.default, mapped, function (err, data) {
+			// handle errors
+			if (err) {
+				return callback(err);
+			}
+			// otherwise...
+			// for arrays
+			if ((0, _lodash.isArray)(data)) {
+				return callback(null, (0, _lodash.map)(data, function (datum) {
+					return datum.content;
+				}));
+			}
+			// for singular items
+			return callback(null, data.content);
+		});
+	});
+}
+
 // EXPORTS
 // =============================================================================
 
-exports.default = add;
+exports.add = add;
+exports.addMany = addMany;

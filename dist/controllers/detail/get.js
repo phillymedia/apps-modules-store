@@ -42,7 +42,6 @@ function get(id, callback) {
 // APP -------------------------------
 // main core
 function getMany(ids, callback) {
-	console.log(ids);
 	// settings
 	var settings = {
 		id: ids

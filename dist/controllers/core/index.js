@@ -21,6 +21,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
 	add: _set.add,
+	addMany: _set.addMany,
 	createCollection: _set.createCollection,
 	recreateCollection: _recreateCollection2.default,
 	remove: _remove.remove,

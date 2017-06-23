@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.addMany = exports.add = undefined;
 
 var _core = require("./core");
 
@@ -39,11 +40,27 @@ function add(content, callback) {
 	return _core2.default.add(settings, callback);
 }
 
-// EXPORT
-// =============================================================================
-
+/**
+ * Add to store.
+ *
+ * @method addMany
+ * @param {array} contents 					Data to store.
+ * @param {function} callback				A callback function.
+ * @return {function} core._add				The shared setter.
+ */
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------
 // main core
-exports.default = add;
+function addMany(contents, callback) {
+	// we have to do an async map on the other side,
+	// so let's not also do it here -- pulling ID from
+	// content at the same time as everything else
+	return _core2.default.addMany(contents, callback);
+}
+
+// EXPORT
+// =============================================================================
+
+exports.add = add;
+exports.addMany = addMany;

@@ -3,25 +3,31 @@
 
 // DEPENDENCIES
 // =============================================================================
-import { some } from "lodash";
-import { whilst } from "async";
+import { map, some } from "lodash";
 import { expect } from "chai";
 import { detail } from "MAIN";
 import log from "COMP/logging";
 
 // test category
-const testId = "00000006";
+const testId = 10000006;
+const insertedId = 10000005;
 const testIds = [
+	insertedId,
 	testId,
-	"00000005",
 ];
-const badId = "10000006";
+const badId = 11000006;
 const expectedContent = {
 	article: {
 		item_id: testId,
 		testValue: "Working",
 	},
 };
+const insertedContents = map([0, 1, 2, 3, 4, 5], num => ({
+	article: {
+		item_id: 10000000 + num,
+		testValue: "Working",
+	},
+}));
 
 
 // BEFORE AND AFTER
@@ -38,35 +44,25 @@ function callBefore(done) {
 	// delete test content inserted into the databases
 	log.info("Adding test detail content...");
 	// fake articles
-	let count = 0;
-	whilst(
-		// test
-		() => (count < 5),
-		// iteration
-		(next) => {
-			// increment count
-			++count;
-			// set item_id
-			expectedContent.article.item_id = `0000000${count}`;
-			// add detail
-			detail.addDetail(expectedContent, (err, data) => {
-				// handle error
-				if (err) {
-					return next(err);
-				}
-				// otherwise
-				expect(err).to.not.exist;
-				expect(data).to.be.an("object")
-				.which.has.property("article")
-				.which.has.property("item_id")
-				.which.equals(`0000000${count}`)
-				;
-				return next();
-			});
-		},
-		// all iterations complete
-		done,
-	);
+	// add detail
+	detail.addDetails(insertedContents, (err, data) => {
+		// handle error
+		if (err) {
+			return done(err);
+		}
+		// otherwise
+		expect(err).to.not.exist;
+		// data is an array
+		expect(data).to.be.an("array");
+		// one of the documents has the insertedId
+		expect(some(data, {
+			article: {
+				item_id: insertedId,
+			},
+		})).to.be.true;
+		// done
+		return done();
+	});
 }
 
 /**
@@ -206,16 +202,18 @@ describe("Philly.com Detail Store", function () {
 	describe("Add Detail", () => {
 		it("adds a detail, pushing out the oldest item", addDetail);
 	});
+	// getters
 	context("when searching for an article that exists", function () {
-		// getter
+		// singular
 		describe("Get Detail", () => {
 			it("gets by ID", getDetail);
 		});
-		// detter (array)
+		// array
 		describe("Get Details", () => {
 			it("gets by ID array", getDetails);
 		});
 	});
+	// getters - failure
 	context("when searching for an article that doesn't exist", function () {
 		// getter
 		describe("Get Detail", () => {
