@@ -42,7 +42,7 @@ const insertedContents = map([0, 1, 2, 3, 4, 5], num => ({
  */
 function callBefore(done) {
 	// delete test content inserted into the databases
-	log.info("Adding test detail content...");
+	log.debug("Adding test detail content...");
 	// fake articles
 	// add detail
 	detail.addDetails(insertedContents, (err, data) => {
