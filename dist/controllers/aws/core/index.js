@@ -4,11 +4,9 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _get = require("./get");
-
-var _get2 = _interopRequireDefault(_get);
-
 var _add = require("./add");
+
+var _find = require("./find");
 
 var _remove = require("./remove");
 
@@ -22,9 +20,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
 	add: _add.add,
 	addMany: _add.addMany,
-	get: _get2.default.all,
-	getByHint: _get2.default.byHint,
-	remove: _remove2.default.all,
-	removeByArn: _remove2.default.byArn
+	exists: _find.exists,
+	find: _find.find,
+	findAll: _find.findAll,
+	findByHint: _find.findByHint,
+	remove: _remove2.default
 }; // DEPENDENCIES
 // =============================================================================
+// APP -------------------------------
+// sub-modules

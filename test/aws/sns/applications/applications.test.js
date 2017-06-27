@@ -5,6 +5,7 @@
 
 import setup from "./utils/setup";
 import add from "./set/add.test";
+import addMany from "./set/addMany.test";
 import get from "./get/all.test";
 import getByHint from "./get/byHint.test";
 
@@ -17,6 +18,9 @@ describe("AWS - Application", function () {
 	describe("Add", function () {
 		context("when structured correctly", function () {
 			it("sets data correctly", add.noErrors);
+		});
+		context("when structured correctly", function () {
+			it("sets data correctly", addMany.noErrors);
 		});
 	});
 	// by arn

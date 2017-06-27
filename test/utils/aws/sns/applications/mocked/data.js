@@ -5,6 +5,20 @@ const insertedContent = {
 		Platform: "testplatform",
 	},
 };
+const insertedContents = [
+	{
+		PlatformApplicationArn: "some_other_thing",
+		Attributes: {
+			Platform: "testplatform2",
+		},
+	},
+	{
+		PlatformApplicationArn: "some_other_thing2",
+		Attributes: {
+			Platform: "testplatform3",
+		},
+	},
+];
 const expectedContent = {
 	arn: insertedContent.PlatformApplicationArn,
 	attributes: insertedContent.Attributes,
@@ -13,5 +27,6 @@ const expectedContent = {
 export default {
 	testHint,
 	insertedContent,
+	insertedContents,
 	expectedContent,
 };
