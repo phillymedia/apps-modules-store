@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.byArn = exports.all = undefined;
 
 var _db = require("../../../db");
 
@@ -57,7 +58,5 @@ function byArn(arn, callback) {
 // EXPORT
 // =============================================================================
 
-exports.default = {
-	all: all,
-	byArn: byArn
-};
+exports.all = all;
+exports.byArn = byArn;

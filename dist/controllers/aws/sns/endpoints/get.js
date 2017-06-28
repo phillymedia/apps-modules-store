@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.byHint = exports.all = undefined;
+exports.byUsername = exports.byToken = exports.byArn = exports.all = undefined;
 
 var _lodash = require("lodash");
 
@@ -18,14 +18,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // model
 
 // APP -------------------------------
-var _schema = _db.db.model("Application");
+var _schema = _db.db.model("Endpoint");
 
 // METHODS
 // =============================================================================
 // PUBLIC -------------------------------
 
 /**
- * Get a list of applications.
+ * Get a list of endpoints.
  *
  * @method all
  * @param {function} callback
@@ -45,21 +45,20 @@ function all(callback) {
 }
 
 /**
- * Get app from hint.
+ * Get endpoint from ARN.
  *
- * @method byHint
- * @param {string} appHint
+ * @method byArn
+ * @param {string} arn
  * @param {function} callback
  */
-function byHint(appHint, callback) {
+function byArn(arn, callback) {
 	// settings
 	var settings = {
 		schema: _schema,
-		hint: appHint,
-		field: "arn"
+		arn: arn
 	};
 	// get the app, if it's in oure store
-	return _core2.default.findByHint(settings, function (err, data) {
+	return _core2.default.findByArn(settings, function (err, data) {
 		// handle errors
 		if (err) {
 			return callback(err);
@@ -73,8 +72,57 @@ function byHint(appHint, callback) {
 	});
 }
 
+/**
+ * Get endpoint from token.
+ *
+ * @method byToken
+ * @param {string} appHint
+ * @param {function} callback
+ */
+function byToken(token, callback) {
+	// settings
+	var settings = {
+		schema: _schema,
+		attr: token,
+		field: "Token"
+	};
+	// get the app, if it's in oure store
+	return _core2.default.findByAttribute(settings, function (err, data) {
+		// handle errors
+		if (err) {
+			return callback(err);
+		}
+		// otherwise...
+		if (!(0, _lodash.isEmpty)(data)) {
+			data = data[0];
+		}
+		// pass back
+		return callback(null, data);
+	});
+}
+
+/**
+ * Get endpoint from username.
+ *
+ * @method byUsername
+ * @param {string} username
+ * @param {function} callback
+ */
+function byUsername(username, callback) {
+	// settings
+	var settings = {
+		schema: _schema,
+		attr: username,
+		field: "CustomUserData"
+	};
+	// get the app, if it's in oure store
+	return _core2.default.findByAttribute(settings, callback);
+}
+
 // EXPORTS
 // =============================================================================
 
 exports.all = all;
-exports.byHint = byHint;
+exports.byArn = byArn;
+exports.byToken = byToken;
+exports.byUsername = byUsername;

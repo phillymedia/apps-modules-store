@@ -54,7 +54,11 @@ function add(application, callback) {
 function addMany(contents, callback) {
 	// settings
 	var settings = {
-		schema: _schema
+		schema: _schema,
+		map: {
+			arn: "PlatformApplicationArn",
+			attributes: "Attributes"
+		}
 	};
 	// we have to do an async map on the other side,
 	// so let's not also do it here -- pulling ID from

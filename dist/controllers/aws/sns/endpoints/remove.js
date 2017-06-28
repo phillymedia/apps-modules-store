@@ -1,12 +1,23 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.byArn = exports.all = undefined;
+
+var _db = require("../../../db");
+
+var _core = require("../../core");
+
+var _core2 = _interopRequireDefault(_core);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// model
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------
-import { db } from "COMP/db";
-// sub-modules
-import core from "COMP/aws/core";
-// model
-const _schema = db.model("Application");
-
+var _schema = _db.db.model("Endpoint");
 
 // METHODS
 // =============================================================================
@@ -18,12 +29,14 @@ const _schema = db.model("Application");
  * @method all
  * @return {function} core.remove
  */
+
+// sub-modules
 function all(callback) {
 	// settings
-	const settings = {
-		schema: _schema,
+	var settings = {
+		schema: _schema
 	};
-	return core.remove(settings, callback);
+	return _core2.default.remove(settings, callback);
 }
 
 /**
@@ -35,18 +48,15 @@ function all(callback) {
  */
 function byArn(arn, callback) {
 	// settings
-	const settings = {
+	var settings = {
 		schema: _schema,
-		arn,
+		arn: arn
 	};
-	return core.remove(settings, callback);
+	return _core2.default.remove(settings, callback);
 }
-
 
 // EXPORT
 // =============================================================================
 
-export {
-	all,
-	byArn,
-};
+exports.all = all;
+exports.byArn = byArn;

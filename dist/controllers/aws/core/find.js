@@ -3,9 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.findAll = exports.findByHint = exports.find = exports.exists = undefined;
-
-var _lodash = require("lodash");
+exports.findByHint = exports.findByAttribute = exports.findByArn = exports.findAll = exports.find = exports.exists = undefined;
 
 var _logging = require("../../logging");
 
@@ -16,6 +14,14 @@ var _core = require("../../core");
 var _core2 = _interopRequireDefault(_core);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // DEPENDENCIES
+// =============================================================================
+// APP -------------------------------
+// logging
+
+// sub-modules
+
 
 // METHODS
 // =============================================================================
@@ -29,9 +35,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @param {function} callback		Returns error or result
  * @return {function}
  */
-
-// APP -------------------------------
-// logging
 function exists(settings, callback) {
 	// set up parameters
 	var params = {
@@ -49,11 +52,6 @@ function exists(settings, callback) {
  * @param {function} callback		Returns error or result
  * @return {function}
  */
-
-// sub-modules
-// DEPENDENCIES
-// =============================================================================
-// THIRD-PARTY -------------------------------
 function find(settings, callback) {
 	// set up parameters
 	var params = {
@@ -66,11 +64,6 @@ function find(settings, callback) {
 		// handle errors
 		if (err) {
 			return callback(err);
-		}
-		// mongoose always returns an array, but there should only be one item
-		// so, peel off content
-		if (!(0, _lodash.isEmpty)(data)) {
-			data = data[0];
 		}
 		// otherwise...
 		return callback(null, data);
@@ -108,14 +101,52 @@ function findByHint(settings, callback) {
 	// turn the hint into a regular expression
 	var hintEx = new RegExp(settings.hint, "gi");
 	// find the item
-	_core2.default.find(settings.schema, { arn: hintEx }, function (err, data) {
+	_core2.default.find(settings.schema, _defineProperty({}, settings.field, hintEx), function (err, data) {
 		if (err) {
 			return callback(err);
 		}
-		// mongoose always returns an array, but there should only be one item
-		// so, peel off content
-		if (!(0, _lodash.isEmpty)(data)) {
-			data = data[0];
+		// otherwise...
+		_logging2.default.debug("Finding by hint...", data);
+		// continue
+		return callback(null, data);
+	});
+}
+
+/**
+ * Get an item by arn.
+ *
+ * @method findByArn
+ * @param {object} settings			Settings.
+ * @param {function} callback		Returns error or result
+ * @return {function}
+ */
+function findByArn(settings, callback) {
+	// find the item
+	_core2.default.find(settings.schema, { arn: settings.arn }, function (err, data) {
+		if (err) {
+			return callback(err);
+		}
+		// otherwise...
+		_logging2.default.debug("Finding by hint...", data);
+		// continue
+		return callback(null, data);
+	});
+}
+
+/**
+ * Get an item by nested attribute.
+ *
+ * @method findByAttribute
+ * @param {object} settings			Settings.
+ * @param {function} callback		Returns error or result
+ * @return {function}
+ */
+function findByAttribute(settings, callback) {
+	var attr = "attributes." + settings.field;
+	// find the item
+	_core2.default.find(settings.schema, _defineProperty({}, attr, settings.attr), function (err, data) {
+		if (err) {
+			return callback(err);
 		}
 		// otherwise...
 		_logging2.default.debug("Finding by hint...", data);
@@ -129,5 +160,7 @@ function findByHint(settings, callback) {
 
 exports.exists = exists;
 exports.find = find;
-exports.findByHint = findByHint;
 exports.findAll = findAll;
+exports.findByArn = findByArn;
+exports.findByAttribute = findByAttribute;
+exports.findByHint = findByHint;

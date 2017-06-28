@@ -6,15 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _get = require("./get");
 
-var _get2 = _interopRequireDefault(_get);
-
 var _add = require("./add");
 
 var _remove = require("./remove");
-
-var _remove2 = _interopRequireDefault(_remove);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // EXPORTS
 // =============================================================================
@@ -22,9 +16,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
 	add: _add.add,
 	addMany: _add.addMany,
-	get: _get2.default.all,
-	getByHint: _get2.default.byHint,
-	remove: _remove2.default.all,
-	removeByArn: _remove2.default.byArn
+	get: _get.all,
+	getByHint: _get.byHint,
+	remove: _remove.all,
+	removeByArn: _remove.byArn
 }; // DEPENDENCIES
 // =============================================================================

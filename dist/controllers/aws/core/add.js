@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.addMany = exports.add = undefined;
 
+var _lodash = require("lodash");
+
 var _async = require("async");
 
 var _config = require("../../../config");
@@ -31,9 +33,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 // sub-modules
-// DEPENDENCIES
-// =============================================================================
-// THIRD-PARTY -------------------------------
 function add(settings, callback) {
 	// set up parameters
 	var params = {
@@ -71,15 +70,22 @@ function add(settings, callback) {
 
 // APP -------------------------------
 // config
+// DEPENDENCIES
+// =============================================================================
+// THIRD-PARTY -------------------------------
 function addMany(settings, documents, callback) {
 	// the database should be empty at this point...
 	// peel off and add each ID
 	(0, _async.map)(documents, function (document, next) {
 		// settings
-		var params = {
-			arn: document.PlatformApplicationArn,
-			attributes: document.Attributes
-		};
+		var params = {};
+		// use settings map
+		if (settings.map) {
+			(0, _lodash.forEach)(settings.map, function (value, key) {
+				// arn: document.PlatformApplicationArn
+				params[key] = document[value];
+			});
+		}
 		// add to array
 		return next(null, params);
 	},

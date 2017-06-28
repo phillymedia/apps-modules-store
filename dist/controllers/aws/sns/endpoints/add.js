@@ -1,33 +1,46 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.addMany = exports.add = undefined;
+
+var _db = require("../../../db");
+
+var _core = require("../../core");
+
+var _core2 = _interopRequireDefault(_core);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// model
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------
-import { db } from "COMP/db";
-// sub-modules
-import core from "COMP/aws/core";
-// model
-const _schema = db.model("Application");
-
+var _schema = _db.db.model("Endpoint");
 
 // METHODS
 // =============================================================================
 // PUBLIC -------------------------------
 
 /**
- * Add an SNS application to the list.
+ * Add an SNS endpoint to the list.
  *
  * @method add
- * @param {object} application
+ * @param {object} endpoint
  * @param {function} callback
  */
-function add(application, callback) {
+
+// sub-modules
+function add(endpoint, callback) {
 	// settings
-	const settings = {
+	var settings = {
 		schema: _schema,
-		arn: application.PlatformApplicationArn,
-		attributes: application.Attributes,
+		arn: endpoint.EndpointArn,
+		attributes: endpoint.Attributes
 	};
 	// get the app, if it's in oure store
-	return core.add(settings, callback);
+	return _core2.default.add(settings, callback);
 }
 
 /**
@@ -40,24 +53,21 @@ function add(application, callback) {
  */
 function addMany(contents, callback) {
 	// settings
-	const settings = {
+	var settings = {
 		schema: _schema,
 		map: {
-			arn: "PlatformApplicationArn",
-			attributes: "Attributes",
-		},
+			arn: "EndpointArn",
+			attributes: "Attributes"
+		}
 	};
 	// we have to do an async map on the other side,
 	// so let's not also do it here -- pulling ID from
 	// content at the same time as everything else
-	return core.addMany(settings, contents, callback);
+	return _core2.default.addMany(settings, contents, callback);
 }
-
 
 // EXPORTS
 // =============================================================================
 
-export {
-	add,
-	addMany,
-};
+exports.add = add;
+exports.addMany = addMany;

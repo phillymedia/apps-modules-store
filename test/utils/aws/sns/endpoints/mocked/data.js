@@ -1,3 +1,8 @@
+/**
+ * An object for testing endpoint call returns.
+ *
+ * @property endpoint
+ */
 const fakeHint = "test_hint";
 const fakeApp = {
 	PlatformApplicationArn: `some_stuff_${fakeHint}_and_stuff`,
@@ -11,7 +16,7 @@ const fakeApp = {
  *
  * @property endpoint
  */
-const endpointBad = "BadEndpoint1";
+const endpointArnBad = "BadEndpoint1";
 
 /**
  * A test endpoints array.
@@ -20,8 +25,8 @@ const endpointBad = "BadEndpoint1";
  */
 const endpointArray = [
 	{
-		EndpointArn: "FakeAppEndpoint1",
-		Attributes: {
+		arn: "FakeAppEndpoint1",
+		attributes: {
 			PlatformApplicationArn: fakeApp.PlatformApplicationArn,
 			Token: "FakeToken1",
 			CustomUserData: "FakeUserData1",
@@ -29,8 +34,8 @@ const endpointArray = [
 		},
 	},
 	{
-		EndpointArn: "FakeAppEndpoint2",
-		Attributes: {
+		arn: "FakeAppEndpoint2",
+		attributes: {
 			PlatformApplicationArn: "FakeAppArn1",
 			Token: "FakeToken2",
 			CustomUserData: "FakeUserData2",
@@ -38,8 +43,8 @@ const endpointArray = [
 		},
 	},
 	{
-		EndpointArn: "FakeAppEndpoint3",
-		Attributes: {
+		arn: "FakeAppEndpoint3",
+		attributes: {
 			PlatformApplicationArn: "FakeAppArn2",
 			Token: "FakeToken3",
 			CustomUserData: "FakeUserData3",
@@ -47,8 +52,8 @@ const endpointArray = [
 		},
 	},
 	{
-		EndpointArn: "FakeAppEndpoint4",
-		Attributes: {
+		arn: "FakeAppEndpoint4",
+		attributes: {
 			PlatformApplicationArn: "FakeAppArn2",
 			Token: "FakeToken4",
 			CustomUserData: "FakeUserData4",
@@ -56,8 +61,8 @@ const endpointArray = [
 		},
 	},
 	{
-		EndpointArn: "FakeAppEndpoint5",
-		Attributes: {
+		arn: "FakeAppEndpoint5",
+		attributes: {
 			PlatformApplicationArn: "FakeAppArn2",
 			Token: "FakeToken5",
 			CustomUserData: "FakeUserData5",
@@ -67,18 +72,44 @@ const endpointArray = [
 ];
 
 /**
- * An object for testing subscription call returns.
+ * An array for testing endpoint call returns.
+ *
+ * @property insertedContents
+ */
+const insertedContents = [
+	{
+		EndpointArn: "FakeAppEndpoint6",
+		Attributes: {
+			PlatformApplicationArn: "FakeAppArn2",
+			Token: "FakeToken6",
+			CustomUserData: "FakeUserData6",
+			Enabled: true,
+		},
+	},
+	{
+		EndpointArn: "FakeAppEndpoint7",
+		Attributes: {
+			PlatformApplicationArn: "FakeAppArn2",
+			Token: "FakeToken7",
+			CustomUserData: "FakeUserData6",
+			Enabled: true,
+		},
+	},
+];
+
+/**
+ * An object for testing endpoint call returns.
  *
  * @property protocol
  */
 const token = endpointArray[0].Protocol;
 
 /**
- * An object for testing subscription call returns.
+ * An object for testing endpoints call returns.
  *
- * @property topic
+ * @property application
  */
-const application = endpointArray[0].Attributes.PlatformApplicationArn;
+const application = endpointArray[0].attributes.PlatformApplicationArn;
 
 /**
  * An object for testing endpoints call returns.
@@ -86,8 +117,8 @@ const application = endpointArray[0].Attributes.PlatformApplicationArn;
  * @property endpoint
  */
 const endpoint = {
-	EndpointArn: endpointArray[0].EndpointArn,
-	Attributes: endpointArray[0].Attributes,
+	EndpointArn: endpointArray[0].arn,
+	Attributes: endpointArray[0].attributes,
 };
 
 /**
@@ -96,8 +127,8 @@ const endpoint = {
  * @property testEndpoint
  */
 const testEndpoint = {
-	arn: endpointArray[0].EndpointArn,
-	attributes: endpointArray[0].Attributes,
+	arn: endpointArray[0].arn,
+	attributes: endpointArray[0].attributes,
 };
 
 
@@ -106,30 +137,18 @@ const testEndpoint = {
  *
  * @property endpoints
  */
-const endpoints = {
-	Endpoints: endpointArray,
-};
-
-/**
- * An object for testing endpoints call returns with a next token.
- *
- * @property endpointsWithNextToken
- */
-const endpointsWithNextToken = {
-	Endpoints: endpointArray,
-	NextToken: "FakeNextToken",
-};
+const endpoints = endpointArray;
 
 
 // EXPORTS
 // =============================================================================
 
 export default {
+	insertedContents,
 	application,
 	token,
-	endpointBad,
+	endpointArnBad,
 	testEndpoint,
 	endpoint,
 	endpoints,
-	endpointsWithNextToken,
 };

@@ -23,6 +23,8 @@ exports.default = {
 	exists: _find.exists,
 	find: _find.find,
 	findAll: _find.findAll,
+	findByArn: _find.findByArn,
+	findByAttribute: _find.findByAttribute,
 	findByHint: _find.findByHint,
 	remove: _remove2.default
 }; // DEPENDENCIES
