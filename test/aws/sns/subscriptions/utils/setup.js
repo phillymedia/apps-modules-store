@@ -5,8 +5,8 @@
 // OTHER -------------------------------
 import log from "COMP/logging";
 // TESTED METHOD -------------------------------
-import applications from "COMP/aws/sns/applications";
-const remove = applications.remove;
+import subscriptions from "COMP/aws/sns/subscriptions";
+const remove = subscriptions.remove;
 
 
 // BEFORE AND AFTER
@@ -21,7 +21,7 @@ const remove = applications.remove;
  */
 function cleanup(done) {
 	// delete test content inserted into the databases
-	log.debug("Deleting test applications content...");
+	log.debug("Deleting test subscriptions content...");
 	// remove fake platform
 	remove((err) => {
 		// handle errors

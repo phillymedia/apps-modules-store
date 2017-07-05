@@ -29,36 +29,48 @@ const subArray = [
 		TopicArn: "FakeTopic1",
 		SubscriptionArn: "FakeSubscription2",
 		Protocol: "FakeProtocol1",
-		Endpoint: "FakeAppEndpoint1",
+		Endpoint: "FakeAppEndpoint2",
 	},
 	{
 		TopicArn: "FakeTopic1",
-		SubscriptionArn: "FakeSubscription4",
+		SubscriptionArn: "FakeSubscription3",
 		Protocol: "FakeProtocol2",
 		Endpoint: "FakeEmailEndpoint1",
 	},
 ];
 
 /**
+ * An object for testing subscription calls.
+ *
+ * @property insertedSubscription
+ */
+const insertedSubscription = {
+	TopicArn: "FakeTopic1",
+	SubscriptionArn: "FakeSubscription4",
+	Protocol: "FakeProtocol1",
+	Endpoint: "FakeAppEndpoint2",
+};
+
+/**
  * An object for testing subscription call returns.
  *
  * @property protocol
  */
-const protocol = subArray[0].Protocol;
+const protocol = insertedSubscription.Protocol;
 
 /**
  * An object for testing subscription call returns.
  *
  * @property topic
  */
-const topic = subArray[0].TopicArn;
+const topic = insertedSubscription.TopicArn;
 
 /**
  * An object for testing subscription call returns.
  *
  * @property endpoint
  */
-const endpoint = subArray[0].Endpoint;
+const endpoint = insertedSubscription.Endpoint;
 
 /**
  * An object for testing subscription call returns.
@@ -66,10 +78,10 @@ const endpoint = subArray[0].Endpoint;
  * @property testSubscription
  */
 const testSubscription = {
-	arn: subArray[0].SubscriptionArn,
-	topic: subArray[0].TopicArn,
-	endpoint: subArray[0].Endpoint,
-	protocol: subArray[0].Protocol,
+	arn: insertedSubscription.SubscriptionArn,
+	topic: insertedSubscription.TopicArn,
+	endpoint: insertedSubscription.Endpoint,
+	protocol: insertedSubscription.Protocol,
 };
 
 /**
@@ -78,7 +90,7 @@ const testSubscription = {
  * @property subscription
  */
 const subscription = {
-	SubscriptionArn: subArray[0].SubscriptionArn,
+	SubscriptionArn: insertedSubscription.SubscriptionArn,
 };
 
 
@@ -111,6 +123,8 @@ export default {
 	endpoint,
 	endpointBad,
 	protocol,
+	insertedSubscription,
+	insertedSubscriptions: subArray,
 	testSubscription,
 	subscription,
 	subscriptions,

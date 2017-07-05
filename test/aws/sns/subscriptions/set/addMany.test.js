@@ -2,15 +2,14 @@
 
 // DEPENDENCIES
 // =============================================================================
-// THIRD-PARTY -------------------------------
-import { some } from "lodash";
 // TESTED METHOD -------------------------------
+import { some } from "lodash";
 import { expect } from "chai";
-import applications from "COMP/aws/sns/applications";
-const get = applications.get;
+import subscriptions from "COMP/aws/sns/subscriptions";
+const add = subscriptions.addMany;
 // MOCKED DATA -------------------------------
 import testUtils from "TEST/utils";
-const mockedData = testUtils.mocked.aws.sns.applications.data;
+const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
 
 
 // METHODS
@@ -18,20 +17,19 @@ const mockedData = testUtils.mocked.aws.sns.applications.data;
 // PUBLIC -------------------------------
 
 /**
- * Test the get method - no errors.
+ * Test the add method.
  *
  * @method noErrors
  * @param {function} done
  * @return {function}
  */
 function noErrors(done) {
-	get((getErr, data) => {
-		expect(getErr).to.not.exist;
+	add(mockedData.insertedSubscriptions, (err, data) => {
+		expect(err).to.be.null;
 		expect(data).to.be.an("array");
 		expect(some(data, {
-			arn: mockedData.expectedContent.arn,
+			arn: mockedData.insertedSubscriptions[0].SubscriptionArn,
 		})).to.be.true;
-		// done!
 		return done();
 	});
 }

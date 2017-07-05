@@ -3,14 +3,14 @@
 // DEPENDENCIES
 // =============================================================================
 // THIRD-PARTY -------------------------------
-import { some } from "lodash";
+import { every } from "lodash";
 // TESTED METHOD -------------------------------
 import { expect } from "chai";
-import applications from "COMP/aws/sns/applications";
-const get = applications.get;
+import subscriptions from "COMP/aws/sns/subscriptions";
+const get = subscriptions.getByEndpoint;
 // MOCKED DATA -------------------------------
 import testUtils from "TEST/utils";
-const mockedData = testUtils.mocked.aws.sns.applications.data;
+const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
 
 
 // METHODS
@@ -25,11 +25,11 @@ const mockedData = testUtils.mocked.aws.sns.applications.data;
  * @return {function}
  */
 function noErrors(done) {
-	get((getErr, data) => {
-		expect(getErr).to.not.exist;
+	get(mockedData.testSubscription.endpoint, (err, data) => {
+		expect(err).to.not.exist;
 		expect(data).to.be.an("array");
-		expect(some(data, {
-			arn: mockedData.expectedContent.arn,
+		expect(every(data, {
+			endpoint: mockedData.testSubscription.endpoint,
 		})).to.be.true;
 		// done!
 		return done();

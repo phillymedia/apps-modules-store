@@ -6,11 +6,11 @@
 import { some } from "lodash";
 // TESTED METHOD -------------------------------
 import { expect } from "chai";
-import applications from "COMP/aws/sns/applications";
-const get = applications.get;
+import subscriptions from "COMP/aws/sns/subscriptions";
+const get = subscriptions.get;
 // MOCKED DATA -------------------------------
 import testUtils from "TEST/utils";
-const mockedData = testUtils.mocked.aws.sns.applications.data;
+const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
 
 
 // METHODS
@@ -29,7 +29,7 @@ function noErrors(done) {
 		expect(getErr).to.not.exist;
 		expect(data).to.be.an("array");
 		expect(some(data, {
-			arn: mockedData.expectedContent.arn,
+			arn: mockedData.testSubscription.arn,
 		})).to.be.true;
 		// done!
 		return done();
