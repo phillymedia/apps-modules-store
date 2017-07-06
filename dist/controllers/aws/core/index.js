@@ -21,7 +21,7 @@ exports.default = {
 	add: _add.add,
 	addMany: _add.addMany,
 	exists: _find.exists,
-	find: _find.find,
+	findByParam: _find.findByParam,
 	findAll: _find.findAll,
 	findByArn: _find.findByArn,
 	findByAttribute: _find.findByAttribute,

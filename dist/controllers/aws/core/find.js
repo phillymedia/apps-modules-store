@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.findByHint = exports.findByAttribute = exports.findByArn = exports.findAll = exports.find = exports.exists = undefined;
+exports.findByParam = exports.findByHint = exports.findByAttribute = exports.findByArn = exports.findAll = exports.exists = undefined;
 
 var _logging = require("../../logging");
 
@@ -42,32 +42,6 @@ function exists(settings, callback) {
 	};
 	// search
 	_core2.default.exists(settings.schema, params, callback);
-}
-
-/**
- * Get item(s).
- *
- * @method find
- * @param {object} settings			Settings.
- * @param {function} callback		Returns error or result
- * @return {function}
- */
-function find(settings, callback) {
-	// set up parameters
-	var params = {
-		arn: settings.arn,
-		attributes: settings.attributes,
-		limit: 1
-	};
-	// find a document!
-	_core2.default.find(settings.schema, params, function (err, data) {
-		// handle errors
-		if (err) {
-			return callback(err);
-		}
-		// otherwise...
-		return callback(null, data);
-	});
 }
 
 /**
@@ -134,6 +108,26 @@ function findByArn(settings, callback) {
 }
 
 /**
+ * Get item by top-level parameter.
+ *
+ * @method findByParam
+ * @param {object} settings			Settings.
+ * @param {function} callback		Returns error or result
+ * @return {function}
+ */
+function findByParam(settings, callback) {
+	// find the item
+	_core2.default.find(settings.schema, _defineProperty({}, settings.field, settings.param), function (err, data) {
+		// handle errors
+		if (err) {
+			return callback(err);
+		}
+		// otherwise...
+		return callback(null, data);
+	});
+}
+
+/**
  * Get an item by nested attribute.
  *
  * @method findByAttribute
@@ -159,8 +153,8 @@ function findByAttribute(settings, callback) {
 // =============================================================================
 
 exports.exists = exists;
-exports.find = find;
 exports.findAll = findAll;
 exports.findByArn = findByArn;
 exports.findByAttribute = findByAttribute;
 exports.findByHint = findByHint;
+exports.findByParam = findByParam;

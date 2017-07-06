@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------
-var _schema = _db.db.model("Application");
+var _schema = _db.db.model("Subscription");
 
 // METHODS
 // =============================================================================
@@ -27,17 +27,19 @@ var _schema = _db.db.model("Application");
  * Add to store.
  *
  * @method add
- * @param {object} application
+ * @param {object} subscription
  * @param {function} callback
  */
 
 // sub-modules
-function add(application, callback) {
+function add(subscription, callback) {
 	// settings
 	var settings = {
 		schema: _schema,
-		arn: application.PlatformApplicationArn,
-		attributes: application.Attributes
+		arn: subscription.SubscriptionArn,
+		topic: subscription.TopicArn,
+		protocol: subscription.Protocol,
+		endpoint: subscription.Endpoint
 	};
 	// get the app, if it's in oure store
 	return _core2.default.add(settings, callback);
@@ -56,8 +58,10 @@ function addMany(contents, callback) {
 	var settings = {
 		schema: _schema,
 		map: {
-			arn: "PlatformApplicationArn",
-			attributes: "Attributes"
+			arn: "SubscriptionArn",
+			topic: "TopicArn",
+			protocol: "Protocol",
+			endpoint: "Endpoint"
 		}
 	};
 	// we have to do an async map on the other side,

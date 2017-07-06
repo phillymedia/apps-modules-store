@@ -24,7 +24,7 @@ var _schema = _db.db.model("Endpoint");
 // PUBLIC -------------------------------
 
 /**
- * Add an SNS endpoint to the list.
+ * Add to store.
  *
  * @method add
  * @param {object} endpoint
@@ -44,7 +44,7 @@ function add(endpoint, callback) {
 }
 
 /**
- * Add to store.
+ * Add many to store.
  *
  * @method addMany
  * @param {array} contents 					Data to store.

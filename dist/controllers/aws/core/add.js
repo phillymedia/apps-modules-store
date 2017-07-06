@@ -34,13 +34,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // sub-modules
 function add(settings, callback) {
-	// set up parameters
-	var params = {
-		arn: settings.arn,
-		attributes: settings.attributes
-	};
+	// pop off schema
+	var schema = settings.schema;
+	// remove skip from params
+	(0, _lodash.unset)(settings, ["schema"]);
 	// insert document
-	_core2.default.add(settings.schema, params, function (err, data) {
+	_core2.default.add(schema, settings, function (err, data) {
 		// handle errors
 		if (err) {
 			// duplicate entry -- fall through!
