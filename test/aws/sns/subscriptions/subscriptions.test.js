@@ -45,7 +45,7 @@ describe("AWS - Subscriptions", function () {
 		});
 	});
 	// by username
-	describe.skip("Get By Username", function () {
+	describe("Get By Username", function () {
 		// everything going right
 		context("when structured correctly", function () {
 			it("returns correct data", getByUsername.noErrors);

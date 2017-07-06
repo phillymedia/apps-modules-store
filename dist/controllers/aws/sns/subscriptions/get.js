@@ -87,11 +87,11 @@ function byUsername(username, callback) {
 	// settings
 	var settings = {
 		schema: _schema,
-		attr: username,
-		field: "CustomUserData"
+		param: username,
+		field: "username"
 	};
 	// get the sub, if it's in our store
-	return _core2.default.findByAttribute(settings, callback);
+	return _core2.default.findByParam(settings, callback);
 }
 
 // EXPORTS

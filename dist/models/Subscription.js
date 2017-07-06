@@ -28,6 +28,10 @@ var Schema = new _db.db.Schema({
 	protocol: {
 		type: String,
 		required: true
+	},
+	// username (optional)
+	username: {
+		type: String
 	}
 });
 

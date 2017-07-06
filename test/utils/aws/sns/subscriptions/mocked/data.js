@@ -13,6 +13,14 @@ const token = "FakeToken1";
  */
 const endpointBad = "BadEndpoint1";
 
+
+/**
+ * An object for testing subscription call returns.
+ *
+ * @property endpoint
+ */
+const username = "User1";
+
 /**
  * A test subscription array.
  *
@@ -49,6 +57,7 @@ const insertedSubscription = {
 	SubscriptionArn: "FakeSubscription4",
 	Protocol: "FakeProtocol1",
 	Endpoint: "FakeAppEndpoint2",
+	CustomUserData: username,
 };
 
 /**
@@ -82,6 +91,7 @@ const testSubscription = {
 	topic: insertedSubscription.TopicArn,
 	endpoint: insertedSubscription.Endpoint,
 	protocol: insertedSubscription.Protocol,
+	username: insertedSubscription.CustomUserData,
 };
 
 /**
@@ -120,6 +130,7 @@ const subscriptionsWithNextToken = {
 export default {
 	token,
 	topic,
+	username,
 	endpoint,
 	endpointBad,
 	protocol,

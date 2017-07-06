@@ -25,13 +25,11 @@ const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
  * @return {function}
  */
 function noErrors(done) {
-	get(mockedData.testEndpoint.attributes.CustomUserData, (err, data) => {
+	get(mockedData.testSubscription.username, (err, data) => {
 		expect(err).to.not.exist;
 		expect(data).to.be.an("array");
 		expect(every(data, {
-			attributes: {
-				CustomUserData: mockedData.testEndpoint.attributes.CustomUserData,
-			},
+			username: mockedData.testSubscription.username,
 		})).to.be.true;
 		// done!
 		return done();

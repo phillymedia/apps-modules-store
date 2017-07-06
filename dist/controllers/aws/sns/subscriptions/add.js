@@ -41,6 +41,10 @@ function add(subscription, callback) {
 		protocol: subscription.Protocol,
 		endpoint: subscription.Endpoint
 	};
+	// optional username
+	if (subscription.CustomUserData) {
+		settings.username = subscription.CustomUserData;
+	}
 	// get the app, if it's in oure store
 	return _core2.default.add(settings, callback);
 }
@@ -51,9 +55,10 @@ function add(subscription, callback) {
  * @method addMany
  * @param {array} contents 					Data to store.
  * @param {function} callback				A callback function.
+ * @param {string} username					Optional username.
  * @return {function} core.addMany			The shared setter.
  */
-function addMany(contents, callback) {
+function addMany(contents, callback, username) {
 	// settings
 	var settings = {
 		schema: _schema,
@@ -64,6 +69,10 @@ function addMany(contents, callback) {
 			endpoint: "Endpoint"
 		}
 	};
+	// optional username
+	if (username) {
+		settings.username = username;
+	}
 	// we have to do an async map on the other side,
 	// so let's not also do it here -- pulling ID from
 	// content at the same time as everything else
