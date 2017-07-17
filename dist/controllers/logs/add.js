@@ -37,6 +37,10 @@ function add(settings, callback) {
 		target: settings.target,
 		message: settings.message
 	};
+	// optional id
+	if (settings.article_id) {
+		params.article_id = settings.article_id;
+	}
 	// insert document
 	_core2.default.add(_schema3.default, params, function (err, data) {
 		// handle errors

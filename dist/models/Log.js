@@ -6,6 +6,9 @@ var schemaName = "Log";
 
 // create the schema
 var Schema = new _db.db.Schema({
+	article_id: {
+		type: Number
+	},
 	date: {
 		type: Date,
 		default: Date.now

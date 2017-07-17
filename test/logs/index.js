@@ -21,6 +21,7 @@ const expectedLog = {
 };
 // test log to insert
 const testLog = {
+	article_id: 123,
 	date: logDate,
 	target: "phillycom",
 	message: "This is a test.",
@@ -82,7 +83,9 @@ function add(done) {
 	// add a log
 	logs.add(testLog, (err, data) => {
 		expect(err).to.be.null;
-		expect(data).to.be.an("object");
+		expect(data).to.be.an("object")
+		.which.has.property("article_id")
+		.that.equals(testLog.article_id);
 		return done();
 	}, true);
 }
