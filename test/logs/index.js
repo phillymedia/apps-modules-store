@@ -84,8 +84,8 @@ function add(done) {
 	logs.add(testLog, (err, data) => {
 		expect(err).to.be.null;
 		expect(data).to.be.an("object")
-		.which.has.property("article_id")
-		.that.equals(testLog.article_id);
+		.which.has.property("id")
+		.that.equals(testLog.id);
 		return done();
 	}, true);
 }
