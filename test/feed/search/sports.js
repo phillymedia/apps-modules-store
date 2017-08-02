@@ -95,6 +95,6 @@ describe("Sports Now Feed Search Store", function () {
 	describe("Get Search Sports", () => {
 		it("gets the current search terms", getSearch);
 	});
+	// run once after all tests
+	after(callAfter);
 });
-// run once after all tests
-after(callAfter);

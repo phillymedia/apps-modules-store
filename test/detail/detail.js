@@ -193,8 +193,6 @@ function addDetail(done) {
 // TESTS
 // =============================================================================
 
-// run once before the tests
-before(callBefore);
 // describe the store
 describe("Philly.com Detail Store", function () {
 	// main app
@@ -220,6 +218,8 @@ describe("Philly.com Detail Store", function () {
 			it("returns false", getBadDetail);
 		});
 	});
+	// run once before the tests
+	before(callBefore);
+	// run once after all tests
+	after(callAfter);
 });
-// run once after all tests
-after(callAfter);

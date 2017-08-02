@@ -199,8 +199,6 @@ function setTweets(done) {
 // TESTS
 // =============================================================================
 
-// run once after all tests
-before(callBefore);
 // describe the feed store
 describe("Sports Now Feed Store", function () {
 	// getter - main feed
@@ -229,6 +227,8 @@ describe("Sports Now Feed Store", function () {
 	describe("Set Sports Tweets", () => {
 		it("gets the current tweets and immediately sets them", setTweets);
 	});
+	// run once after all tests
+	before(callBefore);
+	// run once after all tests
+	after(callAfter);
 });
-// run once after all tests
-after(callAfter);

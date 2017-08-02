@@ -9,14 +9,7 @@ import log from "COMP/logging";
 import { feed } from "MAIN";
 
 // test category
-const expectedContent = {
-	mostsearchedterms: [
-		"test content",
-	],
-	searchterms: [
-		"another test",
-	],
-};
+const expectedContent = [{ title: "76ers", key: "sixers", url: "http://stage.apsping2.philly.com:7197/v1/api/philly/sixers", highlight: 0, sort: 15, textOnly: "76ers", adunit: "/4495/Apps/App_P_News/App_P_Sports", sportscolor: "0066cb99", template: "76ers", image_url: "http://media.philly.com/images/dixon-95946-f-wp-content-uploads-2017-08-080117_ryan-arcidiacono_1200-1200x800.jpg" }];
 
 
 // BEFORE AND AFTER
@@ -31,9 +24,9 @@ const expectedContent = {
  */
 function callAfter(done) {
 	// delete test content inserted into the databases
-	log.debug("Deleting test philly.com content...");
+	log.debug("Deleting test sports now content...");
 	// fake philly articles
-	feed.clearSearchPhilly((err) => {
+	feed.clearSectionsSports((err) => {
 		// handle errors
 		if (err) {
 			log.error(err);
@@ -50,31 +43,31 @@ function callAfter(done) {
 // =============================================================================
 
 /**
- * Test the getSearchPhilly method.
+ * Test the getSectionsSports method.
  *
- * @method getSearch
+ * @method getSections
  * @param {function} done
  * @return {function}
  */
-function getSearch(done) {
-	feed.getSearchPhilly((err, data) => {
+function getSections(done) {
+	feed.getSectionsSports((err, data) => {
 		expect(err).to.be.null;
-		expect(data).to.be.an("object");
+		expect(data).to.be.an("array");
 		return done();
 	});
 }
 
 /**
- * Test the setSearchPhilly method.
+ * Test the setSectionsSports method.
  *
- * @method setSearch
+ * @method setSections
  * @param {function} done
  * @return {function}
  */
-function setSearch(done) {
-	feed.setSearchPhilly(expectedContent, (err, data) => {
+function setSections(done) {
+	feed.setSectionsSports(expectedContent, (err, data) => {
 		expect(err).to.be.null;
-		expect(data).to.be.an("object");
+		expect(data).to.be.an("array");
 		expect(data).to.deep.equal(expectedContent);
 		return done();
 	});
@@ -85,15 +78,15 @@ function setSearch(done) {
 // =============================================================================
 
 // describe the feed store
-describe("Philly.com Feed Search Store", function () {
+describe.skip("Sports Now Feed Sections Store", function () {
 	// main app
 	// setter
-	describe("Set Search Philly", () => {
-		it("sets the current search terms", setSearch);
+	describe("Set Sections Sports", () => {
+		it("sets the current sections terms", setSections);
 	});
 	// getter
-	describe("Get Search Philly", () => {
-		it("gets the current search terms", getSearch);
+	describe("Get Sections Sports", () => {
+		it("gets the current sections terms", getSections);
 	});
 	// run once after all tests
 	after(callAfter);

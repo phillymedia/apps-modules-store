@@ -172,6 +172,6 @@ describe("Philly.com Feed Store", function () {
 	describe("Get Articles Watch Philly", () => {
 		it("sets the current watch articles", setArticlesWatch);
 	});
+	// run once after all tests
+	after(callAfter);
 });
-// run once after all tests
-after(callAfter);

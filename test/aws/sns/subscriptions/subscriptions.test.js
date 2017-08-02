@@ -51,7 +51,6 @@ describe("AWS - Subscriptions", function () {
 			it("returns correct data", getByUsername.noErrors);
 		});
 	});
+	// after
+	after(setup.cleanup);
 });
-
-// after
-after(setup.cleanup);
