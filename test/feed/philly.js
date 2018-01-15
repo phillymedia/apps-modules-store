@@ -26,7 +26,7 @@ expectedContent.push({
  * @param {function} done
  * @return {function}
  */
-function callAfter(done) {
+function callAfterPhilly(done) {
 	// delete test content inserted into the databases
 	log.debug("Deleting test philly.com content...");
 	// fake philly articles
@@ -173,5 +173,5 @@ describe("Philly.com Feed Store", function () {
 		it("sets the current watch articles", setArticlesWatch);
 	});
 	// run once after all tests
-	after(callAfter);
+	after(callAfterPhilly);
 });

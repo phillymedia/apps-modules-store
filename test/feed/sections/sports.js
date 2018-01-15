@@ -9,7 +9,9 @@ import log from "COMP/logging";
 import { feed } from "MAIN";
 
 // test category
-const expectedContent = [{ title: "76ers", key: "sixers", url: "http://stage.apsping2.philly.com:7197/v1/api/philly/sixers", highlight: 0, sort: 15, textOnly: "76ers", adunit: "/4495/Apps/App_P_News/App_P_Sports", sportscolor: "0066cb99", template: "76ers", image_url: "http://media.philly.com/images/dixon-95946-f-wp-content-uploads-2017-08-080117_ryan-arcidiacono_1200-1200x800.jpg" }];
+const expectedContent = [{
+	title: "76ers", key: "sixers", url: "http://stage.apsping2.philly.com:7197/v1/api/philly/sixers", highlight: 0, sort: 15, textOnly: "76ers", adunit: "/4495/Apps/App_P_News/App_P_Sports", sportscolor: "0066cb99", template: "76ers", image_url: "http://media.philly.com/images/dixon-95946-f-wp-content-uploads-2017-08-080117_ryan-arcidiacono_1200-1200x800.jpg",
+}];
 
 
 // BEFORE AND AFTER
@@ -22,7 +24,7 @@ const expectedContent = [{ title: "76ers", key: "sixers", url: "http://stage.aps
  * @param {function} done
  * @return {function}
  */
-function callAfter(done) {
+function callAfterSectionsSports(done) {
 	// delete test content inserted into the databases
 	log.debug("Deleting test sports now content...");
 	// fake philly articles
@@ -89,5 +91,5 @@ describe.skip("Sports Now Feed Sections Store", function () {
 		it("gets the current sections terms", getSections);
 	});
 	// run once after all tests
-	after(callAfter);
+	after(callAfterSectionsSports);
 });

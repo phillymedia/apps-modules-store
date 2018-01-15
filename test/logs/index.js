@@ -37,7 +37,7 @@ const testLog = {
  * @param {function} done
  * @return {function}
  */
-function callAfter(done) {
+function callAfterLogs(done) {
 	// announce clean-up job
 	log.debug("Deleting test logs content...");
 	// clear log
@@ -84,8 +84,8 @@ function add(done) {
 	logs.add(testLog, (err, data) => {
 		expect(err).to.be.null;
 		expect(data).to.be.an("object")
-		.which.has.property("id")
-		.that.equals(testLog.id);
+			.which.has.property("id")
+			.that.equals(testLog.id);
 		return done();
 	}, true);
 }
@@ -126,4 +126,4 @@ describe("Logs Store", function () {
 	});
 });
 // run once after all tests
-after(callAfter);
+after(callAfterLogs);

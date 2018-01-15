@@ -26,8 +26,8 @@ function noErrors(done) {
 	get(mockedData.testEndpoint.attributes.Token, (err, data) => {
 		expect(err).to.not.exist;
 		expect(data).to.be.an("object")
-		.which.has.property("arn")
-		.which.equals(mockedData.testEndpoint.arn);
+			.which.has.property("arn")
+			.which.equals(mockedData.testEndpoint.arn);
 		// done!
 		return done();
 	});

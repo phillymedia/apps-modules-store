@@ -13,7 +13,7 @@ import _schema from "./schema";
 // =============================================================================
 
 // clean-up
-let deleteAfterRun = false;
+let deleteAfterRun = false; // eslint-disable-line no-unused-vars
 
 /**
  * Users before method.
@@ -25,18 +25,18 @@ let deleteAfterRun = false;
 function callBefore(done) {
 	// test if database is populated
 	_schema.count({ source: _store.admin })
-	.then((count) => {
-		if (count === 0) {
-			// no content so safe to delete
-			deleteAfterRun = true;
-			// add test data
-			// return fixtures.ensureTestData();
-		}
-		else {
-			log.debug("Test database already exists");
-		}
-	})
-	.then(done);
+		.then((count) => {
+			if (count === 0) {
+				// no content so safe to delete
+				deleteAfterRun = true;
+				// add test data
+				// return fixtures.ensureTestData();
+			}
+			else {
+				log.debug("Test database already exists");
+			}
+		})
+		.then(done);
 }
 
 /**
@@ -46,7 +46,8 @@ function callBefore(done) {
  * @param {function} done
  * @return {function}
  */
-function callAfter(done) {
+/*
+function callAfterStatsUsers(done) {
 	// delete after run
 	if (deleteAfterRun) {
 		// delete test content inserted into the databases
@@ -66,6 +67,7 @@ function callAfter(done) {
 	// otherwise...
 	return done();
 }
+*/
 
 
 // MAIN METHODS
@@ -131,4 +133,4 @@ describe("Users Stats Store", () => {
 	});
 });
 // after
-after(callAfter);
+// after(callAfterStatsUsers);

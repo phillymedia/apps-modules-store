@@ -1,1 +1,72 @@
-"use strict";var Main={},typesSport={combined:"combined",articles:"articles",games:"games",tweets:"tweets"},typesMain={articles:"articles"};Main.store={},Main.store.sports={name:"sports",source:"sports_app",type:typesSport},Main.store.main={source:"philly_app",type:typesMain},Main.store.search={source:"philly_app",type:"search"},Main.store.sections={source:"philly_app",type:"sections"},Main.store.today={source:"philly_today",type:typesMain},Main.store.watch={source:"philly_watch",type:typesMain},Main.store.admin={},Main.store.log={collectionName:"logs",collectionSize:10485760,collectionMax:40},Main.store.detail={collectionName:"details",collectionSize:10485760,collectionMax:100},module.exports=Main;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+// PROPERTIES
+// =============================================================================
+var Main = {};
+
+// DB - STORES -------------------------------
+// the node store settings
+// variables
+var typesSport = {
+	combined: "combined",
+	articles: "articles",
+	games: "games",
+	tweets: "tweets"
+};
+var typesMain = {
+	articles: "articles"
+};
+// settings
+Main.store = {};
+// sports
+Main.store.sports = {
+	name: "sports",
+	source: "sports_app",
+	type: typesSport
+};
+// main
+Main.store.main = {
+	source: "philly_app",
+	type: typesMain
+};
+// search
+Main.store.search = {
+	source: "philly_app",
+	type: "search"
+};
+// search
+Main.store.sections = {
+	source: "philly_app",
+	type: "sections"
+};
+// today
+Main.store.today = {
+	source: "philly_today",
+	type: typesMain
+};
+// watch
+Main.store.watch = {
+	source: "philly_watch",
+	type: typesMain
+};
+// admin section
+Main.store.admin = {};
+// log section
+Main.store.log = {
+	collectionName: "logs",
+	collectionSize: 10485760, // 10MB
+	collectionMax: 40
+};
+// detail section
+Main.store.detail = {
+	collectionName: "details",
+	collectionSize: 10485760, // 10MB
+	collectionMax: 100
+};
+
+// EXPORT
+// =============================================================================
+exports.default = Main;

@@ -27,18 +27,18 @@ let deleteAfterRun = false;
 function callBefore(done) {
 	// test if database is populated
 	_schema.count({ source: _store.sports.source })
-	.then((count) => {
-		if (count === 0) {
+		.then((count) => {
+			if (count === 0) {
 			// no content so safe to delete
-			deleteAfterRun = true;
+				deleteAfterRun = true;
 			// add test data
 			// return fixtures.ensureTestData();
-		}
-		else {
-			log.debug("Test database already exists");
-		}
-	})
-	.then(done);
+			}
+			else {
+				log.debug("Test database already exists");
+			}
+		})
+		.then(done);
 }
 
 /**
@@ -48,7 +48,7 @@ function callBefore(done) {
  * @param {function} done
  * @return {function}
  */
-function callAfter(done) {
+function callAfterSports(done) {
 	// delete after run
 	if (deleteAfterRun) {
 		// delete test content inserted into the databases
@@ -230,5 +230,5 @@ describe("Sports Now Feed Store", function () {
 	// run once after all tests
 	before(callBefore);
 	// run once after all tests
-	after(callAfter);
+	after(callAfterSports);
 });

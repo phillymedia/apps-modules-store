@@ -29,7 +29,7 @@ const expectedContent = {
  * @param {function} done
  * @return {function}
  */
-function callAfter(done) {
+function callAfterSearchSports(done) {
 	// delete test content inserted into the databases
 	log.debug("Deleting test sports now content...");
 	// fake philly articles
@@ -96,5 +96,5 @@ describe("Sports Now Feed Search Store", function () {
 		it("gets the current search terms", getSearch);
 	});
 	// run once after all tests
-	after(callAfter);
+	after(callAfterSearchSports);
 });

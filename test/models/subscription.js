@@ -15,7 +15,7 @@ const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
 // model
 const Subscription = require("APP/models/Subscription");
 // reusable variables for testing.
-const testSubscription = mockedData.testSubscription;
+const { testSubscription } = mockedData;
 const subscriptionParams = {
 	arn: mockedData.subscription.SubscriptionArn,
 };

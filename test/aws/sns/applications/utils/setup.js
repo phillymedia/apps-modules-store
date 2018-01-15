@@ -6,7 +6,7 @@
 import log from "COMP/logging";
 // TESTED METHOD -------------------------------
 import applications from "COMP/aws/sns/applications";
-const remove = applications.remove;
+const { remove } = applications;
 
 
 // BEFORE AND AFTER
@@ -15,7 +15,7 @@ const remove = applications.remove;
 /**
  * After method.
  *
- * @method callAfter
+ * @method cleanup
  * @param {function} done
  * @return {function}
  */

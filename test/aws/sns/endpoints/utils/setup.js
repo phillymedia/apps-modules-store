@@ -6,7 +6,7 @@
 import log from "COMP/logging";
 // TESTED METHOD -------------------------------
 import endpoints from "COMP/aws/sns/endpoints";
-const remove = endpoints.remove;
+const { remove } = endpoints;
 
 
 // BEFORE AND AFTER
@@ -15,7 +15,7 @@ const remove = endpoints.remove;
 /**
  * After method.
  *
- * @method callAfter
+ * @method cleanup
  * @param {function} done
  * @return {function}
  */

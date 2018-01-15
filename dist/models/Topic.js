@@ -1,1 +1,28 @@
-"use strict";var _db=require("../controllers/db"),schemaName="Topic",Schema=new _db.db.Schema({TopicArn:{type:String,required:!0,index:{unique:!0}},Attributes:{type:Object,required:!0}});Schema.set("validateBeforeSave",!0),module.exports=_db.db.model(schemaName,Schema);
+"use strict";
+
+var _db = require("../controllers/db");
+
+var schemaName = "Topic";
+
+// create the schema
+var Schema = new _db.db.Schema({
+	// arn
+	TopicArn: {
+		type: String,
+		required: true,
+		index: {
+			unique: true
+		}
+	},
+	// attributes
+	Attributes: {
+		type: Object,
+		required: true
+	}
+});
+
+// this is default true, but let's make sure
+Schema.set("validateBeforeSave", true);
+
+// save as a model
+module.exports = _db.db.model(schemaName, Schema);

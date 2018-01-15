@@ -29,7 +29,7 @@ const expectedContent = {
  * @param {function} done
  * @return {function}
  */
-function callAfter(done) {
+function callAfterSearchPhilly(done) {
 	// delete test content inserted into the databases
 	log.debug("Deleting test philly.com content...");
 	// fake philly articles
@@ -96,5 +96,5 @@ describe("Philly.com Feed Search Store", function () {
 		it("gets the current search terms", getSearch);
 	});
 	// run once after all tests
-	after(callAfter);
+	after(callAfterSearchPhilly);
 });

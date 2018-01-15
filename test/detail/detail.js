@@ -72,7 +72,7 @@ function callBefore(done) {
  * @param {function} done
  * @return {function}
  */
-function callAfter(done) {
+function callAfterDetail(done) {
 	// delete test content inserted into the databases
 	log.debug("Deleting test detail content...");
 	// fake philly articles
@@ -108,10 +108,9 @@ function getDetail(done) {
 		// otherwise...
 		expect(err).to.not.exist;
 		expect(data).to.be.an("object")
-		.which.has.property("article")
-		.which.has.property("item_id")
-		.which.equals(testId)
-		;
+			.which.has.property("article")
+			.which.has.property("item_id")
+			.which.equals(testId);
 		return done();
 	});
 }
@@ -156,8 +155,7 @@ function getBadDetail(done) {
 		}
 		// otherwise...
 		expect(err).to.not.exist;
-		expect(data).to.be.false
-		;
+		expect(data).to.be.false;
 		return done();
 	});
 }
@@ -181,10 +179,9 @@ function addDetail(done) {
 		// otherwise...
 		expect(err).to.not.exist;
 		expect(data).to.be.an("object")
-		.which.has.property("article")
-		.which.has.property("item_id")
-		.which.equals(testId)
-		;
+			.which.has.property("article")
+			.which.has.property("item_id")
+			.which.equals(testId);
 		return done();
 	});
 }
@@ -221,5 +218,5 @@ describe("Philly.com Detail Store", function () {
 	// run once before the tests
 	before(callBefore);
 	// run once after all tests
-	after(callAfter);
+	after(callAfterDetail);
 });

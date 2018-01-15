@@ -1,20 +1,19 @@
 {
-	"presets": [
-		["babili", {
-			"mangle": false
-		}],
-		"es2015",
-		"stage-2"
-	],
+	"presets": ["env"],
+	"env": {
+		"production": {
+		"presets": ["minify"]
+		}
+	},
 	"plugins": [
-    ["module-resolver", {
-	  "alias": {
-		"APP": "./lib",
-		"MAIN": "./lib/app",
-		"SERVER": "./lib/server",
-		"COMP": "./lib/controllers",
-		"TEST": "./test"
-	  }
-    }]
+		["module-resolver", {
+			"alias": {
+				"APP": "./lib",
+				"MAIN": "./lib/app",
+				"SERVER": "./lib/server",
+				"COMP": "./lib/controllers",
+				"TEST": "./test"
+			}
+		}]
   ]
 }

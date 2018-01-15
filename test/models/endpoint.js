@@ -15,7 +15,7 @@ const mockedData = testUtils.mocked.aws.sns.endpoints.data;
 // model
 const Endpoint = require("APP/models/Endpoint");
 // reusable variables for testing.
-const testEndpoint = mockedData.testEndpoint;
+const { testEndpoint } = mockedData;
 const endpointParams = {
 	arn: mockedData.endpoint.EndpointArn,
 };

@@ -6,7 +6,7 @@
 import log from "COMP/logging";
 // TESTED METHOD -------------------------------
 import subscriptions from "COMP/aws/sns/subscriptions";
-const remove = subscriptions.remove;
+const { remove } = subscriptions;
 
 
 // BEFORE AND AFTER
@@ -15,7 +15,7 @@ const remove = subscriptions.remove;
 /**
  * After method.
  *
- * @method callAfter
+ * @method cleanup
  * @param {function} done
  * @return {function}
  */

@@ -26,8 +26,8 @@ function noErrors(done) {
 	get(mockedData.testHint, (err, data) => {
 		expect(err).to.not.exist;
 		expect(data).to.be.an("object")
-		.which.has.property("arn")
-		.which.equals(mockedData.expectedContent.arn);
+			.which.has.property("arn")
+			.which.equals(mockedData.expectedContent.arn);
 		// done!
 		return done();
 	});

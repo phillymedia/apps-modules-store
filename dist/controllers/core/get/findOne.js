@@ -1,1 +1,64 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var _phillyHelpers=require("philly-helpers"),_lodash=require("lodash");function findOne(Schema,params,callback){var sort=params.sort||!1;(0,_lodash.unset)(params,["sort"]);var skip=params.skip||!1;(0,_lodash.unset)(params,["skip"]);var query=Schema.findOne(params);sort&&query.sort(sort),skip&&query.skip(skip),query.lean(),query.exec(function(err,data){return err?callback((0,_phillyHelpers.formatError)(err)):callback(null,data)})}exports.default=findOne;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _phillyHelpers = require("philly-helpers");
+
+var _lodash = require("lodash");
+
+// METHODS
+// =============================================================================
+// PUBLIC -------------------------------
+
+/**
+ * Find one by parameters.
+ *
+ * @method find
+ * @param {object} Schema 					The schema used by the parent module.
+ * @param {object} params					The details of the search.
+ * @param {function} callback				A callback function.
+ * @return {function} 						Returns error or array.
+ */
+// DEPENDENCIES
+// =============================================================================
+// APP -------------------------------
+// helpers
+function findOne(Schema, params, callback) {
+	// pull sort if it exists
+	var sort = params.sort || false;
+	// remove sort from params
+	(0, _lodash.unset)(params, ["sort"]);
+	// pull skip if it exists
+	var skip = params.skip || false;
+	// remove skip from params
+	(0, _lodash.unset)(params, ["skip"]);
+	// find the items
+	var query = Schema.findOne(params);
+	// sort
+	if (sort) {
+		query.sort(sort);
+	}
+	// skip
+	if (skip) {
+		query.skip(skip);
+	}
+	// make the query lean
+	query.lean();
+	// execute the query
+	query.exec(function (err, data) {
+		// handle errors
+		if (err) {
+			return callback((0, _phillyHelpers.formatError)(err));
+		}
+		// otherwise...
+		return callback(null, data);
+	});
+}
+
+// EXPORTS
+// =============================================================================
+
+// THIRD PARTY LIBRARIES -------------------------------
+exports.default = findOne;

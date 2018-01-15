@@ -7,7 +7,7 @@ import { some } from "lodash";
 // TESTED METHOD -------------------------------
 import { expect } from "chai";
 import endpoints from "COMP/aws/sns/endpoints";
-const get = endpoints.get;
+const { get } = endpoints;
 // MOCKED DATA -------------------------------
 import testUtils from "TEST/utils";
 const mockedData = testUtils.mocked.aws.sns.endpoints.data;
