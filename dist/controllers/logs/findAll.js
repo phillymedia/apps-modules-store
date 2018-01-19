@@ -4,9 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _logging = require("../logging");
-
-var _logging2 = _interopRequireDefault(_logging);
+var _phillyHelpers = require("philly-helpers");
 
 var _core = require("../core");
 
@@ -48,7 +46,7 @@ function findAll(settings, callback) {
 			return callback(err);
 		}
 		// otherwise...
-		_logging2.default.debug("Finding all logs...", data);
+		_phillyHelpers.log.debug("Finding all logs...", data);
 		// continue
 		return callback(null, data);
 	});

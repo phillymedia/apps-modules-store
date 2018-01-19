@@ -7,7 +7,7 @@
 import { expect } from "chai";
 import { feed } from "MAIN";
 import { store as _store } from "APP/config";
-import log from "COMP/logging";
+import { log } from "philly-helpers";
 import _schema from "./schema";
 
 

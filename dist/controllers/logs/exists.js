@@ -4,9 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _logging = require("../logging");
-
-var _logging2 = _interopRequireDefault(_logging);
+var _phillyHelpers = require("philly-helpers");
 
 var _core = require("../core");
 
@@ -45,7 +43,7 @@ function exists(settings, callback) {
 			return callback(err);
 		}
 		// otherwise, add value to the sendData
-		_logging2.default.debug("Checking log...", data);
+		_phillyHelpers.log.debug("Checking log...", data);
 		// continue
 		return callback(null, data);
 	});

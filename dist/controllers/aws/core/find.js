@@ -5,9 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.findByParam = exports.findByHint = exports.findByAttribute = exports.findByArn = exports.findAll = exports.exists = undefined;
 
-var _logging = require("../../logging");
-
-var _logging2 = _interopRequireDefault(_logging);
+var _phillyHelpers = require("philly-helpers");
 
 var _core = require("../../core");
 
@@ -80,7 +78,7 @@ function findByHint(settings, callback) {
 			return callback(err);
 		}
 		// otherwise...
-		_logging2.default.debug("Finding by hint...", data);
+		_phillyHelpers.log.debug("Finding by hint...", data);
 		// continue
 		return callback(null, data);
 	});
@@ -101,7 +99,7 @@ function findByArn(settings, callback) {
 			return callback(err);
 		}
 		// otherwise...
-		_logging2.default.debug("Finding by hint...", data);
+		_phillyHelpers.log.debug("Finding by hint...", data);
 		// continue
 		return callback(null, data);
 	});
@@ -143,7 +141,7 @@ function findByAttribute(settings, callback) {
 			return callback(err);
 		}
 		// otherwise...
-		_logging2.default.debug("Finding by hint...", data);
+		_phillyHelpers.log.debug("Finding by hint...", data);
 		// continue
 		return callback(null, data);
 	});

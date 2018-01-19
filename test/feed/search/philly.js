@@ -5,7 +5,7 @@
 // =============================================================================
 
 import { expect } from "chai";
-import log from "COMP/logging";
+import { log } from "philly-helpers";
 import { feed } from "MAIN";
 
 // test category

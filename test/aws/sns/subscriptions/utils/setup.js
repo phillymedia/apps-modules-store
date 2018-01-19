@@ -3,7 +3,7 @@
 // DEPENDENCIES
 // =============================================================================
 // OTHER -------------------------------
-import log from "COMP/logging";
+import { log } from "philly-helpers";
 // TESTED METHOD -------------------------------
 import subscriptions from "COMP/aws/sns/subscriptions";
 const { remove } = subscriptions;

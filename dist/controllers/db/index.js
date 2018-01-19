@@ -7,9 +7,7 @@ exports.connection = exports.db = undefined;
 
 var _config = require("../../config");
 
-var _logging = require("../logging");
-
-var _logging2 = _interopRequireDefault(_logging);
+var _phillyHelpers = require("philly-helpers");
 
 var _mongoose = require("mongoose");
 
@@ -38,21 +36,21 @@ var _db$connect = _mongoose2.default.connect(_config.database.url),
     connection = _db$connect.connection;
 
 connection.once("open", function () {
-	_logging2.default.debug("Mongoose connection open.");
+	_phillyHelpers.log.debug("Mongoose connection open.");
 });
 // handle errors
 connection.on("error", function (err) {
-	_logging2.default.info("Mongoose default connection error: " + err);
+	_phillyHelpers.log.info("Mongoose default connection error: " + err);
 	throw new Error("Unable to connect to database!");
 });
 // when the connection is disconnected
 connection.on("disconnected", function () {
-	_logging2.default.debug("Mongoose default connection disconnected.");
+	_phillyHelpers.log.debug("Mongoose default connection disconnected.");
 });
 // if the Node process ends, close the Mongoose connection
 process.on("SIGINT", function () {
 	connection.close(function () {
-		_logging2.default.debug("Mongoose default connection disconnected through app termination.");
+		_phillyHelpers.log.debug("Mongoose default connection disconnected through app termination.");
 		process.exit(0);
 	});
 });

@@ -6,7 +6,7 @@
 import { map, some } from "lodash";
 import { expect } from "chai";
 import { detail } from "MAIN";
-import log from "COMP/logging";
+import { log } from "philly-helpers";
 
 // test category
 const testId = 10000006;

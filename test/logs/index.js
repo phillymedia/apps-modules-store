@@ -5,9 +5,9 @@
 // =============================================================================
 
 import { expect } from "chai";
+import { log } from "philly-helpers";
 import { logs } from "MAIN";
 import { database as _database } from "APP/config";
-import log from "COMP/logging";
 
 // PRIVATE VARIABLES
 // =============================================================================
