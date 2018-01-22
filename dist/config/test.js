@@ -1,5 +1,9 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _development = require("./development");
 
 var _development2 = _interopRequireDefault(_development);
@@ -19,4 +23,4 @@ _development2.default.database.logs.limit = 10;
 
 // EXPORT
 // =============================================================================
-module.exports = _development2.default;
+exports.default = _development2.default;
