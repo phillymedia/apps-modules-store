@@ -35,8 +35,15 @@ _global2.default.store.sports.expiresInMinutes = {
 	games: shortExpires,
 	tweets: shortExpires
 };
+_global2.default.store.sportsLegacy.v1.expiresInMinutes = {
+	combined: shortExpires,
+	games: shortExpires,
+	tweets: shortExpires
+};
 _global2.default.store.main.expiresInMinutes = shortExpires;
+_global2.default.store.mainLegacy.v1.expiresInMinutes = shortExpires;
 _global2.default.store.search.expiresInMinutes = vLongExpires;
+_global2.default.store.searchLegacy.v1.expiresInMinutes = vLongExpires;
 _global2.default.store.sections.expiresInMinutes = vLongExpires;
 _global2.default.store.watch.expiresInMinutes = shortExpires;
 _global2.default.store.today.expiresInMinutes = shortExpires;

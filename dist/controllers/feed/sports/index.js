@@ -29,38 +29,46 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // PUBLIC -------------------------------
 
 /**
+* Clear store - legacy.
+*
+* @param {function} callback - A callback function..
+*/
+function clearV1(callback) {
+	// combined feed, games, tweets
+	(0, _async.parallel)([_feed2.default.removeV1, _games2.default.removeV1, _tweets2.default.removeV1], callback);
+}
+
+/**
 * Clear store.
 *
-* @method clear
-* @param {Function} callback				A callback function.
-* @return {Function} core._add				The shared setter.
+* @param {function} callback - A callback function.
 */
+// DEPENDENCIES
+// =============================================================================
+// THIRD-PARTY LIBRARIES  -------------------------------
 function clear(callback) {
 	// combined feed, games, tweets
-	(0, _async.parallel)([function (next) {
-		return _feed2.default.remove(next);
-	}, function (next) {
-		return _games2.default.remove(next);
-	}, function (next) {
-		return _tweets2.default.remove(next);
-	}], callback);
+	(0, _async.parallel)([_feed2.default.remove, _games2.default.remove, _tweets2.default.remove], callback);
 }
 
 // EXPORT
 // =============================================================================
 
-// DEPENDENCIES
-// =============================================================================
-// THIRD-PARTY LIBRARIES  -------------------------------
 exports.default = {
 	getFeed: _feed2.default.get,
+	getFeedV1: _feed2.default.getV1,
 	setFeed: _feed2.default.set,
+	setFeedV1: _feed2.default.setV1,
 	getGames: _games2.default.get,
 	setGames: _games2.default.set,
 	getTweets: _tweets2.default.get,
 	setTweets: _tweets2.default.set,
 	getSearch: _search2.default.get,
+	getSearchV1: _search2.default.getV1,
 	setSearch: _search2.default.set,
+	setSearchV1: _search2.default.setV1,
 	removeSearch: _search2.default.remove,
-	clear: clear
+	removeSearchV1: _search2.default.removeV1,
+	clear: clear,
+	clearV1: clearV1
 };

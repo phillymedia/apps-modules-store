@@ -27,9 +27,20 @@ Main.store.sports = {
 	source: "sports_app",
 	type: typesSport
 };
+Main.store.sportsLegacy = {};
+Main.store.sportsLegacy.v1 = {
+	name: "sports",
+	source: "sports_app_legacy",
+	type: typesSport
+};
 // main
 Main.store.main = {
 	source: "philly_app",
+	type: typesMain
+};
+Main.store.mainLegacy = {};
+Main.store.mainLegacy.v1 = {
+	source: "philly_app_legacy",
 	type: typesMain
 };
 // search
@@ -37,7 +48,12 @@ Main.store.search = {
 	source: "philly_app",
 	type: "search"
 };
-// search
+Main.store.searchLegacy = {};
+Main.store.searchLegacy.v1 = {
+	source: "philly_app_legacy",
+	type: "search"
+};
+// sections
 Main.store.sections = {
 	source: "philly_app",
 	type: "sections"

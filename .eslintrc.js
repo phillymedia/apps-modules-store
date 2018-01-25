@@ -24,7 +24,7 @@ module.exports = {
 	rules: {
 		// clear these errors temporarily to see what else is wrong
 		// "import/no-unresolved": 0,
-		// brace style
+		// brace style ({ on new lines })
 		"brace-style": [
 			"error",
 			"stroustrup",
@@ -33,21 +33,14 @@ module.exports = {
 		"func-names": "off",
 		// allow requires
 		"global-require": "off",
-		// don't require .vue extension when importing
-		"import/extensions": ["error", "always", {
-			"js": "never",
-			"vue": "never"
-		}],
+		// no extensions on imports
+		"import/extensions": ["off", "never"],
+		// imports before anything else
+		"import/first": 0,
 		// requires new lines after each import
 		"import/newline-after-import": "off",
 		// wtf
 		"import/no-dynamic-require": "off",
-		// allow optionalDependencies
-		"import/no-extraneous-dependencies": ["error", {
-			"optionalDependencies": ["test/unit/index.js"]
-		}],
-		"import/first": 0,
-		"import/extensions": ["off", "never"],
 		// tab style
 		"indent": ["error", "tab"],
 		// linebreak style
@@ -62,15 +55,19 @@ module.exports = {
 		"no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
 		// turn off inability to modify parameters :P
 		"no-param-reassign": "off",
+		// allow ++/-- assignments
 		"no-plusplus": 0,
+		// allow return assignments in parentheses
+		"no-return-assign": "except-parens",
+		// tab style
+		"no-tabs": "off",
+		// dangling underscores allowed
 		"no-underscore-dangle": 0,
 		// let functions be hoisted
 		"no-use-before-define": [
 			"error",
 			"nofunc",
 		],
-		// tab style
-		"no-tabs": "off",
 		// double quotes only
 		"quotes": ["error", "double"],
 		// semi-colons
