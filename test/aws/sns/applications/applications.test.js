@@ -14,29 +14,29 @@ import getByHint from "./get/byHint.test";
 // =============================================================================
 
 describe("AWS - Application", function () {
-	// add (use this data for other tests)
-	describe("Add", function () {
-		context("when structured correctly", function () {
-			it("sets data correctly", add.noErrors);
-		});
-		context("when structured correctly", function () {
-			it("sets data correctly", addMany.noErrors);
-		});
-	});
-	// all
-	describe("Get All", function () {
-		// everything going right
-		context("when structured correctly", function () {
-			it("returns correct data", get.noErrors);
-		});
-	});
-	// by arn
-	describe("Get By Arn", function () {
-		// everything going right
-		context("when structured correctly", function () {
-			it("returns correct data", getByHint.noErrors);
-		});
-	});
+  // add (use this data for other tests)
+  describe("Add", function () {
+    context("when structured correctly", function () {
+      it("sets data correctly", add.noErrors);
+    });
+    context("when structured correctly", function () {
+      it("sets data correctly", addMany.noErrors);
+    });
+  });
+  // all
+  describe("Get All", function () {
+    // everything going right
+    context("when structured correctly", function () {
+      it("returns correct data", get.noErrors);
+    });
+  });
+  // by arn
+  describe("Get By Arn", function () {
+    // everything going right
+    context("when structured correctly", function () {
+      it("returns correct data", getByHint.noErrors);
+    });
+  });
 });
 
 // after

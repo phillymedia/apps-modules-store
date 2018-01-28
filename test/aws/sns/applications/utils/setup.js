@@ -20,19 +20,19 @@ const { remove } = applications;
  * @return {function}
  */
 function cleanup(done) {
-	// delete test content inserted into the databases
-	log.debug("Deleting test applications content...");
-	// remove fake platform
-	remove((err) => {
-		// handle errors
-		if (err) {
-			log.error(err);
-		}
-		// otherwise...
-		log.debug("Successfully deleted.");
-		// callback
-		return done();
-	});
+  // delete test content inserted into the databases
+  log.debug("Deleting test applications content...");
+  // remove fake platform
+  remove((err) => {
+    // handle errors
+    if (err) {
+      log.error(err);
+    }
+    // otherwise...
+    log.debug("Successfully deleted.");
+    // callback
+    return done();
+  });
 }
 
 
@@ -40,5 +40,5 @@ function cleanup(done) {
 // =============================================================================
 
 export default {
-	cleanup,
+  cleanup,
 };

@@ -16,43 +16,43 @@ import getByUsername from "./get/byUsername.test";
 // =============================================================================
 
 describe("AWS - Endpoints", function () {
-	// add (use this data for other tests)
-	describe("Add", function () {
-		context("when structured correctly", function () {
-			it("sets data correctly", add.noErrors);
-		});
-		context("when structured correctly", function () {
-			it("sets data correctly", addMany.noErrors);
-		});
-	});
-	// all
-	describe("Get All", function () {
-		// everything going right
-		context("when structured correctly", function () {
-			it("returns correct data", get.noErrors);
-		});
-	});
-	// by arn
-	describe("Get By Arn", function () {
-		// everything going right
-		context("when structured correctly", function () {
-			it("returns correct data", getByArn.noErrors);
-		});
-	});
-	// by token
-	describe("Get By Token", function () {
-		// everything going right
-		context("when structured correctly", function () {
-			it("returns correct data", getByToken.noErrors);
-		});
-	});
-	// by username
-	describe("Get By Username", function () {
-		// everything going right
-		context("when structured correctly", function () {
-			it("returns correct data", getByUsername.noErrors);
-		});
-	});
+  // add (use this data for other tests)
+  describe("Add", function () {
+    context("when structured correctly", function () {
+      it("sets data correctly", add.noErrors);
+    });
+    context("when structured correctly", function () {
+      it("sets data correctly", addMany.noErrors);
+    });
+  });
+  // all
+  describe("Get All", function () {
+    // everything going right
+    context("when structured correctly", function () {
+      it("returns correct data", get.noErrors);
+    });
+  });
+  // by arn
+  describe("Get By Arn", function () {
+    // everything going right
+    context("when structured correctly", function () {
+      it("returns correct data", getByArn.noErrors);
+    });
+  });
+  // by token
+  describe("Get By Token", function () {
+    // everything going right
+    context("when structured correctly", function () {
+      it("returns correct data", getByToken.noErrors);
+    });
+  });
+  // by username
+  describe("Get By Username", function () {
+    // everything going right
+    context("when structured correctly", function () {
+      it("returns correct data", getByUsername.noErrors);
+    });
+  });
 });
 
 // after

@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _config = require("../../../../config");
@@ -38,12 +38,12 @@ var _type = _store.type.games;
 * @return {Function} core.remove
 */
 function remove(callback) {
-	var settings = {
-		source: _source,
-		type: _type,
-		name: _name
-	};
-	return _core2.default.remove(settings, callback);
+  var settings = {
+    source: _source,
+    type: _type,
+    name: _name
+  };
+  return _core2.default.remove(settings, callback);
 }
 
 // EXPORTS

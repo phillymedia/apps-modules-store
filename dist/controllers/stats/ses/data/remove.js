@@ -24,7 +24,7 @@ var _name = "ses_data";
  *
  * @method remove
  * @param {function} callback
- * @return {Function} core.remove				The shared remover.
+ * @return {Function} core.remove - The shared remover.
  */
 // DEPENDENCIES
 // =============================================================================

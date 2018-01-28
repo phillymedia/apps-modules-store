@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _core = require("../core");
@@ -23,18 +23,18 @@ var _name = "subscriptions";
 * Flush store.
 *
 * @method clear
-* @param {Function} callback				A callback function.
-* @return {Function} core.remove				The shared remover.
+* @param {Function} callback - A callback function.
+* @return {Function} core.remove - The shared remover.
 */
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------
 // main core
 function clear(callback) {
-	var settings = {
-		name: _name
-	};
-	return _core2.default.remove(settings, callback);
+  var settings = {
+    name: _name
+  };
+  return _core2.default.remove(settings, callback);
 }
 
 // EXPORTS

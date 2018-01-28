@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _findAll = require("./findAll");
@@ -29,8 +29,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // =============================================================================
 
 exports.default = {
-	get: _findAll2.default,
-	add: _add2.default,
-	exists: _exists2.default,
-	recreateCollection: _recreateCollection2.default
+  get: _findAll2.default,
+  add: _add2.default,
+  exists: _exists2.default,
+  recreateCollection: _recreateCollection2.default
 };

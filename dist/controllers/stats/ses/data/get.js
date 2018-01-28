@@ -23,7 +23,7 @@ var _name = "ses_data";
  * Get store.
  *
  * @method get
- * @return {Function} core._find				The shared getter.
+ * @return {Function} core._find - The shared getter.
  */
 // DEPENDENCIES
 // =============================================================================

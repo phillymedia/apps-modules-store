@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _get = require("./get");
@@ -14,13 +14,13 @@ var _remove = require("./remove");
 // =============================================================================
 
 exports.default = {
-	add: _add.add,
-	addMany: _add.addMany,
-	get: _get.all,
-	getByArn: _get.byArn,
-	getByToken: _get.byToken,
-	getByUsername: _get.byUsername,
-	remove: _remove.all,
-	removeByArn: _remove.byArn
+  add: _add.add,
+  addMany: _add.addMany,
+  get: _get.all,
+  getByArn: _get.byArn,
+  getByToken: _get.byToken,
+  getByUsername: _get.byUsername,
+  remove: _remove.all,
+  removeByArn: _remove.byArn
 }; // DEPENDENCIES
 // =============================================================================

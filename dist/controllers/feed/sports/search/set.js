@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _config = require("../../../../config");
@@ -34,20 +34,20 @@ var _delay = _store.expiresInMinutes;
 * Set store.
 *
 * @method set
-* @param {String} name 						Name of the store.
-* @param {Object} content 					Data to store.
-* @param {Function} callback				A callback function.
-* @return {Function} core._add				The shared setter.
+* @param {String} name - Name of the store.
+* @param {Object} content - Data to store.
+* @param {Function} callback - A callback function.
+* @return {Function} core._add - The shared setter.
 */
 function set(content, callback) {
-	var settings = {
-		source: _source,
-		type: _type,
-		delay: _delay,
-		name: _name,
-		content: content
-	};
-	return _core2.default.add(settings, callback);
+  var settings = {
+    source: _source,
+    type: _type,
+    delay: _delay,
+    name: _name,
+    content: content
+  };
+  return _core2.default.add(settings, callback);
 }
 
 // EXPORT

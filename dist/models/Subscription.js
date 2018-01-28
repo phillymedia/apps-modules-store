@@ -6,33 +6,33 @@ var schemaName = "Subscription";
 
 // create the schema
 var Schema = new _db.db.Schema({
-	// arn
-	arn: {
-		type: String,
-		required: true,
-		index: {
-			unique: true
-		}
-	},
-	// topic arn
-	topic: {
-		type: String,
-		required: true
-	},
-	// endpoint arn
-	endpoint: {
-		type: String,
-		required: true
-	},
-	// protocol
-	protocol: {
-		type: String,
-		required: true
-	},
-	// username (optional)
-	username: {
-		type: String
-	}
+  // arn
+  arn: {
+    type: String,
+    required: true,
+    index: {
+      unique: true
+    }
+  },
+  // topic arn
+  topic: {
+    type: String,
+    required: true
+  },
+  // endpoint arn
+  endpoint: {
+    type: String,
+    required: true
+  },
+  // protocol
+  protocol: {
+    type: String,
+    required: true
+  },
+  // username (optional)
+  username: {
+    type: String
+  }
 });
 
 // this is default true, but let's make sure

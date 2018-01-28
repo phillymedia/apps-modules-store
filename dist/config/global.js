@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _lodash = require("lodash");
@@ -19,21 +19,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // create Main
 var Main = {};
 
-// DATABASE SETTINGS
-// ==============
-// add db settings
+// APP SETTINGS
+// =============================================================================
 // dependencies
 // import _ from "lodash";
 // import app from "./app";
-(0, _lodash.forEach)(_db2.default, function (setting, key) {
-	Main[key] = setting;
-});
-
-// STORE SETTINGS
-// =============================================================================
-// add store settings
-(0, _lodash.forEach)(_store2.default, function (setting, key) {
-	Main[key] = setting;
+(0, _lodash.forEach)([_db2.default, _store2.default], function (settings) {
+  return (0, _lodash.forEach)(settings, function (setting, key) {
+    Main[key] = setting;
+  });
 });
 
 // EXPORT

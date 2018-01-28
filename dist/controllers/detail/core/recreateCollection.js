@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _core = require("../../core");
@@ -39,18 +39,18 @@ var _max = _store.collectionMax;
  * Drop collection.
  *
  * @method recreateCollection
- * @param {function} callback			A callback function.
- * @return {function} 					Returns error object on failure, null on success.
+ * @param {function} callback - A callback function.
+ * @return {function} - Returns error object on failure, null on success.
  */
 function recreateCollection(callback) {
-	// parameters
-	var params = {
-		capped: true,
-		max: _max,
-		size: _size
-	};
-	// remove
-	_core2.default.recreateCollection(_name, _schema3.default, params, callback);
+  // parameters
+  var params = {
+    capped: true,
+    max: _max,
+    size: _size
+  };
+  // remove
+  _core2.default.recreateCollection(_name, _schema3.default, params, callback);
 }
 
 // EXPORTS

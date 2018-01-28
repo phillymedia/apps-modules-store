@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.connection = exports.db = undefined;
 
@@ -18,7 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // CONNECT TO THE DATABASE
 // =============================================================================
 if (_config.debug) {
-	_mongoose2.default.set("debug", true);
+  _mongoose2.default.set("debug", true);
 }
 // use ES6 promises
 
@@ -36,23 +36,23 @@ var _db$connect = _mongoose2.default.connect(_config.database.url),
     connection = _db$connect.connection;
 
 connection.once("open", function () {
-	_phillyHelpers.log.debug("Mongoose connection open.");
+  _phillyHelpers.log.debug("Mongoose connection open.");
 });
 // handle errors
 connection.on("error", function (err) {
-	_phillyHelpers.log.info("Mongoose default connection error: " + err);
-	throw new Error("Unable to connect to database!");
+  _phillyHelpers.log.info("Mongoose default connection error: " + err);
+  throw new Error("Unable to connect to database!");
 });
 // when the connection is disconnected
 connection.on("disconnected", function () {
-	_phillyHelpers.log.debug("Mongoose default connection disconnected.");
+  _phillyHelpers.log.debug("Mongoose default connection disconnected.");
 });
 // if the Node process ends, close the Mongoose connection
 process.on("SIGINT", function () {
-	connection.close(function () {
-		_phillyHelpers.log.debug("Mongoose default connection disconnected through app termination.");
-		process.exit(0);
-	});
+  connection.close(function () {
+    _phillyHelpers.log.debug("Mongoose default connection disconnected through app termination.");
+    process.exit(0);
+  });
 });
 
 // export database

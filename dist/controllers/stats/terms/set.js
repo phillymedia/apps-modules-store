@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _config = require("../../../config");
@@ -32,17 +32,17 @@ var _name = "terms";
 * Set store.
 *
 * @method set
-* @param {Object} content 					Data to store.
-* @param {Function} callback				A callback function.
-* @return {Function} core.add				The shared setter.
+* @param {Object} content - Data to store.
+* @param {Function} callback - A callback function.
+* @return {Function} core.add - The shared setter.
 */
 function set(content, callback) {
-	var settings = {
-		delay: _delay,
-		name: _name,
-		content: content
-	};
-	return _core2.default.add(settings, callback);
+  var settings = {
+    delay: _delay,
+    name: _name,
+    content: content
+  };
+  return _core2.default.add(settings, callback);
 }
 
 // EXPORTS

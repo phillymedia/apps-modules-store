@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _get = require("./get");
@@ -22,8 +22,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // =============================================================================
 
 exports.default = {
-	get: _get2.default,
-	set: _set2.default,
-	clear: _clear2.default
+  get: _get2.default,
+  set: _set2.default,
+  clear: _clear2.default
 }; // DEPENDENCIES
 // =============================================================================

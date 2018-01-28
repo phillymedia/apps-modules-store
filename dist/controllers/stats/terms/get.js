@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _core = require("../core");
@@ -19,20 +19,20 @@ var _name = "terms";
 // PUBLIC -------------------------------
 
 /**
-* Get store.
-*
-* @method get
-* @return {Function} core.find				The shared getter.
-*/
+ * Get store.
+ *
+ * @param {function} callback - A callback.
+ * @return {Function}
+ */
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------
 // main core
 function get(callback) {
-	var settings = {
-		name: _name
-	};
-	return _core2.default.find(settings, callback);
+  var settings = {
+    name: _name
+  };
+  return _core2.default.find(settings, callback);
 }
 
 // EXPORTS

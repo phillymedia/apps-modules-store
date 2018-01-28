@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.sns = exports.stats = exports.logs = exports.detail = exports.feed = undefined;
 

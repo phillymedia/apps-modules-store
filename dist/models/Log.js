@@ -6,22 +6,22 @@ var schemaName = "Log";
 
 // create the schema
 var Schema = new _db.db.Schema({
-	id: {
-		type: Number
-	},
-	date: {
-		type: Date,
-		default: Date.now
-	},
-	target: {
-		type: String,
-		// enum: conf.schema.target,
-		required: true
-	},
-	message: {
-		type: String,
-		required: true
-	}
+  id: {
+    type: Number
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  target: {
+    type: String,
+    // enum: conf.schema.target,
+    required: true
+  },
+  message: {
+    type: String,
+    required: true
+  }
 });
 
 // this is default true, but let's make sure

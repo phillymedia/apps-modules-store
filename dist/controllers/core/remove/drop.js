@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _phillyHelpers = require("philly-helpers");
@@ -14,20 +14,20 @@ var _phillyHelpers = require("philly-helpers");
  * Generic function to drop collection.
  *
  * @method drop
- * @param {object} Schema 					The schema used by the parent module.
- * @param {function} callback				A callback function.
- * @return {function} 						Returns error or array.
+ * @param {object} Schema - The schema used by the parent module.
+ * @param {function} callback - A callback function.
+ * @return {function} - Returns error or array.
  */
 function drop(Schema, callback) {
-	// drop the collection
-	Schema.collection.drop(function (err, data) {
-		// handle errors
-		if (err) {
-			return callback((0, _phillyHelpers.formatError)(err));
-		}
-		// otherwise...
-		return callback(null, data);
-	});
+  // drop the collection
+  Schema.collection.drop(function (err, data) {
+    // handle errors
+    if (err) {
+      return callback((0, _phillyHelpers.formatError)(err));
+    }
+    // otherwise...
+    return callback(null, data);
+  });
 }
 
 // EXPORTS

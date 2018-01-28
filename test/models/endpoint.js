@@ -17,13 +17,13 @@ const Endpoint = require("APP/models/Endpoint");
 // reusable variables for testing.
 const { testEndpoint } = mockedData;
 const endpointParams = {
-	arn: mockedData.endpoint.EndpointArn,
+  arn: mockedData.endpoint.EndpointArn,
 };
 const endpointParamsTest = mockedData.endpoint.EndpointArn;
 const expectedEndpoint = {
-	_id: "5700a128bd97c1341d8fb365",
-	arn: mockedData.endpoint.EndpointArn,
-	attributes: mockedData.endpoint.Attributes,
+  _id: "5700a128bd97c1341d8fb365",
+  arn: mockedData.endpoint.EndpointArn,
+  attributes: mockedData.endpoint.Attributes,
 };
 
 
@@ -38,20 +38,20 @@ const expectedEndpoint = {
  * @return {function}
  */
 function add(done) {
-	const EndpointMock = sinon.mock(new Endpoint(testEndpoint));
-	const endpoint = EndpointMock.object;
+  const EndpointMock = sinon.mock(new Endpoint(testEndpoint));
+  const endpoint = EndpointMock.object;
 
-	EndpointMock
-		.expects("save")
-		.yields(null);
+  EndpointMock
+    .expects("save")
+    .yields(null);
 
-	// eslint-disable-next-line no-unused-vars
-	endpoint.save((err, result) => {
-		EndpointMock.verify();
-		EndpointMock.restore();
-		expect(err).to.be.null;
-		done();
-	});
+  // eslint-disable-next-line no-unused-vars
+  endpoint.save((err, result) => {
+    EndpointMock.verify();
+    EndpointMock.restore();
+    expect(err).to.be.null;
+    done();
+  });
 }
 
 /**
@@ -62,23 +62,23 @@ function add(done) {
  * @return {function}
  */
 function addError(done) {
-	const EndpointMock = sinon.mock(new Endpoint(testEndpoint));
-	const endpoint = EndpointMock.object;
-	const expectedError = {
-		name: "ValidationError",
-	};
+  const EndpointMock = sinon.mock(new Endpoint(testEndpoint));
+  const endpoint = EndpointMock.object;
+  const expectedError = {
+    name: "ValidationError",
+  };
 
-	EndpointMock
-		.expects("save")
-		.yields(expectedError);
+  EndpointMock
+    .expects("save")
+    .yields(expectedError);
 
-	endpoint.save((err, result) => {
-		EndpointMock.verify();
-		EndpointMock.restore();
-		expect(err.name).to.equal("ValidationError");
-		expect(result).to.be.undefined;
-		done();
-	});
+  endpoint.save((err, result) => {
+    EndpointMock.verify();
+    EndpointMock.restore();
+    expect(err.name).to.equal("ValidationError");
+    expect(result).to.be.undefined;
+    done();
+  });
 }
 
 /**
@@ -89,19 +89,19 @@ function addError(done) {
  * @return {function}
  */
 function findByParams(done) {
-	const endpointMock = sinon.mock(Endpoint);
+  const endpointMock = sinon.mock(Endpoint);
 
-	endpointMock
-		.expects("find")
-		.withArgs(endpointParams)
-		.yields(null, expectedEndpoint);
+  endpointMock
+    .expects("find")
+    .withArgs(endpointParams)
+    .yields(null, expectedEndpoint);
 
-	Endpoint.find(endpointParams, (err, result) => {
-		endpointMock.verify();
-		endpointMock.restore();
-		expect(result.arn).to.equal(endpointParamsTest);
-		done();
-	});
+  Endpoint.find(endpointParams, (err, result) => {
+    endpointMock.verify();
+    endpointMock.restore();
+    expect(result.arn).to.equal(endpointParamsTest);
+    done();
+  });
 }
 
 
@@ -110,10 +110,10 @@ function findByParams(done) {
 
 // model
 describe("Endpoint Model", () => {
-	// add
-	it("should create a new endpoint entry", add);
-	// error if add fails
-	it("should return error if endpoint is not created", addError);
-	// find
-	it("should find endpoint by params", findByParams);
+  // add
+  it("should create a new endpoint entry", add);
+  // error if add fails
+  it("should return error if endpoint is not created", addError);
+  // find
+  it("should find endpoint by params", findByParams);
 });

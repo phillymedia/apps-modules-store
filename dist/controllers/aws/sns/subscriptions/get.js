@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.byUsername = exports.byTopicArn = exports.byEndpoint = exports.all = undefined;
 
@@ -32,12 +32,12 @@ var _schema = _db.db.model("Subscription");
 
 // sub-modules
 function all(callback) {
-	// schema
-	var settings = {
-		schema: _schema
-	};
-	// get the sub, if it's in our store
-	return _core2.default.findAll(settings, callback);
+  // schema
+  var settings = {
+    schema: _schema
+  };
+  // get the sub, if it's in our store
+  return _core2.default.findAll(settings, callback);
 }
 
 /**
@@ -48,14 +48,14 @@ function all(callback) {
  * @param {function} callback
  */
 function byEndpoint(arn, callback) {
-	// settings
-	var settings = {
-		schema: _schema,
-		param: arn,
-		field: "endpoint"
-	};
-	// get the sub, if it's in our store
-	return _core2.default.findByParam(settings, callback);
+  // settings
+  var settings = {
+    schema: _schema,
+    param: arn,
+    field: "endpoint"
+  };
+  // get the sub, if it's in our store
+  return _core2.default.findByParam(settings, callback);
 }
 
 /**
@@ -66,14 +66,14 @@ function byEndpoint(arn, callback) {
  * @param {function} callback
  */
 function byTopicArn(arn, callback) {
-	// settings
-	var settings = {
-		schema: _schema,
-		param: arn,
-		field: "topic"
-	};
-	// get the sub, if it's in our store
-	return _core2.default.findByParam(settings, callback);
+  // settings
+  var settings = {
+    schema: _schema,
+    param: arn,
+    field: "topic"
+  };
+  // get the sub, if it's in our store
+  return _core2.default.findByParam(settings, callback);
 }
 
 /**
@@ -84,14 +84,14 @@ function byTopicArn(arn, callback) {
  * @param {function} callback
  */
 function byUsername(username, callback) {
-	// settings
-	var settings = {
-		schema: _schema,
-		param: username,
-		field: "username"
-	};
-	// get the sub, if it's in our store
-	return _core2.default.findByParam(settings, callback);
+  // settings
+  var settings = {
+    schema: _schema,
+    param: username,
+    field: "username"
+  };
+  // get the sub, if it's in our store
+  return _core2.default.findByParam(settings, callback);
 }
 
 // EXPORTS

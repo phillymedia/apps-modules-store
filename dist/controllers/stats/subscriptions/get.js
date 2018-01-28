@@ -23,7 +23,7 @@ var _name = "subscriptions";
  * Get store.
  *
  * @method get
- * @return {Function} core.find				The shared getter.
+ * @return {Function} core.find - The shared getter.
  */
 // DEPENDENCIES
 // =============================================================================

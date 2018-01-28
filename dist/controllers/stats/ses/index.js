@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _async = require("async");
@@ -24,19 +24,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Clear store.
  *
  * @method clear
- * @param {Function} callback				A callback function.
- * @return {Function} core._add				The shared setter.
+ * @param {Function} callback - A callback function.
+ * @return {Function} core._add - The shared setter.
  */
 
 // APP -------------------------------
 // siblings
 function clear(callback) {
-	// combined feed, games, tweets
-	(0, _async.parallel)([function (next) {
-		return _count2.default.remove(next);
-	}, function (next) {
-		return _data2.default.remove(next);
-	}], callback);
+  // combined feed, games, tweets
+  (0, _async.parallel)([function (next) {
+    return _count2.default.remove(next);
+  }, function (next) {
+    return _data2.default.remove(next);
+  }], callback);
 }
 
 // EXPORTS
@@ -46,9 +46,9 @@ function clear(callback) {
 // =============================================================================
 // THIRD-PARTY -------------------------------
 exports.default = {
-	getCount: _count2.default.get,
-	setCount: _count2.default.set,
-	getData: _data2.default.get,
-	setData: _data2.default.set,
-	clear: clear
+  getCount: _count2.default.get,
+  setCount: _count2.default.set,
+  getData: _data2.default.get,
+  setData: _data2.default.set,
+  clear: clear
 };

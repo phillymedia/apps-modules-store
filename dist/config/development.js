@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _global = require("./global");
@@ -31,14 +31,14 @@ var longExpires = 60;
 // one day
 var vLongExpires = 1440;
 _global2.default.store.sports.expiresInMinutes = {
-	combined: shortExpires,
-	games: shortExpires,
-	tweets: shortExpires
+  combined: shortExpires,
+  games: shortExpires,
+  tweets: shortExpires
 };
 _global2.default.store.sportsLegacy.v1.expiresInMinutes = {
-	combined: shortExpires,
-	games: shortExpires,
-	tweets: shortExpires
+  combined: shortExpires,
+  games: shortExpires,
+  tweets: shortExpires
 };
 _global2.default.store.main.expiresInMinutes = shortExpires;
 _global2.default.store.mainLegacy.v1.expiresInMinutes = shortExpires;

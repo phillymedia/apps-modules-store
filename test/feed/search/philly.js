@@ -10,12 +10,12 @@ import { feed } from "MAIN";
 
 // test category
 const expectedContent = {
-	mostsearchedterms: [
-		"test content",
-	],
-	searchterms: [
-		"another test",
-	],
+  mostsearchedterms: [
+    "test content",
+  ],
+  searchterms: [
+    "another test",
+  ],
 };
 
 
@@ -30,19 +30,19 @@ const expectedContent = {
  * @return {function}
  */
 function callAfterSearchPhilly(done) {
-	// delete test content inserted into the databases
-	log.debug("Deleting test philly.com content...");
-	// fake philly articles
-	feed.clearSearchPhilly((err) => {
-		// handle errors
-		if (err) {
-			log.error(err);
-		}
-		// otherwise...
-		log.debug("Successfully deleted.");
-		// callback
-		return done();
-	});
+  // delete test content inserted into the databases
+  log.debug("Deleting test philly.com content...");
+  // fake philly articles
+  feed.clearSearchPhilly((err) => {
+    // handle errors
+    if (err) {
+      log.error(err);
+    }
+    // otherwise...
+    log.debug("Successfully deleted.");
+    // callback
+    return done();
+  });
 }
 
 
@@ -57,11 +57,11 @@ function callAfterSearchPhilly(done) {
  * @return {function}
  */
 function getSearch(done) {
-	feed.getSearchPhilly((err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("object");
-		return done();
-	});
+  feed.getSearchPhilly((err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("object");
+    return done();
+  });
 }
 
 /**
@@ -72,12 +72,12 @@ function getSearch(done) {
  * @return {function}
  */
 function setSearch(done) {
-	feed.setSearchPhilly(expectedContent, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("object");
-		expect(data).to.deep.equal(expectedContent);
-		return done();
-	});
+  feed.setSearchPhilly(expectedContent, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("object");
+    expect(data).to.deep.equal(expectedContent);
+    return done();
+  });
 }
 
 
@@ -86,15 +86,15 @@ function setSearch(done) {
 
 // describe the feed store
 describe("Philly.com Feed Search Store", function () {
-	// main app
-	// setter
-	describe("Set Search Philly", () => {
-		it("sets the current search terms", setSearch);
-	});
-	// getter
-	describe("Get Search Philly", () => {
-		it("gets the current search terms", getSearch);
-	});
-	// run once after all tests
-	after(callAfterSearchPhilly);
+  // main app
+  // setter
+  describe("Set Search Philly", () => {
+    it("sets the current search terms", setSearch);
+  });
+  // getter
+  describe("Get Search Philly", () => {
+    it("gets the current search terms", getSearch);
+  });
+  // run once after all tests
+  after(callAfterSearchPhilly);
 });

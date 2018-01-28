@@ -25,15 +25,15 @@ const mockedData = testUtils.mocked.aws.sns.applications.data;
  * @return {function}
  */
 function noErrors(done) {
-	get((getErr, data) => {
-		expect(getErr).to.not.exist;
-		expect(data).to.be.an("array");
-		expect(some(data, {
-			arn: mockedData.expectedContent.arn,
-		})).to.be.true;
-		// done!
-		return done();
-	});
+  get((getErr, data) => {
+    expect(getErr).to.not.exist;
+    expect(data).to.be.an("array");
+    expect(some(data, {
+      arn: mockedData.expectedContent.arn,
+    })).to.be.true;
+    // done!
+    return done();
+  });
 }
 
 
@@ -41,5 +41,5 @@ function noErrors(done) {
 // =============================================================================
 
 export default {
-	noErrors,
+  noErrors,
 };
