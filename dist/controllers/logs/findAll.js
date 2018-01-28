@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _phillyHelpers = require("philly-helpers");
@@ -24,32 +24,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Get recent item(s).
  *
  * @method findAll
- * @param {Object} settings			Settings for the request.
- * @param {Function} callback		Returns error or result.
+ * @param {Object} settings - Settings for the request.
+ * @param {Function} callback - Returns error or result.
  * @return {Function}
  */
 
 // sub-modules
 function findAll(settings, callback) {
-	// set up parameters
-	var params = {
-		// get the most recent X log entries
-		limit: settings.limit,
-		// reverse chronological
-		sort: {
-			date: "desc"
-		}
-	};
-	// find a document!
-	_core2.default.find(_schema3.default, params, function (err, data) {
-		if (err) {
-			return callback(err);
-		}
-		// otherwise...
-		_phillyHelpers.log.debug("Finding all logs...", data);
-		// continue
-		return callback(null, data);
-	});
+  // set up parameters
+  var params = {
+    // get the most recent X log entries
+    limit: settings.limit,
+    // reverse chronological
+    sort: {
+      date: "desc"
+    }
+  };
+  // find a document!
+  _core2.default.find(_schema3.default, params, function (err, data) {
+    if (err) {
+      return callback(err);
+    }
+    // otherwise...
+    _phillyHelpers.log.debug("Finding all logs...", data);
+    // continue
+    return callback(null, data);
+  });
 }
 
 // EXPORTS

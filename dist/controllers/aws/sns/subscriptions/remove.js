@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.byArn = exports.all = undefined;
 
@@ -32,27 +32,27 @@ var _schema = _db.db.model("Subscription");
 
 // sub-modules
 function all(callback) {
-	// settings
-	var settings = {
-		schema: _schema
-	};
-	return _core2.default.remove(settings, callback);
+  // settings
+  var settings = {
+    schema: _schema
+  };
+  return _core2.default.remove(settings, callback);
 }
 
 /**
  * Remove from store - by ARN.
  *
  * @method byArn
- * @param {string} arn					Arn to remove.
+ * @param {string} arn - Arn to remove.
  * @return {function} core.remove
  */
 function byArn(arn, callback) {
-	// settings
-	var settings = {
-		schema: _schema,
-		arn: arn
-	};
-	return _core2.default.remove(settings, callback);
+  // settings
+  var settings = {
+    schema: _schema,
+    arn: arn
+  };
+  return _core2.default.remove(settings, callback);
 }
 
 // EXPORT

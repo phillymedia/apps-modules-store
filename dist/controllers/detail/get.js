@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.getMany = exports.get = undefined;
 
@@ -19,15 +19,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Get store.
  *
  * @method get
- * @return {Function} core.find				The shared getter.
+ * @return {Function} core.find - The shared getter.
  */
 function get(id, callback) {
-	// settings
-	var settings = {
-		id: id
-	};
-	// find
-	return _core2.default.findOne(settings, callback);
+  // settings
+  var settings = {
+    id: id
+  };
+  // find
+  return _core2.default.findOne(settings, callback);
 }
 
 /**
@@ -42,12 +42,12 @@ function get(id, callback) {
 // APP -------------------------------
 // main core
 function getMany(ids, callback) {
-	// settings
-	var settings = {
-		id: ids
-	};
-	// find
-	return _core2.default.findMany(settings, callback);
+  // settings
+  var settings = {
+    id: ids
+  };
+  // find
+  return _core2.default.findMany(settings, callback);
 }
 
 // EXPORT

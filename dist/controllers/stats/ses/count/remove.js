@@ -25,7 +25,7 @@ var _name = "ses_count";
  *
  * @method remove
  * @param {function} callback
- * @return {Function} core.remove				The shared remover.
+ * @return {Function} core.remove - The shared remover.
  */
 // DEPENDENCIES
 // =============================================================================

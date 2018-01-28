@@ -23,20 +23,20 @@ let deleteAfterRun = false; // eslint-disable-line no-unused-vars
  * @return {function}
  */
 function callBefore(done) {
-	// test if database is populated
-	_schema.count({ source: _store.admin })
-		.then((count) => {
-			if (count === 0) {
-				// no content so safe to delete
-				deleteAfterRun = true;
-				// add test data
-				// return fixtures.ensureTestData();
-			}
-			else {
-				log.debug("Test database already exists");
-			}
-		})
-		.then(done);
+  // test if database is populated
+  _schema.count({ source: _store.admin })
+    .then((count) => {
+      if (count === 0) {
+        // no content so safe to delete
+        deleteAfterRun = true;
+        // add test data
+        // return fixtures.ensureTestData();
+      }
+      else {
+        log.debug("Test database already exists");
+      }
+    })
+    .then(done);
 }
 
 /**
@@ -48,24 +48,24 @@ function callBefore(done) {
  */
 /*
 function callAfterStatsSES(done) {
-	// delete after run
-	if (deleteAfterRun) {
-		// delete test content inserted into the databases
-		log.debug("Deleting test SES content...");
-		// clear ses
-		stats.clearSes((err) => {
-			// handle errors
-			if (err) {
-				log.error(err);
-			}
-			// otherwise...
-			log.debug("Successfully deleted.");
-			// callback
-			return done();
-		});
-	}
-	// otherwise...
-	return done();
+  // delete after run
+  if (deleteAfterRun) {
+    // delete test content inserted into the databases
+    log.debug("Deleting test SES content...");
+    // clear ses
+    stats.clearSes((err) => {
+      // handle errors
+      if (err) {
+        log.error(err);
+      }
+      // otherwise...
+      log.debug("Successfully deleted.");
+      // callback
+      return done();
+    });
+  }
+  // otherwise...
+  return done();
 }
 */
 
@@ -81,11 +81,11 @@ function callAfterStatsSES(done) {
  * @return {function}
  */
 function getCount(done) {
-	stats.getSesCount((err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		return done();
-	});
+  stats.getSesCount((err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    return done();
+  });
 }
 
 /**
@@ -96,22 +96,22 @@ function getCount(done) {
  * @return {function}
  */
 function setCount(done) {
-	// get sports feed
-	stats.getSesCount((err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		// data has value (expected)
-		if (data) {
-			// set with returned data
-			return stats.setSesCount(data, (newErr, newData) => {
-				expect(newErr).to.be.null;
-				expect(newData).to.be.an("array");
-				return done();
-			});
-		}
-		log.error("Data didn't get set!");
-		return done();
-	});
+  // get sports feed
+  stats.getSesCount((err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    // data has value (expected)
+    if (data) {
+      // set with returned data
+      return stats.setSesCount(data, (newErr, newData) => {
+        expect(newErr).to.be.null;
+        expect(newData).to.be.an("array");
+        return done();
+      });
+    }
+    log.error("Data didn't get set!");
+    return done();
+  });
 }
 
 /**
@@ -122,11 +122,11 @@ function setCount(done) {
  * @return {function}
  */
 function getData(done) {
-	stats.getSesData((err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		return done();
-	});
+  stats.getSesData((err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    return done();
+  });
 }
 
 /**
@@ -137,21 +137,21 @@ function getData(done) {
  * @return {function}
  */
 function setData(done) {
-	stats.getSesData((err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		// data has value (expected)
-		if (data) {
-			// set with returned data
-			return stats.setSesData(data, (newErr, newData) => {
-				expect(newErr).to.be.null;
-				expect(newData).to.be.an("array");
-				return done();
-			});
-		}
-		log.error("Data didn't get set!");
-		return done();
-	});
+  stats.getSesData((err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    // data has value (expected)
+    if (data) {
+      // set with returned data
+      return stats.setSesData(data, (newErr, newData) => {
+        expect(newErr).to.be.null;
+        expect(newData).to.be.an("array");
+        return done();
+      });
+    }
+    log.error("Data didn't get set!");
+    return done();
+  });
 }
 
 
@@ -162,25 +162,25 @@ function setData(done) {
 before(callBefore);
 // describe the stats store
 describe("SES Stats Store", () => {
-	// getter - count
-	describe("Get SES Count", () => {
-		it("gets the SES count", getCount);
-	});
+  // getter - count
+  describe("Get SES Count", () => {
+    it("gets the SES count", getCount);
+  });
 
-	// setter - count
-	describe("Set SES Count", () => {
-		it("gets the SES count and immediately sets it", setCount);
-	});
+  // setter - count
+  describe("Set SES Count", () => {
+    it("gets the SES count and immediately sets it", setCount);
+  });
 
-	// getter - data
-	describe("Get SES Data", () => {
-		it("gets the current data", getData);
-	});
+  // getter - data
+  describe("Get SES Data", () => {
+    it("gets the current data", getData);
+  });
 
-	// setter - data
-	describe("Set SES Data", () => {
-		it("gets the current data and immediately sets it", setData);
-	});
+  // setter - data
+  describe("Set SES Data", () => {
+    it("gets the current data and immediately sets it", setData);
+  });
 });
 // run once callAfter all tests
 // after(callAfterStatsSES);

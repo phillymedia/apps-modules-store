@@ -14,10 +14,10 @@ var _phillyHelpers = require("philly-helpers");
  * Generic function to remove reords.
  *
  * @method remove
- * @param {object} Schema 					The schema used by the parent module.
- * @param {object} params					The details of the search.
- * @param {function} callback				A callback function.
- * @return {function} 						Returns error or array.
+ * @param {object} Schema - The schema used by the parent module.
+ * @param {object} params - The details of the search.
+ * @param {function} callback - A callback function.
+ * @return {function} - Returns error or array.
  */
 function remove(Schema, params, callback) {
   Schema.remove(params, function (err, data) {

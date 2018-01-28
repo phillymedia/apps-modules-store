@@ -23,20 +23,20 @@ let deleteAfterRun = false; // eslint-disable-line no-unused-vars
  * @return {function}
  */
 function callBefore(done) {
-	// test if database is populated
-	_schema.count({ source: _store.admin })
-		.then((count) => {
-			if (count === 0) {
-				// no content so safe to delete
-				deleteAfterRun = true;
-				// add test data
-				// return fixtures.ensureTestData();
-			}
-			else {
-				log.debug("Test database already exists");
-			}
-		})
-		.then(done);
+  // test if database is populated
+  _schema.count({ source: _store.admin })
+    .then((count) => {
+      if (count === 0) {
+        // no content so safe to delete
+        deleteAfterRun = true;
+        // add test data
+        // return fixtures.ensureTestData();
+      }
+      else {
+        log.debug("Test database already exists");
+      }
+    })
+    .then(done);
 }
 
 /**
@@ -48,24 +48,24 @@ function callBefore(done) {
  */
 /*
 function callAfterStatsTerms(done) {
-	// delete after run
-	if (deleteAfterRun) {
-		// delete test content inserted into the databases
-		log.debug("Deleting test Terms content...");
-		// clear terms
-		stats.clearTerms((err) => {
-			// handle errors
-			if (err) {
-				log.error(err);
-			}
-			// otherwise...
-			log.debug("Successfully deleted.");
-			// callback
-			return done();
-		});
-	}
-	// otherwise...
-	return done();
+  // delete after run
+  if (deleteAfterRun) {
+    // delete test content inserted into the databases
+    log.debug("Deleting test Terms content...");
+    // clear terms
+    stats.clearTerms((err) => {
+      // handle errors
+      if (err) {
+        log.error(err);
+      }
+      // otherwise...
+      log.debug("Successfully deleted.");
+      // callback
+      return done();
+    });
+  }
+  // otherwise...
+  return done();
 }
 */
 
@@ -81,11 +81,11 @@ function callAfterStatsTerms(done) {
  * @return {function}
  */
 function get(done) {
-	stats.getSubscriptions((err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		return done();
-	});
+  stats.getSubscriptions((err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    return done();
+  });
 }
 
 /**
@@ -96,22 +96,22 @@ function get(done) {
  * @return {function}
  */
 function set(done) {
-	stats.getSubscriptions((err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		// data has value (expected)
-		if (data) {
-			// set with returned data
-			return stats.setSubscriptions(data, (newErr, newData) => {
-				expect(newErr).to.be.null;
-				expect(newData).to.be.an("array");
-				return done();
-			});
-		}
-		// no value? problem!
-		log.error("Data didn't get set!");
-		return done();
-	});
+  stats.getSubscriptions((err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    // data has value (expected)
+    if (data) {
+      // set with returned data
+      return stats.setSubscriptions(data, (newErr, newData) => {
+        expect(newErr).to.be.null;
+        expect(newData).to.be.an("array");
+        return done();
+      });
+    }
+    // no value? problem!
+    log.error("Data didn't get set!");
+    return done();
+  });
 }
 
 
@@ -122,15 +122,15 @@ function set(done) {
 before(callBefore);
 // describe the stats store
 describe("Terms Stats Store", () => {
-	// getter - data
-	describe("Get Terms", () => {
-		it("gets the current data", get);
-	});
+  // getter - data
+  describe("Get Terms", () => {
+    it("gets the current data", get);
+  });
 
-	// setter - data
-	describe("Set Terms", () => {
-		it("gets the current data and immediately sets it", set);
-	});
+  // setter - data
+  describe("Set Terms", () => {
+    it("gets the current data and immediately sets it", set);
+  });
 });
 // after
 // after(callAfterStatsTerms);

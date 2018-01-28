@@ -12,7 +12,7 @@ import { feed } from "MAIN";
 const testCat = "test_category";
 const expectedContent = [];
 expectedContent.push({
-	testValue: "Working.",
+  testValue: "Working.",
 });
 
 
@@ -27,19 +27,19 @@ expectedContent.push({
  * @return {function}
  */
 function callAfterPhilly(done) {
-	// delete test content inserted into the databases
-	log.debug("Deleting test philly.com content...");
-	// fake philly articles
-	feed.clearArticlesPhilly(testCat, (err) => {
-		// handle errors
-		if (err) {
-			log.error(err);
-		}
-		// otherwise...
-		log.debug("Successfully deleted.");
-		// callback
-		return done();
-	});
+  // delete test content inserted into the databases
+  log.debug("Deleting test philly.com content...");
+  // fake philly articles
+  feed.clearArticlesPhilly(testCat, (err) => {
+    // handle errors
+    if (err) {
+      log.error(err);
+    }
+    // otherwise...
+    log.debug("Successfully deleted.");
+    // callback
+    return done();
+  });
 }
 
 
@@ -54,11 +54,11 @@ function callAfterPhilly(done) {
  * @return {function}
  */
 function getArticles(done) {
-	feed.getArticlesPhilly(testCat, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		return done();
-	});
+  feed.getArticlesPhilly(testCat, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    return done();
+  });
 }
 
 /**
@@ -69,12 +69,12 @@ function getArticles(done) {
  * @return {function}
  */
 function setArticles(done) {
-	feed.setArticlesPhilly(testCat, expectedContent, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		expect(data).to.deep.equal(expectedContent);
-		return done();
-	});
+  feed.setArticlesPhilly(testCat, expectedContent, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    expect(data).to.deep.equal(expectedContent);
+    return done();
+  });
 }
 
 /**
@@ -85,11 +85,11 @@ function setArticles(done) {
  * @return {function}
  */
 function getArticlesToday(done) {
-	feed.getArticlesTodayPhilly(testCat, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		return done();
-	});
+  feed.getArticlesTodayPhilly(testCat, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    return done();
+  });
 }
 
 /**
@@ -100,12 +100,12 @@ function getArticlesToday(done) {
  * @return {function}
  */
 function setArticlesToday(done) {
-	feed.setArticlesTodayPhilly(testCat, expectedContent, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		expect(data).to.deep.equal(expectedContent);
-		return done();
-	});
+  feed.setArticlesTodayPhilly(testCat, expectedContent, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    expect(data).to.deep.equal(expectedContent);
+    return done();
+  });
 }
 
 /**
@@ -116,11 +116,11 @@ function setArticlesToday(done) {
  * @return {function}
  */
 function getArticlesWatch(done) {
-	feed.getArticlesWatchPhilly(testCat, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		return done();
-	});
+  feed.getArticlesWatchPhilly(testCat, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    return done();
+  });
 }
 
 /**
@@ -131,12 +131,12 @@ function getArticlesWatch(done) {
  * @return {function}
  */
 function setArticlesWatch(done) {
-	feed.setArticlesWatchPhilly(testCat, expectedContent, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		expect(data).to.deep.equal(expectedContent);
-		return done();
-	});
+  feed.setArticlesWatchPhilly(testCat, expectedContent, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    expect(data).to.deep.equal(expectedContent);
+    return done();
+  });
 }
 
 
@@ -145,33 +145,33 @@ function setArticlesWatch(done) {
 
 // describe the feed store
 describe("Philly.com Feed Store", function () {
-	// main app
-	// getter
-	describe("Get Articles Philly", () => {
-		it("gets the current articles", getArticles);
-	});
-	// setter
-	describe("Set Articles Philly", () => {
-		it("sets the current articles", setArticles);
-	});
-	// today extension
-	// getter
-	describe("Get Articles Today Philly", () => {
-		it("gets the current today ext articles", getArticlesToday);
-	});
-	// setter
-	describe("Set Articles Today Philly", () => {
-		it("sets the current today ext articles", setArticlesToday);
-	});
-	// watch extension
-	// getter
-	describe("Get Articles Watch Philly", () => {
-		it("gets the current watch articles", getArticlesWatch);
-	});
-	// setter
-	describe("Get Articles Watch Philly", () => {
-		it("sets the current watch articles", setArticlesWatch);
-	});
-	// run once after all tests
-	after(callAfterPhilly);
+  // main app
+  // getter
+  describe("Get Articles Philly", () => {
+    it("gets the current articles", getArticles);
+  });
+  // setter
+  describe("Set Articles Philly", () => {
+    it("sets the current articles", setArticles);
+  });
+  // today extension
+  // getter
+  describe("Get Articles Today Philly", () => {
+    it("gets the current today ext articles", getArticlesToday);
+  });
+  // setter
+  describe("Set Articles Today Philly", () => {
+    it("sets the current today ext articles", setArticlesToday);
+  });
+  // watch extension
+  // getter
+  describe("Get Articles Watch Philly", () => {
+    it("gets the current watch articles", getArticlesWatch);
+  });
+  // setter
+  describe("Get Articles Watch Philly", () => {
+    it("sets the current watch articles", setArticlesWatch);
+  });
+  // run once after all tests
+  after(callAfterPhilly);
 });

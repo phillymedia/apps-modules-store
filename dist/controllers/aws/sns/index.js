@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _applications = require("./applications");
@@ -19,7 +19,7 @@ var _subscriptions2 = _interopRequireDefault(_subscriptions);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-	applications: _applications2.default,
-	endpoints: _endpoints2.default,
-	subscriptions: _subscriptions2.default
+  applications: _applications2.default,
+  endpoints: _endpoints2.default,
+  subscriptions: _subscriptions2.default
 };

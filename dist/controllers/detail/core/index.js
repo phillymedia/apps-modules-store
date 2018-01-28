@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _add = require("./add");
@@ -18,11 +18,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // =============================================================================
 
 exports.default = {
-	findOne: _find.findOne,
-	findMany: _find.findMany,
-	add: _add.add,
-	addMany: _add.addMany,
-	recreateCollection: _recreateCollection2.default,
-	exists: _find.exists
+  findOne: _find.findOne,
+  findMany: _find.findMany,
+  add: _add.add,
+  addMany: _add.addMany,
+  recreateCollection: _recreateCollection2.default,
+  exists: _find.exists
 }; // DEPENDENCIES
 // =============================================================================

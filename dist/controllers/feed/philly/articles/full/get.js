@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _config = require("../../../../../config");
@@ -32,16 +32,16 @@ var _type = _store.type.articles;
 * Get store.
 *
 * @method get
-* @param {String} name 						Name of the store.
-* @return {Function} core._find				The shared getter.
+* @param {String} name - Name of the store.
+* @return {Function} core._find - The shared getter.
 */
 function get(name, callback) {
-	var settings = {
-		source: _source,
-		type: _type,
-		name: name
-	};
-	return _core2.default.find(settings, callback);
+  var settings = {
+    source: _source,
+    type: _type,
+    name: name
+  };
+  return _core2.default.find(settings, callback);
 }
 
 // EXPORT

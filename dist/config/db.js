@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 var dbpass = process.env.MONGO_DB_PASS
 // npm
@@ -22,7 +22,7 @@ Main.database.user = "notifsUser";
 Main.database.url = "mongodb://" + Main.database.user + ":" + dbpass + "@" + Main.database.server + ":" + Main.database.port + "/" + Main.database.db;
 
 Main.database.errors = {
-	duplicate: 11000
+  duplicate: 11000
 };
 
 // EXPORT

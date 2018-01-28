@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _config = require("../../../../../config");
@@ -32,16 +32,16 @@ var _type = _store.type.articles;
 * Remove from store - brief.
 *
 * @method remove
-* @param {String} name 						Name of the store.
+* @param {String} name - Name of the store.
 * @return {Function} core.remove
 */
 function remove(name, callback) {
-	var settings = {
-		source: _source,
-		type: _type,
-		name: name
-	};
-	return _core2.default.remove(settings, callback);
+  var settings = {
+    source: _source,
+    type: _type,
+    name: name
+  };
+  return _core2.default.remove(settings, callback);
 }
 
 // EXPORT

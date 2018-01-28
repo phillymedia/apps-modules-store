@@ -6,19 +6,19 @@ var schemaName = "Application";
 
 // create the schema
 var Schema = new _db.db.Schema({
-	// arn
-	arn: {
-		type: String,
-		required: true,
-		index: {
-			unique: true
-		}
-	},
-	// attributes
-	attributes: {
-		type: Object,
-		required: true
-	}
+  // arn
+  arn: {
+    type: String,
+    required: true,
+    index: {
+      unique: true
+    }
+  },
+  // attributes
+  attributes: {
+    type: Object,
+    required: true
+  }
 });
 
 // this is default true, but let's make sure

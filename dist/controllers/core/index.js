@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _set = require("./set");
@@ -20,15 +20,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // =============================================================================
 
 exports.default = {
-	add: _set.add,
-	addMany: _set.addMany,
-	createCollection: _set.createCollection,
-	recreateCollection: _recreateCollection2.default,
-	remove: _remove.remove,
-	drop: _remove.drop,
-	find: _get.find,
-	findOne: _get.findOne,
-	findById: _get.findById,
-	exists: _get.exists,
-	clearOld: _remove.clearOld
+  add: _set.add,
+  addMany: _set.addMany,
+  createCollection: _set.createCollection,
+  recreateCollection: _recreateCollection2.default,
+  remove: _remove.remove,
+  drop: _remove.drop,
+  find: _get.find,
+  findOne: _get.findOne,
+  findById: _get.findById,
+  exists: _get.exists,
+  clearOld: _remove.clearOld
 };

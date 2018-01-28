@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _core = require("../core");
@@ -22,8 +22,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Insert a new item. Automatically delete the oldest at the same time.
  *
  * @method add
- * @param {Object} settings			Settings for the request.
- * @param {Function} callback		Returns error or result.
+ * @param {Object} settings - Settings for the request.
+ * @param {Function} callback - Returns error or result.
  * @return {Function}
 */
 // DEPENDENCIES
@@ -31,25 +31,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // APP -------------------------------
 // sub-modules
 function add(settings, callback) {
-	// set up parameters
-	var params = {
-		date: settings.date || new Date(),
-		target: settings.target,
-		message: settings.message
-	};
-	// optional id
-	if (settings.id) {
-		params.id = settings.id;
-	}
-	// insert document
-	_core2.default.add(_schema3.default, params, function (err, data) {
-		// handle errors
-		if (err) {
-			return callback(err);
-		}
-		// otherwise
-		return callback(null, data);
-	});
+  // set up parameters
+  var params = {
+    date: settings.date || new Date(),
+    target: settings.target,
+    message: settings.message
+  };
+  // optional id
+  if (settings.id) {
+    params.id = settings.id;
+  }
+  // insert document
+  _core2.default.add(_schema3.default, params, function (err, data) {
+    // handle errors
+    if (err) {
+      return callback(err);
+    }
+    // otherwise
+    return callback(null, data);
+  });
 }
 
 // EXPORTS

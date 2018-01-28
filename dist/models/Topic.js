@@ -6,19 +6,19 @@ var schemaName = "Topic";
 
 // create the schema
 var Schema = new _db.db.Schema({
-	// arn
-	TopicArn: {
-		type: String,
-		required: true,
-		index: {
-			unique: true
-		}
-	},
-	// attributes
-	Attributes: {
-		type: Object,
-		required: true
-	}
+  // arn
+  TopicArn: {
+    type: String,
+    required: true,
+    index: {
+      unique: true
+    }
+  },
+  // attributes
+  Attributes: {
+    type: Object,
+    required: true
+  }
 });
 
 // this is default true, but let's make sure

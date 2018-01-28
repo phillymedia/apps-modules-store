@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _get = require("./get");
@@ -18,10 +18,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // =============================================================================
 
 exports.default = {
-	getDetail: _get.get,
-	getDetails: _get.getMany,
-	addDetail: _add.add,
-	addDetails: _add.addMany,
-	recreateCollectionDetail: _recreateCollection2.default
+  getDetail: _get.get,
+  getDetails: _get.getMany,
+  addDetail: _add.add,
+  addDetails: _add.addMany,
+  recreateCollectionDetail: _recreateCollection2.default
 }; // DEPENDENCIES
 // =============================================================================

@@ -17,13 +17,13 @@ const Subscription = require("APP/models/Subscription");
 // reusable variables for testing.
 const { testSubscription } = mockedData;
 const subscriptionParams = {
-	arn: mockedData.subscription.SubscriptionArn,
+  arn: mockedData.subscription.SubscriptionArn,
 };
 const subscriptionParamsTest = mockedData.subscription.SubscriptionArn;
 const expectedSubscription = {
-	_id: "5700a128bd97c1341d8fb365",
-	arn: mockedData.subscription.SubscriptionArn,
-	attributes: mockedData.subscription.Attributes,
+  _id: "5700a128bd97c1341d8fb365",
+  arn: mockedData.subscription.SubscriptionArn,
+  attributes: mockedData.subscription.Attributes,
 };
 
 // MAIN METHODS
@@ -37,20 +37,20 @@ const expectedSubscription = {
  * @return {function}
  */
 function add(done) {
-	const SubscriptionMock = sinon.mock(new Subscription(testSubscription));
-	const subscription = SubscriptionMock.object;
+  const SubscriptionMock = sinon.mock(new Subscription(testSubscription));
+  const subscription = SubscriptionMock.object;
 
-	SubscriptionMock
-		.expects("save")
-		.yields(null);
+  SubscriptionMock
+    .expects("save")
+    .yields(null);
 
-	// eslint-disable-next-line no-unused-vars
-	subscription.save((err, result) => {
-		SubscriptionMock.verify();
-		SubscriptionMock.restore();
-		expect(err).to.be.null;
-		done();
-	});
+  // eslint-disable-next-line no-unused-vars
+  subscription.save((err, result) => {
+    SubscriptionMock.verify();
+    SubscriptionMock.restore();
+    expect(err).to.be.null;
+    done();
+  });
 }
 
 /**
@@ -61,23 +61,23 @@ function add(done) {
  * @return {function}
  */
 function addError(done) {
-	const SubscriptionMock = sinon.mock(new Subscription(testSubscription));
-	const subscription = SubscriptionMock.object;
-	const expectedError = {
-		name: "ValidationError",
-	};
+  const SubscriptionMock = sinon.mock(new Subscription(testSubscription));
+  const subscription = SubscriptionMock.object;
+  const expectedError = {
+    name: "ValidationError",
+  };
 
-	SubscriptionMock
-		.expects("save")
-		.yields(expectedError);
+  SubscriptionMock
+    .expects("save")
+    .yields(expectedError);
 
-	subscription.save((err, result) => {
-		SubscriptionMock.verify();
-		SubscriptionMock.restore();
-		expect(err.name).to.equal("ValidationError");
-		expect(result).to.be.undefined;
-		done();
-	});
+  subscription.save((err, result) => {
+    SubscriptionMock.verify();
+    SubscriptionMock.restore();
+    expect(err.name).to.equal("ValidationError");
+    expect(result).to.be.undefined;
+    done();
+  });
 }
 
 /**
@@ -88,19 +88,19 @@ function addError(done) {
  * @return {function}
  */
 function findByParams(done) {
-	const subscriptionMock = sinon.mock(Subscription);
+  const subscriptionMock = sinon.mock(Subscription);
 
-	subscriptionMock
-		.expects("find")
-		.withArgs(subscriptionParams)
-		.yields(null, expectedSubscription);
+  subscriptionMock
+    .expects("find")
+    .withArgs(subscriptionParams)
+    .yields(null, expectedSubscription);
 
-	Subscription.find(subscriptionParams, (err, result) => {
-		subscriptionMock.verify();
-		subscriptionMock.restore();
-		expect(result.arn).to.equal(subscriptionParamsTest);
-		done();
-	});
+  Subscription.find(subscriptionParams, (err, result) => {
+    subscriptionMock.verify();
+    subscriptionMock.restore();
+    expect(result.arn).to.equal(subscriptionParamsTest);
+    done();
+  });
 }
 
 
@@ -109,10 +109,10 @@ function findByParams(done) {
 
 // model
 describe("Subscription Model", () => {
-	// add
-	it("should create a new subscription entry", add);
-	// error if add fails
-	it("should return error if subscription is not created", addError);
-	// find
-	it("should find subscription by params", findByParams);
+  // add
+  it("should create a new subscription entry", add);
+  // error if add fails
+  it("should return error if subscription is not created", addError);
+  // find
+  it("should find subscription by params", findByParams);
 });

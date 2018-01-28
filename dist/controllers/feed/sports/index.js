@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _async = require("async");
@@ -34,8 +34,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 * @param {function} callback - A callback function..
 */
 function clearV1(callback) {
-	// combined feed, games, tweets
-	(0, _async.parallel)([_feed2.default.removeV1, _games2.default.removeV1, _tweets2.default.removeV1], callback);
+  // combined feed, games, tweets
+  (0, _async.parallel)([_feed2.default.removeV1, _games2.default.removeV1, _tweets2.default.removeV1], callback);
 }
 
 /**
@@ -47,28 +47,28 @@ function clearV1(callback) {
 // =============================================================================
 // THIRD-PARTY LIBRARIES  -------------------------------
 function clear(callback) {
-	// combined feed, games, tweets
-	(0, _async.parallel)([_feed2.default.remove, _games2.default.remove, _tweets2.default.remove], callback);
+  // combined feed, games, tweets
+  (0, _async.parallel)([_feed2.default.remove, _games2.default.remove, _tweets2.default.remove], callback);
 }
 
 // EXPORT
 // =============================================================================
 
 exports.default = {
-	getFeed: _feed2.default.get,
-	getFeedV1: _feed2.default.getV1,
-	setFeed: _feed2.default.set,
-	setFeedV1: _feed2.default.setV1,
-	getGames: _games2.default.get,
-	setGames: _games2.default.set,
-	getTweets: _tweets2.default.get,
-	setTweets: _tweets2.default.set,
-	getSearch: _search2.default.get,
-	getSearchV1: _search2.default.getV1,
-	setSearch: _search2.default.set,
-	setSearchV1: _search2.default.setV1,
-	removeSearch: _search2.default.remove,
-	removeSearchV1: _search2.default.removeV1,
-	clear: clear,
-	clearV1: clearV1
+  getFeed: _feed2.default.get,
+  getFeedV1: _feed2.default.getV1,
+  setFeed: _feed2.default.set,
+  setFeedV1: _feed2.default.setV1,
+  getGames: _games2.default.get,
+  setGames: _games2.default.set,
+  getTweets: _tweets2.default.get,
+  setTweets: _tweets2.default.set,
+  getSearch: _search2.default.get,
+  getSearchV1: _search2.default.getV1,
+  setSearch: _search2.default.set,
+  setSearchV1: _search2.default.setV1,
+  removeSearch: _search2.default.remove,
+  removeSearchV1: _search2.default.removeV1,
+  clear: clear,
+  clearV1: clearV1
 };
