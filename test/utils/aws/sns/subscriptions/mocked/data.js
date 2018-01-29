@@ -27,24 +27,24 @@ const username = "User1";
  * @property subArray
  */
 const subArray = [
-	{
-		TopicArn: "FakeTopic1",
-		SubscriptionArn: "FakeSubscription1",
-		Protocol: "FakeProtocol1",
-		Endpoint: "FakeAppEndpoint1",
-	},
-	{
-		TopicArn: "FakeTopic1",
-		SubscriptionArn: "FakeSubscription2",
-		Protocol: "FakeProtocol1",
-		Endpoint: "FakeAppEndpoint2",
-	},
-	{
-		TopicArn: "FakeTopic1",
-		SubscriptionArn: "FakeSubscription3",
-		Protocol: "FakeProtocol2",
-		Endpoint: "FakeEmailEndpoint1",
-	},
+  {
+    TopicArn: "FakeTopic1",
+    SubscriptionArn: "FakeSubscription1",
+    Protocol: "FakeProtocol1",
+    Endpoint: "FakeAppEndpoint1",
+  },
+  {
+    TopicArn: "FakeTopic1",
+    SubscriptionArn: "FakeSubscription2",
+    Protocol: "FakeProtocol1",
+    Endpoint: "FakeAppEndpoint2",
+  },
+  {
+    TopicArn: "FakeTopic1",
+    SubscriptionArn: "FakeSubscription3",
+    Protocol: "FakeProtocol2",
+    Endpoint: "FakeEmailEndpoint1",
+  },
 ];
 
 /**
@@ -53,11 +53,11 @@ const subArray = [
  * @property insertedSubscription
  */
 const insertedSubscription = {
-	TopicArn: "FakeTopic1",
-	SubscriptionArn: "FakeSubscription4",
-	Protocol: "FakeProtocol1",
-	Endpoint: "FakeAppEndpoint2",
-	CustomUserData: username,
+  TopicArn: "FakeTopic1",
+  SubscriptionArn: "FakeSubscription4",
+  Protocol: "FakeProtocol1",
+  Endpoint: "FakeAppEndpoint2",
+  CustomUserData: username,
 };
 
 /**
@@ -87,11 +87,11 @@ const endpoint = insertedSubscription.Endpoint;
  * @property testSubscription
  */
 const testSubscription = {
-	arn: insertedSubscription.SubscriptionArn,
-	topic: insertedSubscription.TopicArn,
-	endpoint: insertedSubscription.Endpoint,
-	protocol: insertedSubscription.Protocol,
-	username: insertedSubscription.CustomUserData,
+  arn: insertedSubscription.SubscriptionArn,
+  topic: insertedSubscription.TopicArn,
+  endpoint: insertedSubscription.Endpoint,
+  protocol: insertedSubscription.Protocol,
+  username: insertedSubscription.CustomUserData,
 };
 
 /**
@@ -100,7 +100,7 @@ const testSubscription = {
  * @property subscription
  */
 const subscription = {
-	SubscriptionArn: insertedSubscription.SubscriptionArn,
+  SubscriptionArn: insertedSubscription.SubscriptionArn,
 };
 
 
@@ -110,7 +110,7 @@ const subscription = {
  * @property subscriptions
  */
 const subscriptions = {
-	Subscriptions: subArray,
+  Subscriptions: subArray,
 };
 
 /**
@@ -119,8 +119,8 @@ const subscriptions = {
  * @property subscriptionsWithNextToken
  */
 const subscriptionsWithNextToken = {
-	Subscriptions: subArray,
-	NextToken: "FakeNextToken",
+  Subscriptions: subArray,
+  NextToken: "FakeNextToken",
 };
 
 
@@ -128,16 +128,16 @@ const subscriptionsWithNextToken = {
 // =============================================================================
 
 export default {
-	token,
-	topic,
-	username,
-	endpoint,
-	endpointBad,
-	protocol,
-	insertedSubscription,
-	insertedSubscriptions: subArray,
-	testSubscription,
-	subscription,
-	subscriptions,
-	subscriptionsWithNextToken,
+  token,
+  topic,
+  username,
+  endpoint,
+  endpointBad,
+  protocol,
+  insertedSubscription,
+  insertedSubscriptions: subArray,
+  testSubscription,
+  subscription,
+  subscriptions,
+  subscriptionsWithNextToken,
 };

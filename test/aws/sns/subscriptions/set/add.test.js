@@ -5,7 +5,7 @@
 // TESTED METHOD -------------------------------
 import { expect } from "chai";
 import subscriptions from "COMP/aws/sns/subscriptions";
-const add = subscriptions.add;
+const { add } = subscriptions;
 // MOCKED DATA -------------------------------
 import testUtils from "TEST/utils";
 const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
@@ -23,13 +23,13 @@ const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
  * @return {function}
  */
 function noErrors(done) {
-	add(mockedData.insertedSubscription, (err, data) => {
-		expect(err).to.not.exist;
-		expect(data).to.be.an("object")
-		.that.has.property("arn")
-		.which.equals(mockedData.insertedSubscription.SubscriptionArn);
-		return done();
-	});
+  add(mockedData.insertedSubscription, (err, data) => {
+    expect(err).to.not.exist;
+    expect(data).to.be.an("object")
+      .that.has.property("arn")
+      .which.equals(mockedData.insertedSubscription.SubscriptionArn);
+    return done();
+  });
 }
 
 
@@ -37,5 +37,5 @@ function noErrors(done) {
 // =============================================================================
 
 export default {
-	noErrors,
+  noErrors,
 };

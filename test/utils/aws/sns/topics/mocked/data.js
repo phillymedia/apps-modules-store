@@ -1,26 +1,26 @@
 const testHint = "test_hint";
 const insertedContent = {
-  PlatformApplicationArn: `some_stuff_${testHint}_and_stuff`,
+  TopicArn: `some_stuff_${testHint}_and_stuff`,
   Attributes: {
-    Platform: "testplatform",
+    DisplayName: "Some Stuff",
   },
 };
 const insertedContents = [
   {
-    PlatformApplicationArn: "some_other_thing",
+    TopicArn: "some_other_thing",
     Attributes: {
-      Platform: "testplatform2",
+      Platform: "Some Other Thing",
     },
   },
   {
-    PlatformApplicationArn: "some_other_thing2",
+    TopicArn: "yet_another_thing",
     Attributes: {
-      Platform: "testplatform3",
+      Platform: "Yet Another Thing",
     },
   },
 ];
 const expectedContent = {
-  arn: insertedContent.PlatformApplicationArn,
+  arn: insertedContent.TopicArn,
   attributes: insertedContent.Attributes,
 };
 

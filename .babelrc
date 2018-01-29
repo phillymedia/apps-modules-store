@@ -1,19 +1,19 @@
 {
-  "presets": ["env"],
-  "env": {
+	"presets": ["env"],
+	"env": {
     "production": {
-    "presets": ["minify"]
+      "presets": ["minify"]
     }
-  },
-  "plugins": [
+	},
+	"plugins": [
     ["module-resolver", {
-      "alias": {
-        "APP": "./lib",
-        "MAIN": "./lib/app",
-        "SERVER": "./lib/server",
-        "COMP": "./lib/controllers",
-        "TEST": "./test"
-      }
+			"alias": {
+				"APP": "./lib",
+				"MAIN": "./lib/app",
+				"SERVER": "./lib/server",
+				"COMP": "./lib/controllers",
+				"TEST": "./test"
+			}
     }]
   ]
 }

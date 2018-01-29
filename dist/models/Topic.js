@@ -7,7 +7,7 @@ var schemaName = "Topic";
 // create the schema
 var Schema = new _db.db.Schema({
   // arn
-  TopicArn: {
+  arn: {
     type: String,
     required: true,
     index: {
@@ -15,7 +15,7 @@ var Schema = new _db.db.Schema({
     }
   },
   // attributes
-  Attributes: {
+  attributes: {
     type: Object,
     required: true
   }

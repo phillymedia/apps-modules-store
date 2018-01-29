@@ -16,10 +16,15 @@ var _subscriptions = require("./subscriptions");
 
 var _subscriptions2 = _interopRequireDefault(_subscriptions);
 
+var _topics = require("./topics");
+
+var _topics2 = _interopRequireDefault(_topics);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   applications: _applications2.default,
   endpoints: _endpoints2.default,
-  subscriptions: _subscriptions2.default
+  subscriptions: _subscriptions2.default,
+  topics: _topics2.default
 };

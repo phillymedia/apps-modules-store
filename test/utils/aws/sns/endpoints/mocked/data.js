@@ -5,10 +5,10 @@
  */
 const fakeHint = "test_hint";
 const fakeApp = {
-	PlatformApplicationArn: `some_stuff_${fakeHint}_and_stuff`,
-	Attributes: {
-		Platform: "testplatform",
-	},
+  PlatformApplicationArn: `some_stuff_${fakeHint}_and_stuff`,
+  Attributes: {
+    Platform: "testplatform",
+  },
 };
 
 /**
@@ -24,51 +24,51 @@ const endpointArnBad = "BadEndpoint1";
  * @property endpointArray
  */
 const endpointArray = [
-	{
-		arn: "FakeAppEndpoint1",
-		attributes: {
-			PlatformApplicationArn: fakeApp.PlatformApplicationArn,
-			Token: "FakeToken1",
-			CustomUserData: "FakeUserData1",
-			Enabled: true,
-		},
-	},
-	{
-		arn: "FakeAppEndpoint2",
-		attributes: {
-			PlatformApplicationArn: "FakeAppArn1",
-			Token: "FakeToken2",
-			CustomUserData: "FakeUserData2",
-			Enabled: true,
-		},
-	},
-	{
-		arn: "FakeAppEndpoint3",
-		attributes: {
-			PlatformApplicationArn: "FakeAppArn2",
-			Token: "FakeToken3",
-			CustomUserData: "FakeUserData3",
-			Enabled: true,
-		},
-	},
-	{
-		arn: "FakeAppEndpoint4",
-		attributes: {
-			PlatformApplicationArn: "FakeAppArn2",
-			Token: "FakeToken4",
-			CustomUserData: "FakeUserData4",
-			Enabled: true,
-		},
-	},
-	{
-		arn: "FakeAppEndpoint5",
-		attributes: {
-			PlatformApplicationArn: "FakeAppArn2",
-			Token: "FakeToken5",
-			CustomUserData: "FakeUserData5",
-			Enabled: false,
-		},
-	},
+  {
+    arn: "FakeAppEndpoint1",
+    attributes: {
+      PlatformApplicationArn: fakeApp.PlatformApplicationArn,
+      Token: "FakeToken1",
+      CustomUserData: "FakeUserData1",
+      Enabled: true,
+    },
+  },
+  {
+    arn: "FakeAppEndpoint2",
+    attributes: {
+      PlatformApplicationArn: "FakeAppArn1",
+      Token: "FakeToken2",
+      CustomUserData: "FakeUserData2",
+      Enabled: true,
+    },
+  },
+  {
+    arn: "FakeAppEndpoint3",
+    attributes: {
+      PlatformApplicationArn: "FakeAppArn2",
+      Token: "FakeToken3",
+      CustomUserData: "FakeUserData3",
+      Enabled: true,
+    },
+  },
+  {
+    arn: "FakeAppEndpoint4",
+    attributes: {
+      PlatformApplicationArn: "FakeAppArn2",
+      Token: "FakeToken4",
+      CustomUserData: "FakeUserData4",
+      Enabled: true,
+    },
+  },
+  {
+    arn: "FakeAppEndpoint5",
+    attributes: {
+      PlatformApplicationArn: "FakeAppArn2",
+      Token: "FakeToken5",
+      CustomUserData: "FakeUserData5",
+      Enabled: false,
+    },
+  },
 ];
 
 /**
@@ -77,24 +77,24 @@ const endpointArray = [
  * @property insertedContents
  */
 const insertedContents = [
-	{
-		EndpointArn: "FakeAppEndpoint6",
-		Attributes: {
-			PlatformApplicationArn: "FakeAppArn2",
-			Token: "FakeToken6",
-			CustomUserData: "FakeUserData6",
-			Enabled: true,
-		},
-	},
-	{
-		EndpointArn: "FakeAppEndpoint7",
-		Attributes: {
-			PlatformApplicationArn: "FakeAppArn2",
-			Token: "FakeToken7",
-			CustomUserData: "FakeUserData6",
-			Enabled: true,
-		},
-	},
+  {
+    EndpointArn: "FakeAppEndpoint6",
+    Attributes: {
+      PlatformApplicationArn: "FakeAppArn2",
+      Token: "FakeToken6",
+      CustomUserData: "FakeUserData6",
+      Enabled: true,
+    },
+  },
+  {
+    EndpointArn: "FakeAppEndpoint7",
+    Attributes: {
+      PlatformApplicationArn: "FakeAppArn2",
+      Token: "FakeToken7",
+      CustomUserData: "FakeUserData6",
+      Enabled: true,
+    },
+  },
 ];
 
 /**
@@ -117,8 +117,8 @@ const application = endpointArray[0].attributes.PlatformApplicationArn;
  * @property endpoint
  */
 const endpoint = {
-	EndpointArn: endpointArray[0].arn,
-	Attributes: endpointArray[0].attributes,
+  EndpointArn: endpointArray[0].arn,
+  Attributes: endpointArray[0].attributes,
 };
 
 /**
@@ -127,8 +127,8 @@ const endpoint = {
  * @property testEndpoint
  */
 const testEndpoint = {
-	arn: endpointArray[0].arn,
-	attributes: endpointArray[0].attributes,
+  arn: endpointArray[0].arn,
+  attributes: endpointArray[0].attributes,
 };
 
 
@@ -144,11 +144,11 @@ const endpoints = endpointArray;
 // =============================================================================
 
 export default {
-	insertedContents,
-	application,
-	token,
-	endpointArnBad,
-	testEndpoint,
-	endpoint,
-	endpoints,
+  insertedContents,
+  application,
+  token,
+  endpointArnBad,
+  testEndpoint,
+  endpoint,
+  endpoints,
 };
