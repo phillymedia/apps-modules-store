@@ -25,17 +25,17 @@ const mockedData = testUtils.mocked.aws.sns.endpoints.data;
  * @return {function}
  */
 function noErrors(done) {
-	get(mockedData.testEndpoint.attributes.CustomUserData, (err, data) => {
-		expect(err).to.not.exist;
-		expect(data).to.be.an("array");
-		expect(every(data, {
-			attributes: {
-				CustomUserData: mockedData.testEndpoint.attributes.CustomUserData,
-			},
-		})).to.be.true;
-		// done!
-		return done();
-	});
+  get(mockedData.testEndpoint.attributes.CustomUserData, (err, data) => {
+    expect(err).to.not.exist;
+    expect(data).to.be.an("array");
+    expect(every(data, {
+      attributes: {
+        CustomUserData: mockedData.testEndpoint.attributes.CustomUserData,
+      },
+    })).to.be.true;
+    // done!
+    return done();
+  });
 }
 
 
@@ -43,5 +43,5 @@ function noErrors(done) {
 // =============================================================================
 
 export default {
-	noErrors,
+  noErrors,
 };

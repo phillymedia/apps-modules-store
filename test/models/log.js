@@ -15,13 +15,13 @@ const Log = require("APP/models/Log");
 // reusable variables for testing.
 const logParamsTest = "phillycom";
 const testLog = {
-	target: logParamsTest,
-	message: "This is a test.",
+  target: logParamsTest,
+  message: "This is a test.",
 };
 const logParams = testLog;
 const expectedLog = {
-	target: logParamsTest,
-	message: "This is a test.",
+  target: logParamsTest,
+  message: "This is a test.",
 };
 
 
@@ -36,20 +36,20 @@ const expectedLog = {
  * @return {function}
  */
 function add(done) {
-	const LogMock = sinon.mock(new Log(testLog));
-	const log = LogMock.object;
+  const LogMock = sinon.mock(new Log(testLog));
+  const log = LogMock.object;
 
-	LogMock
-		.expects("save")
-		.yields(null);
+  LogMock
+    .expects("save")
+    .yields(null);
 
-	// eslint-disable-next-line no-unused-vars
-	log.save((err, result) => {
-		LogMock.verify();
-		LogMock.restore();
-		expect(err).to.be.null;
-		done();
-	});
+  // eslint-disable-next-line no-unused-vars
+  log.save((err, result) => {
+    LogMock.verify();
+    LogMock.restore();
+    expect(err).to.be.null;
+    done();
+  });
 }
 
 /**
@@ -60,23 +60,23 @@ function add(done) {
  * @return {function}
  */
 function addError(done) {
-	const LogMock = sinon.mock(new Log(testLog));
-	const log = LogMock.object;
-	const expectedError = {
-		name: "ValidationError",
-	};
+  const LogMock = sinon.mock(new Log(testLog));
+  const log = LogMock.object;
+  const expectedError = {
+    name: "ValidationError",
+  };
 
-	LogMock
-		.expects("save")
-		.yields(expectedError);
+  LogMock
+    .expects("save")
+    .yields(expectedError);
 
-	log.save((err, result) => {
-		LogMock.verify();
-		LogMock.restore();
-		expect(err.name).to.equal("ValidationError");
-		expect(result).to.be.undefined;
-		done();
-	});
+  log.save((err, result) => {
+    LogMock.verify();
+    LogMock.restore();
+    expect(err.name).to.equal("ValidationError");
+    expect(result).to.be.undefined;
+    done();
+  });
 }
 
 /**
@@ -87,19 +87,19 @@ function addError(done) {
  * @return {function}
  */
 function findByParams(done) {
-	const logMock = sinon.mock(Log);
+  const logMock = sinon.mock(Log);
 
-	logMock
-		.expects("find")
-		.withArgs(logParams)
-		.yields(null, expectedLog);
+  logMock
+    .expects("find")
+    .withArgs(logParams)
+    .yields(null, expectedLog);
 
-	Log.find(logParams, (err, result) => {
-		logMock.verify();
-		logMock.restore();
-		expect(result.target).to.equal(logParamsTest);
-		done();
-	});
+  Log.find(logParams, (err, result) => {
+    logMock.verify();
+    logMock.restore();
+    expect(result.target).to.equal(logParamsTest);
+    done();
+  });
 }
 
 /**
@@ -110,25 +110,25 @@ function findByParams(done) {
  * @return {function}
  */
 function findRecent(done) {
-	const logMock = sinon.mock(Log);
-	const recentLogParams = {
-		limit: 5,
-		sort: {
-			date: "desc",
-		},
-	};
+  const logMock = sinon.mock(Log);
+  const recentLogParams = {
+    limit: 5,
+    sort: {
+      date: "desc",
+    },
+  };
 
-	logMock
-		.expects("find")
-		.withArgs(recentLogParams)
-		.yields(null, "SOME_VALUE");
+  logMock
+    .expects("find")
+    .withArgs(recentLogParams)
+    .yields(null, "SOME_VALUE");
 
-	Log.find(recentLogParams, (err, result) => {
-		logMock.verify();
-		logMock.restore();
-		expect(result).to.equal("SOME_VALUE");
-		done();
-	});
+  Log.find(recentLogParams, (err, result) => {
+    logMock.verify();
+    logMock.restore();
+    expect(result).to.equal("SOME_VALUE");
+    done();
+  });
 }
 
 
@@ -137,12 +137,12 @@ function findRecent(done) {
 
 // log
 describe("Log Model", () => {
-	// add
-	it("should create a new log", add);
-	// error if add fails
-	it("should return error if log is not created", addError);
-	// find by id
-	it("should find log by target and message", findByParams);
-	// find most x recent
-	it("should find the most recent logs", findRecent);
+  // add
+  it("should create a new log", add);
+  // error if add fails
+  it("should return error if log is not created", addError);
+  // find by id
+  it("should find log by target and message", findByParams);
+  // find most x recent
+  it("should find the most recent logs", findRecent);
 });

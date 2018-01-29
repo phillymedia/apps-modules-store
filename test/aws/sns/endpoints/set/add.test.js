@@ -23,13 +23,13 @@ const mockedData = testUtils.mocked.aws.sns.endpoints.data;
  * @return {function}
  */
 function noErrors(done) {
-	add(mockedData.endpoint, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("object")
-			.that.has.property("arn")
-			.which.equals(mockedData.endpoint.EndpointArn);
-		return done();
-	});
+  add(mockedData.endpoint, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("object")
+      .that.has.property("arn")
+      .which.equals(mockedData.endpoint.EndpointArn);
+    return done();
+  });
 }
 
 
@@ -37,5 +37,5 @@ function noErrors(done) {
 // =============================================================================
 
 export default {
-	noErrors,
+  noErrors,
 };

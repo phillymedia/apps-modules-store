@@ -5,8 +5,8 @@
 // OTHER -------------------------------
 import { log } from "philly-helpers";
 // TESTED METHOD -------------------------------
-import subscriptions from "COMP/aws/sns/subscriptions";
-const { remove } = subscriptions;
+import topics from "COMP/aws/sns/topics";
+const { remove } = topics;
 
 
 // BEFORE AND AFTER
@@ -21,7 +21,7 @@ const { remove } = subscriptions;
  */
 function cleanup(done) {
   // delete test content inserted into the databases
-  log.debug("Deleting test subscriptions content...");
+  log.debug("Deleting test topics content...");
   // remove fake platform
   remove((err) => {
     // handle errors

@@ -7,22 +7,23 @@ import { db as mongoose } from "COMP/db";
 import { expect } from "chai";
 import sinon from "sinon";
 require("sinon-mongoose");
+import testUtils from "TEST/utils";
+const mockedData = testUtils.mocked.aws.sns.topics.data;
 
 // PRIVATE VARIABLES
 // =============================================================================
 // model
-const Stat = require("APP/models/Stat");
+const Topic = require("APP/models/Topic");
 // reusable variables for testing.
-const testStatContent = { count: { total: 324, withSubs: 189, withoutSubs: 135 } };
-const testStat = {
-  expireAt: new Date(),
-  name: "terms",
-  content: testStatContent,
+const testTopic = mockedData.expectedContent;
+const topicParams = {
+  arn: mockedData.expectedContent.arn,
 };
-const statParams = { name: "terms" };
-const expectedStat = {
-  name: "terms",
-  content: testStatContent,
+const topicParamsTest = mockedData.expectedContent.arn;
+const expectedTopic = {
+  _id: "5700a128bd97c1341d8fb365",
+  arn: mockedData.expectedContent.arn,
+  attributes: mockedData.expectedContent.attributes,
 };
 
 
@@ -37,17 +38,17 @@ const expectedStat = {
  * @return {function}
  */
 function add(done) {
-  const StatMock = sinon.mock(new Stat(testStat));
-  const stat = StatMock.object;
+  const TopicMock = sinon.mock(new Topic(testTopic));
+  const topic = TopicMock.object;
 
-  StatMock
+  TopicMock
     .expects("save")
     .yields(null);
 
   // eslint-disable-next-line no-unused-vars
-  stat.save((err, result) => {
-    StatMock.verify();
-    StatMock.restore();
+  topic.save((err, result) => {
+    TopicMock.verify();
+    TopicMock.restore();
     expect(err).to.be.null;
     done();
   });
@@ -61,19 +62,19 @@ function add(done) {
  * @return {function}
  */
 function addError(done) {
-  const StatMock = sinon.mock(new Stat(testStat));
-  const stat = StatMock.object;
+  const TopicMock = sinon.mock(new Topic(testTopic));
+  const topic = TopicMock.object;
   const expectedError = {
     name: "ValidationError",
   };
 
-  StatMock
+  TopicMock
     .expects("save")
     .yields(expectedError);
 
-  stat.save((err, result) => {
-    StatMock.verify();
-    StatMock.restore();
+  topic.save((err, result) => {
+    TopicMock.verify();
+    TopicMock.restore();
     expect(err.name).to.equal("ValidationError");
     expect(result).to.be.undefined;
     done();
@@ -88,17 +89,17 @@ function addError(done) {
  * @return {function}
  */
 function findByParams(done) {
-  const statMock = sinon.mock(Stat);
+  const topicMock = sinon.mock(Topic);
 
-  statMock
+  topicMock
     .expects("find")
-    .withArgs(statParams)
-    .yields(null, expectedStat);
+    .withArgs(topicParams)
+    .yields(null, expectedTopic);
 
-  Stat.find(statParams, (err, result) => {
-    statMock.verify();
-    statMock.restore();
-    expect(result.content).to.equal(testStatContent);
+  Topic.find(topicParams, (err, result) => {
+    topicMock.verify();
+    topicMock.restore();
+    expect(result.arn).to.equal(topicParamsTest);
     done();
   });
 }
@@ -107,12 +108,12 @@ function findByParams(done) {
 // TESTS
 // =============================================================================
 
-// stat
-describe("Stat Model", () => {
+// model
+describe("Topic Model", () => {
   // add
-  it("should create a new stat entry", add);
+  it("should create a new topic entry", add);
   // error if add fails
-  it("should return error if stat entry is not created", addError);
+  it("should return error if topic is not created", addError);
   // find
-  it("should find stat by name", findByParams);
+  it("should find topic by params", findByParams);
 });

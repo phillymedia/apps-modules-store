@@ -24,14 +24,14 @@ const mockedData = testUtils.mocked.aws.sns.applications.data;
  * @return {function}
  */
 function noErrors(done) {
-	add(mockedData.insertedContents, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		expect(some(data, {
-			arn: mockedData.insertedContents[0].PlatformApplicationArn,
-		})).to.be.true;
-		return done();
-	});
+  add(mockedData.insertedContents, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    expect(some(data, {
+      arn: mockedData.insertedContents[0].PlatformApplicationArn,
+    })).to.be.true;
+    return done();
+  });
 }
 
 
@@ -39,5 +39,5 @@ function noErrors(done) {
 // =============================================================================
 
 export default {
-	noErrors,
+  noErrors,
 };

@@ -24,14 +24,14 @@ const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
  * @return {function}
  */
 function noErrors(done) {
-	add(mockedData.insertedSubscriptions, (err, data) => {
-		expect(err).to.be.null;
-		expect(data).to.be.an("array");
-		expect(some(data, {
-			arn: mockedData.insertedSubscriptions[0].SubscriptionArn,
-		})).to.be.true;
-		return done();
-	});
+  add(mockedData.insertedSubscriptions, (err, data) => {
+    expect(err).to.be.null;
+    expect(data).to.be.an("array");
+    expect(some(data, {
+      arn: mockedData.insertedSubscriptions[0].SubscriptionArn,
+    })).to.be.true;
+    return done();
+  });
 }
 
 
@@ -39,5 +39,5 @@ function noErrors(done) {
 // =============================================================================
 
 export default {
-	noErrors,
+  noErrors,
 };

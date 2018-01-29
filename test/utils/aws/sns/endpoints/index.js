@@ -1,5 +1,5 @@
 import mocked from "./mocked";
 
 export default {
-	mocked,
+  mocked,
 };

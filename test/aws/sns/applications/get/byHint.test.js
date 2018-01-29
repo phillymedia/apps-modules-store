@@ -5,7 +5,7 @@
 // TESTED METHOD -------------------------------
 import { expect } from "chai";
 import applications from "COMP/aws/sns/applications";
-const get = applications.getByHint;
+const { getByHint: get } = applications;
 // MOCKED DATA -------------------------------
 import testUtils from "TEST/utils";
 const mockedData = testUtils.mocked.aws.sns.applications.data;

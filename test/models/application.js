@@ -17,13 +17,13 @@ const Application = require("APP/models/Application");
 // reusable variables for testing.
 const testApplication = mockedData.expectedContent;
 const applicationParams = {
-	arn: mockedData.expectedContent.arn,
+  arn: mockedData.expectedContent.arn,
 };
 const applicationParamsTest = mockedData.expectedContent.arn;
 const expectedApplication = {
-	_id: "5700a128bd97c1341d8fb365",
-	arn: mockedData.expectedContent.arn,
-	attributes: mockedData.expectedContent.attributes,
+  _id: "5700a128bd97c1341d8fb365",
+  arn: mockedData.expectedContent.arn,
+  attributes: mockedData.expectedContent.attributes,
 };
 
 
@@ -38,20 +38,20 @@ const expectedApplication = {
  * @return {function}
  */
 function add(done) {
-	const ApplicationMock = sinon.mock(new Application(testApplication));
-	const application = ApplicationMock.object;
+  const ApplicationMock = sinon.mock(new Application(testApplication));
+  const application = ApplicationMock.object;
 
-	ApplicationMock
-		.expects("save")
-		.yields(null);
+  ApplicationMock
+    .expects("save")
+    .yields(null);
 
-	// eslint-disable-next-line no-unused-vars
-	application.save((err, result) => {
-		ApplicationMock.verify();
-		ApplicationMock.restore();
-		expect(err).to.be.null;
-		done();
-	});
+  // eslint-disable-next-line no-unused-vars
+  application.save((err, result) => {
+    ApplicationMock.verify();
+    ApplicationMock.restore();
+    expect(err).to.be.null;
+    done();
+  });
 }
 
 /**
@@ -62,23 +62,23 @@ function add(done) {
  * @return {function}
  */
 function addError(done) {
-	const ApplicationMock = sinon.mock(new Application(testApplication));
-	const application = ApplicationMock.object;
-	const expectedError = {
-		name: "ValidationError",
-	};
+  const ApplicationMock = sinon.mock(new Application(testApplication));
+  const application = ApplicationMock.object;
+  const expectedError = {
+    name: "ValidationError",
+  };
 
-	ApplicationMock
-		.expects("save")
-		.yields(expectedError);
+  ApplicationMock
+    .expects("save")
+    .yields(expectedError);
 
-	application.save((err, result) => {
-		ApplicationMock.verify();
-		ApplicationMock.restore();
-		expect(err.name).to.equal("ValidationError");
-		expect(result).to.be.undefined;
-		done();
-	});
+  application.save((err, result) => {
+    ApplicationMock.verify();
+    ApplicationMock.restore();
+    expect(err.name).to.equal("ValidationError");
+    expect(result).to.be.undefined;
+    done();
+  });
 }
 
 /**
@@ -89,19 +89,19 @@ function addError(done) {
  * @return {function}
  */
 function findByParams(done) {
-	const applicationMock = sinon.mock(Application);
+  const applicationMock = sinon.mock(Application);
 
-	applicationMock
-		.expects("find")
-		.withArgs(applicationParams)
-		.yields(null, expectedApplication);
+  applicationMock
+    .expects("find")
+    .withArgs(applicationParams)
+    .yields(null, expectedApplication);
 
-	Application.find(applicationParams, (err, result) => {
-		applicationMock.verify();
-		applicationMock.restore();
-		expect(result.arn).to.equal(applicationParamsTest);
-		done();
-	});
+  Application.find(applicationParams, (err, result) => {
+    applicationMock.verify();
+    applicationMock.restore();
+    expect(result.arn).to.equal(applicationParamsTest);
+    done();
+  });
 }
 
 
@@ -110,10 +110,10 @@ function findByParams(done) {
 
 // model
 describe("Application Model", () => {
-	// add
-	it("should create a new application entry", add);
-	// error if add fails
-	it("should return error if application is not created", addError);
-	// find
-	it("should find application by params", findByParams);
+  // add
+  it("should create a new application entry", add);
+  // error if add fails
+  it("should return error if application is not created", addError);
+  // find
+  it("should find application by params", findByParams);
 });
