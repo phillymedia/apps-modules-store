@@ -45,6 +45,8 @@ function add(settings, callback) {
     if (err) {
       // duplicate entry -- fall through!
       if (err.code === _config.database.errors.duplicate) {
+        // set schema
+        settings.schema = schema;
         // set arn to hint
         settings.hint = settings.arn;
         // find by hint/arn
