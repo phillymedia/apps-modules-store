@@ -11,9 +11,10 @@ var _phillyHelpers = require("philly-helpers");
 // PUBLIC -------------------------------
 
 /**
- * Generic function to insert new reords.
+ * Generic function to insert many new records.
+ * Setting { ordered: false } allows for the operation to continue/recover
+ * after duplicate-entry errors.
  *
- * @method add
  * @param {object} Schema - The schema used by the parent module.
  * @param {array} documents - The array of documents to insert.
  * @param {function} callback - A callback function.
@@ -22,20 +23,11 @@ var _phillyHelpers = require("philly-helpers");
 function addMany(Schema, documents, callback) {
   // create the item from params
   // (this will validate based on the schema)
-  // const schema = new Schema(params);
   // save array of documents
-  /*
-  Schema.insertMany(documents)
-    .then(data => callback(null, data))
-    .catch(err => callback(formatError(err)));
-  */
-  Schema.insertMany(documents, function (err, data) {
-    // handle errors
-    if (err) {
-      return callback((0, _phillyHelpers.formatError)(err));
-    }
-    // otherwise...
+  Schema.insertMany(documents, { ordered: false }).then(function (data) {
     return callback(null, data);
+  }).catch(function (err) {
+    return callback((0, _phillyHelpers.formatError)(err));
   });
 }
 

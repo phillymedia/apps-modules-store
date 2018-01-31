@@ -92,7 +92,7 @@ function byToken(token, callback) {
     attr: token,
     field: "Token"
   };
-  // get the app, if it's in oure store
+  // get the app, if it's in our store
   return _core2.default.findByAttribute(settings, function (err, data) {
     // handle errors
     if (err) {
