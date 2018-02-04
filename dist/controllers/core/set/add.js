@@ -24,10 +24,11 @@ function add(Schema, params, callback) {
   // (this will validate based on the schema)
   var schema = new Schema(params);
   // save document
-  schema.save().then(function (data) {
+  schema.save(function (err, data) {
+    if (err) {
+      return callback((0, _phillyHelpers.formatError)(err));
+    }
     return callback(null, data);
-  }).catch(function (err) {
-    return callback((0, _phillyHelpers.formatError)(err));
   });
 }
 

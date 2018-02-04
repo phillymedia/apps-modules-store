@@ -24,10 +24,11 @@ function addMany(Schema, documents, callback) {
   // create the item from params
   // (this will validate based on the schema)
   // save array of documents
-  Schema.insertMany(documents, { ordered: false }).then(function (data) {
+  Schema.insertMany(documents, { ordered: false }, function (err, data) {
+    if (err) {
+      return callback((0, _phillyHelpers.formatError)(err));
+    }
     return callback(null, data);
-  }).catch(function (err) {
-    return callback((0, _phillyHelpers.formatError)(err));
   });
 }
 
