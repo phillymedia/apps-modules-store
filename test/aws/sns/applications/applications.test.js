@@ -12,7 +12,7 @@ import getByHint from "./get/byHint.test";
 
 // TESTS
 // =============================================================================
-
+/*
 describe("AWS - Application", function () {
   // add (use this data for other tests)
   describe("Add", function () {
@@ -41,3 +41,4 @@ describe("AWS - Application", function () {
 
 // after
 after(setup.cleanup);
+*/

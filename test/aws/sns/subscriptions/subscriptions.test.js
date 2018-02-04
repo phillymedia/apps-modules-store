@@ -15,6 +15,7 @@ import getByUsername from "./get/byUsername.test";
 // TESTS
 // =============================================================================
 
+/*
 describe("AWS - Subscriptions", function () {
   // add (use this data for other tests)
   describe("Add", function () {
@@ -54,3 +55,4 @@ describe("AWS - Subscriptions", function () {
   // after
   after(setup.cleanup);
 });
+*/

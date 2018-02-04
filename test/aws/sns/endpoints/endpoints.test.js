@@ -15,6 +15,7 @@ import getByUsername from "./get/byUsername.test";
 // TESTS
 // =============================================================================
 
+/*
 describe("AWS - Endpoints", function () {
   // add (use this data for other tests)
   describe("Add", function () {
@@ -57,3 +58,4 @@ describe("AWS - Endpoints", function () {
 
 // after
 after(setup.cleanup);
+*/

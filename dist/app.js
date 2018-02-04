@@ -3,9 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.sns = exports.stats = exports.logs = exports.detail = exports.feed = undefined;
-
-var _aws = require("./controllers/aws");
+exports.stats = exports.logs = exports.detail = exports.feed = undefined;
 
 var _detail = require("./controllers/detail");
 
@@ -25,9 +23,10 @@ var _stats2 = _interopRequireDefault(_stats);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// EXPORTS
+// =============================================================================
+// import { sns } from "COMP/aws";
 exports.feed = _feed2.default;
 exports.detail = _detail2.default;
 exports.logs = _logs2.default;
 exports.stats = _stats2.default;
-exports.sns = _aws.sns; // EXPORTS
-// =============================================================================

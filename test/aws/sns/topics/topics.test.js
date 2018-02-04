@@ -1,5 +1,5 @@
 /* eslint-disable prefer-arrow-callback */
-
+/*
 // DEPENDENCIES
 // =============================================================================
 
@@ -12,7 +12,6 @@ import getByHint from "./get/byHint.test";
 
 // TESTS
 // =============================================================================
-
 describe("AWS - Topics", function () {
   // add (use this data for other tests)
   describe("Add", function () {
@@ -41,3 +40,4 @@ describe("AWS - Topics", function () {
 
 // after
 after(setup.cleanup);
+*/
