@@ -37,6 +37,7 @@ var _type = _store.type.combined;
  * @return {function}
  */
 function get(callback) {
+  console.log("SPORTS FEED GET CALL", _source, _type, _name);
   var settings = {
     source: _source,
     type: _type,

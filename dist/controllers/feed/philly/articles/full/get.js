@@ -36,6 +36,7 @@ var _type = _store.type.articles;
 * @return {Function} core._find - The shared getter.
 */
 function get(name, callback) {
+  console.log("PHILLY FEED GET CALL", _source, _type, name);
   var settings = {
     source: _source,
     type: _type,
