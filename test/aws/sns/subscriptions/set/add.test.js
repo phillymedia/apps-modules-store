@@ -25,7 +25,8 @@ const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
 function noErrors(done) {
   add(mockedData.insertedSubscription, (err, data) => {
     expect(err).to.not.exist;
-    expect(data).to.be.an("object")
+    expect(data).to.be.an("array");
+    expect(data[0]).to.be.an("object")
       .that.has.property("arn")
       .which.equals(mockedData.insertedSubscription.SubscriptionArn);
     return done();

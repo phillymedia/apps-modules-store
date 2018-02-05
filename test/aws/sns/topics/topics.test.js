@@ -1,9 +1,9 @@
 /* eslint-disable prefer-arrow-callback */
-/*
+
 // DEPENDENCIES
 // =============================================================================
 
-import setup from "./utils/setup";
+// import setup from "./utils/setup";
 import add from "./set/add.test";
 import addMany from "./set/addMany.test";
 import get from "./get/all.test";
@@ -39,5 +39,4 @@ describe("AWS - Topics", function () {
 });
 
 // after
-after(setup.cleanup);
-*/
+// after(setup.cleanup);

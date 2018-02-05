@@ -5,6 +5,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.addMany = exports.add = undefined;
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }(); // DEPENDENCIES
+// =============================================================================
+// THIRD-PARTY -------------------------------
+
+// APP -------------------------------
+// config
+
+// sub-modules
+
+
 var _lodash = require("lodash");
 
 var _async = require("async");
@@ -31,8 +41,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @param {function} callback - Returns error or result
  * @return {function}
  */
-
-// sub-modules
 function add(settings, callback) {
   // pop off schema
   var schema = settings.schema;
@@ -47,10 +55,8 @@ function add(settings, callback) {
       if (err.code === _config.database.errors.duplicate) {
         // set schema
         settings.schema = schema;
-        // set arn to hint
-        settings.hint = settings.arn;
         // find by hint/arn
-        return (0, _find.findByHint)(settings, callback);
+        return (0, _find.findByArn)(settings, callback);
       }
       // otherwise, pass error back
       return callback(err);
@@ -69,15 +75,12 @@ function add(settings, callback) {
  * @param {function} callback - A callback function.
  * @return {function} - Returns error object on failure, null on success.
  */
-
-// APP -------------------------------
-// config
-// DEPENDENCIES
-// =============================================================================
-// THIRD-PARTY -------------------------------
 function addMany(settings, documents, callback) {
   // the database should be empty at this point...
+  var _settings = settings,
+      schema = _settings.schema;
   // peel off and add each ID
+
   (0, _async.map)(documents, function (document, next) {
     // settings
     var params = {};
@@ -105,6 +108,28 @@ function addMany(settings, documents, callback) {
     return _core2.default.addMany(settings.schema, mapped, function (err, data) {
       // handle errors
       if (err) {
+        // duplicate entry -- fall through!
+        if (err.code === _config.database.errors.duplicate && data) {
+          // get the arns
+          var arns = (0, _lodash.map)(data, function (dupError) {
+            return dupError.arn;
+          });
+          // find by arn
+          // set settings
+          settings = {
+            schema: schema,
+            arn: arns
+          };
+          // send a single item instead of many
+          if (settings.arn.length === 1) {
+            var _arns = _slicedToArray(arns, 1);
+
+            settings.arn = _arns[0];
+          }
+          // make the findByArn call
+          return (0, _find.findByArn)(settings, callback);
+        }
+        // otherwise, pass error back
         return callback(err);
       }
       // otherwise...

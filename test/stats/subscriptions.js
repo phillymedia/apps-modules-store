@@ -39,36 +39,6 @@ function callBefore(done) {
     .then(done);
 }
 
-/**
- * SES after method.
- *
- * @method callAfter
- * @param {function} done
- * @return {function}
- */
-/*
-function callAfterStatsSub(done) {
-  // delete after run
-  if (deleteAfterRun) {
-    // delete test content inserted into the databases
-    log.debug("Deleting test subscriptions content...");
-    // clear ses
-    stats.clearSubscriptions((err) => {
-      // handle errors
-      if (err) {
-        log.error(err);
-      }
-      // otherwise...
-      log.debug("Successfully deleted.");
-      // callback
-      return done();
-    });
-  }
-  // otherwise...
-  return done();
-}
-*/
-
 
 // MAIN METHODS
 // =============================================================================
@@ -117,7 +87,6 @@ function set(done) {
 // TESTS
 // =============================================================================
 
-/*
 // run once before all tests
 before(callBefore);
 // describe the stats store
@@ -134,4 +103,3 @@ describe("Subscriptions Stats Store", () => {
 });
 // run once after all tests
 // after(callAfterStatsSub);
-*/

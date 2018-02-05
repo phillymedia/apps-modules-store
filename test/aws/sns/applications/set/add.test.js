@@ -24,8 +24,14 @@ const mockedData = testUtils.mocked.aws.sns.applications.data;
  */
 function noErrors(done) {
   add(mockedData.insertedContent, (err, data) => {
+    if (err) {
+      return done(err);
+    }
     expect(err).to.be.null;
-    expect(data).to.be.an("object").that.has.property("arn").which.equals(mockedData.expectedContent.arn);
+    expect(data).to.be.an("array");
+    expect(data[0]).to.be.an("object")
+      .that.has.property("arn")
+      .which.equals(mockedData.expectedContent.arn);
     return done();
   });
 }

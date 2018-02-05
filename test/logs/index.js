@@ -5,7 +5,6 @@
 // =============================================================================
 
 import { expect } from "chai";
-import { log } from "philly-helpers";
 import { logs } from "MAIN";
 import { database as _database } from "APP/config";
 
@@ -26,32 +25,6 @@ const testLog = {
   target: "phillycom",
   message: "This is a test.",
 };
-
-// BEFORE AND AFTER
-// =============================================================================
-
-/**
- * Logs after method.
- *
- * @method after
- * @param {function} done
- * @return {function}
- */
-function callAfterLogs(done) {
-  // announce clean-up job
-  log.debug("Deleting test logs content...");
-  // clear log
-  logs.recreateCollection((err) => {
-    // handle errors
-    if (err) {
-      return done(err);
-    }
-    // otherwise...
-    log.debug("Successfully deleted.");
-    // callback
-    return done();
-  });
-}
 
 
 // MAIN METHODS
@@ -126,4 +99,4 @@ describe("Logs Store", function () {
   });
 });
 // run once after all tests
-after(callAfterLogs);
+// after(callAfterLogs);

@@ -159,7 +159,6 @@ function setData(done) {
 // =============================================================================
 
 // run once before all tests
-/*
 before(callBefore);
 // describe the stats store
 describe("SES Stats Store", () => {
@@ -183,6 +182,6 @@ describe("SES Stats Store", () => {
     it("gets the current data and immediately sets it", setData);
   });
 });
-*/
+
 // run once callAfter all tests
 // after(callAfterStatsSES);

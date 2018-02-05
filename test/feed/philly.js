@@ -5,7 +5,6 @@
 // =============================================================================
 
 import { expect } from "chai";
-import { log } from "philly-helpers";
 import { feed } from "MAIN";
 
 // test category
@@ -14,33 +13,6 @@ const expectedContent = [];
 expectedContent.push({
   testValue: "Working.",
 });
-
-
-// BEFORE AND AFTER
-// =============================================================================
-
-/**
- * Philly.com after method.
- *
- * @method callAfter
- * @param {function} done
- * @return {function}
- */
-function callAfterPhilly(done) {
-  // delete test content inserted into the databases
-  log.debug("Deleting test philly.com content...");
-  // fake philly articles
-  feed.clearArticlesPhilly(testCat, (err) => {
-    // handle errors
-    if (err) {
-      log.error(err);
-    }
-    // otherwise...
-    log.debug("Successfully deleted.");
-    // callback
-    return done();
-  });
-}
 
 
 // MAIN METHODS
@@ -173,5 +145,5 @@ describe("Philly.com Feed Store", function () {
     it("sets the current watch articles", setArticlesWatch);
   });
   // run once after all tests
-  after(callAfterPhilly);
+  // after(callAfterPhilly);
 });

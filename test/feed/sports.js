@@ -6,68 +6,7 @@
 
 import { expect } from "chai";
 import { feed } from "MAIN";
-import { store as _store } from "APP/config";
 import { log } from "philly-helpers";
-import _schema from "./schema";
-
-
-// BEFORE AND AFTER
-// =============================================================================
-
-// clean-up
-let deleteAfterRun = false;
-
-/**
- * Sports Now before method.
- *
- * @method callBefore
- * @param {function} done
- * @return {function}
- */
-function callBefore(done) {
-  // test if database is populated
-  _schema.count({ source: _store.sports.source })
-    .then((count) => {
-      if (count === 0) {
-      // no content so safe to delete
-        deleteAfterRun = true;
-      // add test data
-      // return fixtures.ensureTestData();
-      }
-      else {
-        log.debug("Test database already exists");
-      }
-    })
-    .then(done);
-}
-
-/**
- * Sports Now after method.
- *
- * @method callAfter
- * @param {function} done
- * @return {function}
- */
-function callAfterSports(done) {
-  // delete after run
-  if (deleteAfterRun) {
-    // delete test content inserted into the databases
-    log.debug("Deleting test sports now content...");
-    // clear sports feed
-    return feed.clearSports((err) => {
-      // handle errors
-      if (err) {
-        log.error(err);
-      }
-      // otherwise...
-      log.debug("Successfully deleted.");
-      // callback
-      return done();
-    });
-  }
-  // otherwise...
-  return done();
-}
 
 
 // MAIN METHODS
@@ -227,8 +166,4 @@ describe("Sports Now Feed Store", function () {
   describe("Set Sports Tweets", () => {
     it("gets the current tweets and immediately sets them", setTweets);
   });
-  // run once after all tests
-  before(callBefore);
-  // run once after all tests
-  after(callAfterSports);
 });

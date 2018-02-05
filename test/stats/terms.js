@@ -118,7 +118,6 @@ function set(done) {
 // TESTS
 // =============================================================================
 
-/*
 // before
 before(callBefore);
 // describe the stats store
@@ -135,4 +134,3 @@ describe("Terms Stats Store", () => {
 });
 // after
 // after(callAfterStatsTerms);
-*/

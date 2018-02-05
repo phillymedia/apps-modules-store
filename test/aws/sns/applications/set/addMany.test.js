@@ -25,6 +25,10 @@ const mockedData = testUtils.mocked.aws.sns.applications.data;
  */
 function noErrors(done) {
   add(mockedData.insertedContents, (err, data) => {
+    if (err) {
+      console.log("An error was returned.");
+      return done(err);
+    }
     expect(err).to.be.null;
     expect(data).to.be.an("array");
     expect(some(data, {

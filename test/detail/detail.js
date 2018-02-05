@@ -65,29 +65,6 @@ function callBefore(done) {
   });
 }
 
-/**
- * After method.
- *
- * @method callAfter
- * @param {function} done
- * @return {function}
- */
-function callAfterDetail(done) {
-  // delete test content inserted into the databases
-  log.debug("Deleting test detail content...");
-  // fake philly articles
-  detail.recreateCollectionDetail((err) => {
-    // handle errors
-    if (err) {
-      return done(err);
-    }
-    // otherwise...
-    log.debug("Successfully deleted.");
-    // callback
-    return done();
-  });
-}
-
 
 // MAIN METHODS
 // =============================================================================
@@ -218,5 +195,5 @@ describe("Philly.com Detail Store", function () {
   // run once before the tests
   before(callBefore);
   // run once after all tests
-  after(callAfterDetail);
+  // after(callAfterDetail);
 });
