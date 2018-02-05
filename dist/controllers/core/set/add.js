@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _phillyHelpers = require("philly-helpers");
 
-var _config = require("../../../config");
-
 // METHODS
 // =============================================================================
 // PUBLIC -------------------------------
@@ -21,10 +19,6 @@ var _config = require("../../../config");
  * @param {function} callback - A callback function.
  * @return {function} - Returns error or array.
  */
-// DEPENDENCIES
-// =============================================================================
-// APP -------------------------------
-// helpers
 function add(Schema, params, callback) {
   // create the item from params
   // (this will validate based on the schema)
@@ -42,5 +36,8 @@ function add(Schema, params, callback) {
 // EXPORTS
 // =============================================================================
 
-// config
+// DEPENDENCIES
+// =============================================================================
+// APP -------------------------------
+// helpers
 exports.default = add;

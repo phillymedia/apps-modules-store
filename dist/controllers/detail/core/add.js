@@ -21,10 +21,18 @@ var _schema2 = require("./schema");
 
 var _schema3 = _interopRequireDefault(_schema2);
 
+var _find = require("./find");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // PROPERTIES
 // =============================================================================
+
+// model
+
+// config
+var _store = _config.store.detail;
+// siblings
 
 // sub-modules
 
@@ -33,10 +41,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // DEPENDENCIES
 // =============================================================================
 // THIRD-PARTY -------------------------------
-var _store = _config.store.detail;
-// model
-
-// config
 
 var _delay = _store.expiresInMinutes;
 
@@ -63,6 +67,14 @@ function add(settings, callback) {
   _core2.default.add(_schema3.default, params, function (err, data) {
     // handle errors
     if (err) {
+      // duplicate entry -- fall through!
+      if (err.code === _config.database.errors.duplicate) {
+        // set schema
+        settings.schema = _schema3.default;
+        // find by id
+        return (0, _find.findOne)(settings, callback);
+      }
+      // otherwise, pass error back
       return callback(err);
     }
     // otherwise...

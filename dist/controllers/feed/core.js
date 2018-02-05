@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _phillyHelpers = require("philly-helpers");
 
+var _config = require("../../config");
+
 var _core = require("../core");
 
 var _core2 = _interopRequireDefault(_core);
@@ -32,10 +34,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 */
 
 // model
-// DEPENDENCIES
-// =============================================================================
-// APP -------------------------------
-// helpers
 function find(settings, callback) {
   // set up parameters
   var params = {
@@ -74,6 +72,10 @@ function find(settings, callback) {
 // lodash
 
 // sub-modules
+// DEPENDENCIES
+// =============================================================================
+// APP -------------------------------
+// helpers
 function add(settings, callback) {
   // set up parameters
   var params = {
@@ -87,6 +89,14 @@ function add(settings, callback) {
   _core2.default.add(_schema3.default, params, function (err, data) {
     // handle errors
     if (err) {
+      // duplicate entry -- fall through!
+      if (err.code === _config.database.errors.duplicate) {
+        // re-set schema
+        settings.schema = _schema3.default;
+        // find by id
+        return find(settings, callback);
+      }
+      // otherwise, pass error back
       return callback(err);
     }
     // otherwise...
