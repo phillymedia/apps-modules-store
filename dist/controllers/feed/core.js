@@ -37,6 +37,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // APP -------------------------------
 // helpers
 function find(settings, callback) {
+  console.log("FEED FIND:", settings);
   // set up parameters
   var params = {
     source: settings.source,
