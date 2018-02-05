@@ -26,6 +26,7 @@ function add(Schema, params, callback) {
   // save document
   schema.save(function (err, data) {
     if (err) {
+      // otherwise, pass error back
       return callback((0, _phillyHelpers.formatError)(err));
     }
     return callback(null, data);
