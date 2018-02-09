@@ -28,8 +28,7 @@ function noErrors(done) {
       return done(err);
     }
     expect(err).to.be.null;
-    expect(data).to.be.an("array");
-    expect(data[0]).to.be.an("object")
+    expect(data).to.be.an("object")
       .that.has.property("arn")
       .which.equals(mockedData.expectedContent.arn);
     return done();

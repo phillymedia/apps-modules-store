@@ -60,22 +60,7 @@ function byArn(arn, callback) {
     arn: arn
   };
   // get the app, if it's in oure store
-  return _core2.default.findByArn(settings, function (err, data) {
-    // handle errors
-    if (err) {
-      return callback(err);
-    }
-    // otherwise...
-    if (!(0, _lodash.isEmpty)(data)) {
-      var _data = data;
-
-      var _data2 = _slicedToArray(_data, 1);
-
-      data = _data2[0];
-    }
-    // pass back
-    return callback(null, data);
-  });
+  return _core2.default.findByArn(settings, callback);
 }
 
 /**
@@ -98,15 +83,15 @@ function byToken(token, callback) {
     if (err) {
       return callback(err);
     }
-    // otherwise...
-    if (!(0, _lodash.isEmpty)(data)) {
-      var _data3 = data;
+    // return a single result as an object
+    if ((0, _lodash.isArray)(data) && data.length === 1) {
+      var _data = data;
 
-      var _data4 = _slicedToArray(_data3, 1);
+      var _data2 = _slicedToArray(_data, 1);
 
-      data = _data4[0];
+      data = _data2[0];
     }
-    // pass back
+    // otherwise...
     return callback(null, data);
   });
 }

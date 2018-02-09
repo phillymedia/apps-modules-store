@@ -61,6 +61,14 @@ function add(settings, callback) {
       // otherwise, pass error back
       return callback(err);
     }
+    // return a single result as an object
+    if ((0, _lodash.isArray)(data) && data.length === 1) {
+      var _data = data;
+
+      var _data2 = _slicedToArray(_data, 1);
+
+      data = _data2[0];
+    }
     // otherwise...
     return callback(null, data);
   });

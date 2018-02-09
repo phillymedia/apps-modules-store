@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.findByParam = exports.findByHint = exports.findByAttribute = exports.findByArn = exports.findAll = exports.exists = undefined;
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _lodash = require("lodash");
+
 var _phillyHelpers = require("philly-helpers");
 
 var _core = require("../../core");
@@ -15,6 +19,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // DEPENDENCIES
 // =============================================================================
+// THIRD-PARTY -------------------------------
+
 // APP -------------------------------
 // logging
 
@@ -79,6 +85,14 @@ function findByHint(settings, callback) {
     }
     // otherwise...
     _phillyHelpers.log.debug("Finding by hint...", data);
+    // return a single result as an object
+    if ((0, _lodash.isArray)(data) && data.length === 1) {
+      var _data = data;
+
+      var _data2 = _slicedToArray(_data, 1);
+
+      data = _data2[0];
+    }
     // continue
     return callback(null, data);
   });
@@ -100,6 +114,14 @@ function findByArn(settings, callback) {
     }
     // otherwise...
     _phillyHelpers.log.debug("Finding by hint...", data);
+    // return a single result as an object
+    if ((0, _lodash.isArray)(data) && data.length === 1) {
+      var _data3 = data;
+
+      var _data4 = _slicedToArray(_data3, 1);
+
+      data = _data4[0];
+    }
     // continue
     return callback(null, data);
   });

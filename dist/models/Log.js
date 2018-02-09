@@ -22,6 +22,15 @@ var Schema = new _db.db.Schema({
     type: String,
     required: true
   }
+},
+// collection options
+{
+  // capped to 10MB and 100 items
+  capped: {
+    size: 10485760,
+    max: 100,
+    autoIndexId: true
+  }
 });
 
 // this is default true, but let's make sure

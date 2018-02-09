@@ -19,7 +19,6 @@ const mockedData = testUtils.mocked.aws.sns.subscriptions.data;
 /**
  * Test the add method.
  *
- * @method noErrors
  * @param {function} done
  * @return {function}
  */

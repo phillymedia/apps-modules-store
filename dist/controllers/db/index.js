@@ -17,10 +17,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // CONNECT TO THE DATABASE
 // =============================================================================
-if (_config.debug) {
-  _mongoose2.default.set("debug", true);
-}
-// use ES6 promises
+// set autoIndex to false, unless debugging
+// http://mongoosejs.com/docs/guide.html#indexes
+var autoIndex = false;
+
+// set mongoose to also debug
 
 
 // THIRD PARTY LIBRARIES -------------------------------
@@ -29,24 +30,34 @@ if (_config.debug) {
 // =============================================================================
 // APP -------------------------------
 // import conf from "APP/config";
+if (_config.debug) {
+  _mongoose2.default.set("debug", true);
+  autoIndex = true;
+}
+
+// use ES6 promises
 _mongoose2.default.Promise = global.Promise;
+
 // connect
 
-var _db$connect = _mongoose2.default.connect(_config.database.url),
+var _db$connect = _mongoose2.default.connect(_config.database.url, { autoIndex: autoIndex }),
     connection = _db$connect.connection;
 
 connection.once("open", function () {
   _phillyHelpers.log.debug("Mongoose connection open.");
 });
+
 // handle errors
 connection.on("error", function (err) {
   _phillyHelpers.log.info("Mongoose default connection error: " + err);
   throw new Error("Unable to connect to database!");
 });
+
 // when the connection is disconnected
 connection.on("disconnected", function () {
   _phillyHelpers.log.debug("Mongoose default connection disconnected.");
 });
+
 // if the Node process ends, close the Mongoose connection
 process.on("SIGINT", function () {
   connection.close(function () {
@@ -61,7 +72,7 @@ exports.connection = connection;
 
 // REGISTER MODELS
 // =============================================================================
-// models
+// feed and notification models
 
 require("../../models/Detail");
 require("../../models/Feed");
@@ -70,5 +81,7 @@ require("../../models/Log");
 // aws models
 require("../../models/Application");
 require("../../models/Topic");
-require("../../models/Endpoint"); // might be a bad idea
-require("../../models/Subscription"); // might be a bad idea
+require("../../models/Endpoint");
+require("../../models/Subscription");
+// stats daashboard
+require("../../models/Stat");

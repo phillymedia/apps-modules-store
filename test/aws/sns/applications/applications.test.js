@@ -31,7 +31,7 @@ describe("AWS - Application", function () {
     });
   });
   // by arn
-  describe("Get By Arn", function () {
+  describe("Get By Hint", function () {
     // everything going right
     context("when structured correctly", function () {
       it("returns correct data", getByHint.noErrors);
