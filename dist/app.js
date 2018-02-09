@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.sns = exports.stats = exports.logs = exports.detail = exports.feed = undefined;
 
+var _phillyHelpers = require("philly-helpers");
+
 var _aws = require("./controllers/aws");
 
 var _detail = require("./controllers/detail");
@@ -27,9 +29,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // EMERGENCY ERROR HANDLING
 // =============================================================================
+// don't blow up the app, just in case
 process.on("unhandledRejection", function (reason, p) {
-  console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
-  // application specific logging, throwing an error, or other logic here
+  _phillyHelpers.log.error("Unhandled Rejection from Philly Store module at: Promise", p, "reason:", reason);
+});
+// don't blow up the app, just in case
+// DEPENDENCIES
+// =============================================================================
+process.on("uncaughtException", function (err) {
+  _phillyHelpers.log.error("Unhandled Exception from Philly Store module:", err);
 });
 
 // EXPORTS
