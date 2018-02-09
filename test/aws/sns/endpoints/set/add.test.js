@@ -25,8 +25,7 @@ const mockedData = testUtils.mocked.aws.sns.endpoints.data;
 function noErrors(done) {
   add(mockedData.endpoint, (err, data) => {
     expect(err).to.be.null;
-    expect(data).to.be.an("array");
-    expect(data[0]).to.be.an("object")
+    expect(data).to.be.an("object")
       .that.has.property("arn")
       .which.equals(mockedData.endpoint.EndpointArn);
     return done();
