@@ -1,5 +1,8 @@
 {
-	"presets": ["env"],
+	"presets": [
+    ["env", { "targets": { "node": "current", "useBuiltIns": true } }],
+		["minify", { "mangle": false }]
+  ],
 	"plugins": [
     ["module-resolver", {
 			"alias": {
