@@ -9,7 +9,10 @@ var Schema = new _db.db.Schema({
   // time stamp for the cache
   expireAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    index: {
+      expireAfterSeconds: 0
+    }
   },
   // article id for easy searching
   id: {
@@ -34,9 +37,6 @@ var Schema = new _db.db.Schema({
     autoIndexId: true
   }
 });
-
-// add expiring index
-Schema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 
 // this is default true, but let's make sure
 Schema.set("validateBeforeSave", true);
