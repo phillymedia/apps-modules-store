@@ -1,10 +1,5 @@
 {
 	"presets": ["env"],
-	"env": {
-    "production": {
-      "presets": ["minify"]
-    }
-	},
 	"plugins": [
     ["module-resolver", {
 			"alias": {
