@@ -13,13 +13,13 @@ import { log } from "philly-helpers";
 // =============================================================================
 
 /**
- * Test the getSportsArticles method.
+ * Test the getArticlesSports method.
  *
  * @param {function} done
  * @return {function}
  */
 function getArticles(done) {
-  feed.getSportsArticles((err, data) => {
+  feed.getArticlesSports((err, data) => {
     expect(err).to.be.null;
     expect(data).to.be.an("array");
     return done();
@@ -27,20 +27,20 @@ function getArticles(done) {
 }
 
 /**
- * Test the setSportsArticles method.
+ * Test the setArticlesSports method.
  *
  * @param {function} done
  * @return {function}
  */
 function setArticles(done) {
   // get sports feed
-  feed.getSportsArticles((err, data) => {
+  feed.getArticlesSports((err, data) => {
     expect(err).to.be.null;
     expect(data).to.be.an("array");
     // data has value (expected)
     if (data) {
       // set with returned data
-      return feed.setSportsArticles(data, (newErr, newData) => {
+      return feed.setArticlesSports(data, (newErr, newData) => {
         expect(newErr).to.be.null;
         expect(newData).to.be.an("array");
         return done();
