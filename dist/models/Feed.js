@@ -1,1 +1,47 @@
-"use strict";var _db=require("../controllers/db"),schemaName="Feed",Schema=new _db.db.Schema({expireAt:{type:Date,default:Date.now},source:{type:String,required:!0},type:{type:String,required:!0},name:{type:String,required:!0},content:{type:Object,required:!0}});Schema.index({name:1,type:1,source:1},{unique:!0}),Schema.index({expireAt:1},{expireAfterSeconds:0}),Schema.set("validateBeforeSave",!0),module.exports=_db.db.model(schemaName,Schema);
+"use strict";
+
+var _db = require("../controllers/db");
+
+var schemaName = "Feed";
+
+// create the schema
+var Schema = new _db.db.Schema({
+  // time stamp for the cache
+  expireAt: {
+    type: Date,
+    default: Date.now,
+    index: {
+      expireAfterSeconds: 0
+    }
+  },
+  // watch, app?
+  source: {
+    type: String,
+    required: true
+  },
+  // articles, games, tweets? detail as separate?
+  type: {
+    type: String,
+    required: true
+  },
+  // sports, news, business, health
+  // detail as a name
+  name: {
+    type: String,
+    required: true
+  },
+  // actual content
+  content: {
+    type: Object,
+    required: true
+  }
+});
+
+// add compound index
+Schema.index({ name: 1, type: 1, source: 1 }, { unique: true });
+
+// this is default true, but let's make sure
+Schema.set("validateBeforeSave", true);
+
+// save as a model
+module.exports = _db.db.model(schemaName, Schema);
