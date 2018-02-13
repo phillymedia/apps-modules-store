@@ -29,12 +29,11 @@ var _type = _store.type.articles;
 // PUBLIC -------------------------------
 
 /**
-* Remove from store - brief.
-*
-* @method remove
-* @param {String} name - Name of the store.
-* @return {Function} core.remove
-*/
+ * Remove from store - brief.
+ *
+ * @param {string} name - Name of the store.
+ * @return {function} core.remove
+ */
 function remove(name, callback) {
   var settings = {
     source: _source,

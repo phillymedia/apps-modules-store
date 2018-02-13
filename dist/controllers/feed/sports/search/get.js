@@ -30,11 +30,11 @@ var _name = "sports";
 // PUBLIC -------------------------------
 
 /**
-* Get store.
-*
-* @method get
-* @return {Function} core._find - The shared getter.
-*/
+ * Get store.
+ *
+ * @param {function} callback - A callback function.
+ * @return {function} core.find - The shared getter.
+ */
 function get(callback) {
   var settings = {
     source: _source,

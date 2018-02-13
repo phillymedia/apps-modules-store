@@ -23,7 +23,6 @@ var _name = "ses_count";
 /**
  * Remove store.
  *
- * @method remove
  * @param {function} callback
  * @return {Function} core.remove - The shared remover.
  */

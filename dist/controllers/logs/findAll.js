@@ -23,10 +23,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Get recent item(s).
  *
- * @method findAll
- * @param {Object} settings - Settings for the request.
- * @param {Function} callback - Returns error or result.
- * @return {Function}
+ * @param {object} settings - Settings for the request.
+ * @param {function} callback - Returns error or result.
+ * @return {function}
  */
 
 // sub-modules

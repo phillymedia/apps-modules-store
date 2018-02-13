@@ -15,7 +15,6 @@ var _set = require("./set");
 /**
  * Generic function to drop collection.
  *
- * @method drop
  * @param {string} colName - The name of the collection.
  * @param {object} Schema - The schema used by the parent module.
  * @param {object} params - The details of the search.

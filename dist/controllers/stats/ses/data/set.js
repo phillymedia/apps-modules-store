@@ -32,10 +32,9 @@ var _name = "ses_data";
 /**
  * Set store.
  *
- * @method set
  * @param {Object} content - Data to store.
  * @param {Function} callback - A callback function.
- * @return {Function} core._add - The shared setter.
+ * @return {Function} core.add - The shared setter.
  */
 function set(content, callback) {
   var settings = {

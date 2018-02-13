@@ -53,7 +53,6 @@ var _delay = _store.expiresInMinutes;
 /**
  * Insert a new item.
  *
- * @method add
  * @param {object} settings - Request settings.
  * @param {function} callback - A callback function.
  * @return {function} - Returns error object on failure, null on success.
@@ -85,7 +84,6 @@ function add(settings, callback) {
 /**
  * Insert a new item.
  *
- * @method addMany
  * @param {array} contents - Array of documents to format and insert.
  * @param {function} callback - A callback function.
  * @return {function} - Returns error object on failure, null on success.

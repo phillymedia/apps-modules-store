@@ -33,11 +33,9 @@ var _delay = _store.expiresInMinutes;
 /**
 * Set store.
 *
-* @method set
-* @param {String} name - Name of the store.
-* @param {Object} content - Data to store.
-* @param {Function} callback - A callback function.
-* @return {Function} core._add - The shared setter.
+* @param {object} content - Data to store.
+* @param {function} callback - A callback function.
+* @return {function} core.add - The shared setter.
 */
 function set(content, callback) {
   var settings = {

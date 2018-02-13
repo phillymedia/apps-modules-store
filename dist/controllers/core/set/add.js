@@ -13,7 +13,6 @@ var _phillyHelpers = require("philly-helpers");
 /**
  * Generic function to insert new reords.
  *
- * @method add
  * @param {object} Schema - The schema used by the parent module.
  * @param {object} params - The details of the search.
  * @param {function} callback - A callback function.

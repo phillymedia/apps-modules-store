@@ -20,12 +20,11 @@ var _name = "subscriptions";
 // PUBLIC -------------------------------
 
 /**
-* Flush store.
-*
-* @method clear
-* @param {Function} callback - A callback function.
-* @return {Function} core.remove - The shared remover.
-*/
+ * Flush store.
+ *
+ * @param {function} callback - A callback function.
+ * @return {function} core.remove - The shared remover.
+ */
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------

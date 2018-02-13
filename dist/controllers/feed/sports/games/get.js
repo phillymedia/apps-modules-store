@@ -31,12 +31,11 @@ var _type = _store.type.games;
 // PUBLIC -------------------------------
 
 /**
-* Get store.
-*
-* @method get
-* @param {function} callback
-* @return {Function} core._find - The shared getter.
-*/
+ * Get store.
+ *
+ * @param {function} callback
+ * @return {Function} core.find - The shared getter.
+ */
 function get(callback) {
   var settings = {
     source: _source,

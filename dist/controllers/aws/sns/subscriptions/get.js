@@ -26,7 +26,6 @@ var _schema = _db.db.model("Subscription");
 /**
  * Get a list of subscriptions.
  *
- * @method all
  * @param {function} callback
  */
 
@@ -43,7 +42,6 @@ function all(callback) {
 /**
  * Get subscription from endpoint ARN.
  *
- * @method byEndpoint
  * @param {string} arn
  * @param {function} callback
  */
@@ -61,7 +59,6 @@ function byEndpoint(arn, callback) {
 /**
  * Get subscription from topic ARN.
  *
- * @method byTopicArn
  * @param {string} arn
  * @param {function} callback
  */
@@ -79,7 +76,6 @@ function byTopicArn(arn, callback) {
 /**
  * Get subscriptions from username.
  *
- * @method byUsername
  * @param {string} username
  * @param {function} callback
  */

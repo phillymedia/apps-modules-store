@@ -26,7 +26,6 @@ var _schema = _db.db.model("Subscription");
 /**
  * Add to store.
  *
- * @method add
  * @param {object} subscription
  * @param {function} callback
  */
@@ -52,7 +51,6 @@ function add(subscription, callback) {
 /**
  * Add many to store.
  *
- * @method addMany
  * @param {array} contents - Data to store.
  * @param {function} callback - A callback function.
  * @param {string} username - Optional username.

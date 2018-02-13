@@ -22,7 +22,7 @@ var _name = "terms";
  * Get store.
  *
  * @param {function} callback - A callback.
- * @return {Function}
+ * @return {function}
  */
 // DEPENDENCIES
 // =============================================================================

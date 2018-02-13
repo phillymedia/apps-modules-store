@@ -30,12 +30,11 @@ var _name = "philly";
 // PUBLIC -------------------------------
 
 /**
-* Remove from store - brief.
-*
-* @method remove
-* @param {String} name - Name of the store.
-* @return {Function} core.remove
-*/
+ * Remove from store - brief.
+ *
+ * @param {function} callback - A callback function.
+ * @return {Function} core.remove
+ */
 function remove(callback) {
   var settings = {
     source: _source,

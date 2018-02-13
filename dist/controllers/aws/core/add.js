@@ -36,7 +36,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Insert a new item.
  *
- * @method add
  * @param {object} settings - Settings.
  * @param {function} callback - Returns error or result
  * @return {function}
@@ -77,7 +76,6 @@ function add(settings, callback) {
 /**
  * Insert a new item.
  *
- * @method addMany
  * @param {object} settings - Settings.
  * @param {array} documents - Array of documents to format and insert.
  * @param {function} callback - A callback function.

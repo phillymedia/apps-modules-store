@@ -32,7 +32,6 @@ var _type = _store.type.combined;
 /**
  * Get store.
  *
- * @method getFeed
  * @param {function} callback - The callback function.
  * @return {function}
  */

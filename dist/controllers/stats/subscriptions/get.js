@@ -22,8 +22,8 @@ var _name = "subscriptions";
 /**
  * Get store.
  *
- * @method get
- * @return {Function} core.find - The shared getter.
+ * @param {function} callback - A callback function.
+ * @return {function} core.find - The shared getter.
  */
 // DEPENDENCIES
 // =============================================================================

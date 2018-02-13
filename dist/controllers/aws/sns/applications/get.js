@@ -26,7 +26,6 @@ var _schema = _db.db.model("Application");
 /**
  * Get a list of applications.
  *
- * @method all
  * @param {function} callback
  */
 
@@ -43,7 +42,6 @@ function all(callback) {
 /**
  * Get app from hint.
  *
- * @method byHint
  * @param {string} appHint
  * @param {function} callback
  */

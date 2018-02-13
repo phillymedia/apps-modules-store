@@ -30,12 +30,11 @@ var _type = _store.type.combined;
 // PUBLIC  -------------------------------
 
 /**
-* Remove from store.
-*
-* @method removeFeed
-* @param {function} callback
-* @return {Function} core.remove
-*/
+ * Remove from store.
+ *
+ * @param {function} callback
+ * @return {Function} core.remove
+ */
 function remove(callback) {
   var settings = {
     source: _source,

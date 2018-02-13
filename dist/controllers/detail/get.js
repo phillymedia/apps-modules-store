@@ -18,7 +18,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Get store.
  *
- * @method get
  * @return {Function} core.find - The shared getter.
  */
 function get(id, callback) {
@@ -33,7 +32,6 @@ function get(id, callback) {
 /**
  * Get store.
  *
- * @method getMany
  * @param {array} ids
  * @param {function} callback
  */

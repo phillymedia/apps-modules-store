@@ -30,11 +30,10 @@ var _name = "philly";
 // PUBLIC -------------------------------
 
 /**
-* Get store.
-*
-* @method get
-* @return {Function} core._find - The shared getter.
-*/
+ * Get store.
+ *
+ * @return {function} core.find - The shared getter.
+ */
 function get(callback) {
   var settings = {
     source: _source,

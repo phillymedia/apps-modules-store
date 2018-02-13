@@ -31,13 +31,12 @@ var _delay = _store.expiresInMinutes.combined;
 // PUBLIC  -------------------------------
 
 /**
-* Set store.
-*
-* @method setFeed
-* @param {Object} content - Data to store.
-* @param {Function} callback - A callback function.
-* @return {Function}
-*/
+ * Set store.
+ *
+ * @param {object} content - Data to store.
+ * @param {function} callback - A callback function.
+ * @return {function}
+ */
 function set(content, callback) {
   var settings = {
     source: _source,

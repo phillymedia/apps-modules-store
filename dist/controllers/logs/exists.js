@@ -23,11 +23,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Does an item already exist?
  *
- * @method _exists
- * @param {Object} settings - Settings for the request.
- * @param {Function} callback - Returns error or result.
- * @return {Object} - Returns error object on failure, null on success.
-*/
+ * @param {object} settings - Settings for the request.
+ * @param {function} callback - Returns error or result.
+ * @return {object} - Returns error object on failure, null on success.
+ */
 
 // sub-modules
 function exists(settings, callback) {

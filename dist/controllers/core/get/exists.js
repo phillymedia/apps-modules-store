@@ -13,7 +13,6 @@ var _phillyHelpers = require("philly-helpers");
 /**
  * Get an item by some parameters.
  *
- * @method findByParams
  * @param {object} Schema - The schema used by the parent module.
  * @param {object} params - The details of the search.
  * @param {function} callback - A callback function.
@@ -39,7 +38,6 @@ function findByParams(Schema, params, callback) {
 /**
  * Check if matching record already exists.
  *
- * @method exists
  * @param {object} Schema - The schema used by the parent module.
  * @param {object} params - The details of the search.
  * @param {function} callback - A callback function.

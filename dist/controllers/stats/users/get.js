@@ -19,11 +19,11 @@ var _name = "users";
 // PUBLIC -------------------------------
 
 /**
-* Get store.
-*
-* @method get
-* @return {Function} core.find - The shared getter.
-*/
+ * Get store.
+ *
+ * @param {function} callback - A callback function.
+ * @return {Function} core.find - The shared getter.
+ */
 // DEPENDENCIES
 // =============================================================================
 // main core

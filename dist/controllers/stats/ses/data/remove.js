@@ -22,7 +22,6 @@ var _name = "ses_data";
 /**
  * Remove store.
  *
- * @method remove
  * @param {function} callback
  * @return {Function} core.remove - The shared remover.
  */

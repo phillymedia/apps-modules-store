@@ -26,7 +26,6 @@ var _schema = _db.db.model("Topic");
 /**
  * Get a list of topics.
  *
- * @method all
  * @param {function} callback
  */
 
@@ -43,7 +42,6 @@ function all(callback) {
 /**
  * Get topic from hint.
  *
- * @method byHint
  * @param {string} topicHint
  * @param {function} callback
  */

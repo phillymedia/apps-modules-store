@@ -18,7 +18,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Add to store.
  *
- * @method add
  * @param {object} content - Data to store.
  * @param {function} callback - A callback function.
  * @return {function} core._add - The shared setter.
@@ -43,7 +42,6 @@ function add(content, callback) {
 /**
  * Add to store.
  *
- * @method addMany
  * @param {array} contents - Data to store.
  * @param {function} callback - A callback function.
  * @return {function} core._add - The shared setter.

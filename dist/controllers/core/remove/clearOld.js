@@ -21,7 +21,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Clear out records based on given parameters.
  *
- * @method clearOld
  * @param {object} Schema - The schema used by the parent module.
  * @param {object} params - The details of the search.
  * @param {function} callback - A callback function.

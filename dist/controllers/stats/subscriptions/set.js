@@ -32,10 +32,9 @@ var _name = "subscriptions";
 /**
  * Set store.
  *
- * @method set
- * @param {Object} content - Data to store.
- * @param {Function} callback - A callback function.
- * @return {Function} core.add - The shared setter.
+ * @param {object} content - Data to store.
+ * @param {function} callback - A callback function.
+ * @return {function} core.add - The shared setter.
  */
 function set(content, callback) {
   var settings = {

@@ -32,13 +32,12 @@ var _delay = _store.expiresInMinutes.games;
 // PUBLIC -------------------------------
 
 /**
-* Set store.
-*
-* @method set
-* @param {Object} content - Data to store.
-* @param {Function} callback - A callback function.
-* @return {Function} core._add - The shared setter.
-*/
+ * Set store.
+ *
+ * @param {object} content - Data to store.
+ * @param {function} callback - A callback function.
+ * @return {function} core.add - The shared setter.
+ */
 function set(content, callback) {
   var settings = {
     source: _source,

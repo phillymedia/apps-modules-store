@@ -36,9 +36,8 @@ var _max = _store.collectionMax;
 // PUBLIC -------------------------------
 
 /**
- * Drop collection.
+ * Drop and recreate store.
  *
- * @method recreateCollection
  * @param {function} callback - A callback function.
  * @return {function} - Returns error object on failure, null on success.
  */

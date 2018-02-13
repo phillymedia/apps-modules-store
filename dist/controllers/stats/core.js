@@ -23,13 +23,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // PUBLIC -------------------------------
 
 /**
-* Get item(s).
-*
-* @method find
-* @param {Object} req - Original request.
-* @param {Function} callback - Returns error or result
-* @return {Function}
-*/
+ * Get item(s).
+ *
+ * @param {object} settings - Settings from the original request.
+ * @param {function} callback - Returns error or result
+ * @return {function}
+ */
 
 // sub-modules
 // DEPENDENCIES
@@ -59,13 +58,12 @@ function find(settings, callback) {
 }
 
 /**
-* Insert a new item.
-*
-* @method add
-* @param {Object} req - Original request.
-* @param {Function} callback - Returns error or result
-* @return {Function}
-*/
+ * Insert a new item.
+ *
+ * @param {object} settings - Settings from the original request.
+ * @param {function} callback - Returns error or result
+ * @return {function}
+ */
 
 // model
 
@@ -91,13 +89,12 @@ function add(settings, callback) {
 }
 
 /**
-* Does an item already exist?
-*
-* @method exists
-* @param {Object} settings - Request settings.
-* @param {Function} callback - A callback function.
-* @return {Object} - Returns error object on failure, null on success.
-*/
+ * Does an item already exist?
+ *
+ * @param {object} settings - Settings from the original request.
+ * @param {function} callback - A callback function.
+ * @return {object} - Returns error object on failure, null on success.
+ */
 function exists(settings, callback) {
   // set up parameters
   var params = {

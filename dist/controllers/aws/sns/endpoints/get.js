@@ -34,7 +34,6 @@ var _schema = _db.db.model("Endpoint");
 /**
  * Get a list of endpoints.
  *
- * @method all
  * @param {function} callback
  */
 function all(callback) {
@@ -49,7 +48,6 @@ function all(callback) {
 /**
  * Get endpoint from ARN.
  *
- * @method byArn
  * @param {string} arn
  * @param {function} callback
  */
@@ -66,7 +64,6 @@ function byArn(arn, callback) {
 /**
  * Get endpoint from token.
  *
- * @method byToken
  * @param {string} appHint
  * @param {function} callback
  */
@@ -99,7 +96,6 @@ function byToken(token, callback) {
 /**
  * Get endpoint from username.
  *
- * @method byUsername
  * @param {string} username
  * @param {function} callback
  */

@@ -24,7 +24,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Get items.
  *
- * @method findMany
  * @param {object} settings
  * @param {function} callback
  * @return {function}
@@ -64,7 +63,6 @@ function findMany(settings, callback) {
 /**
  * Get item.
  *
- * @method findOne
  * @param {object} settings - Request settings.
  * @param {function} callback - A callback function.
  * @return {function} - Returns error object on failure, null on success.
@@ -102,7 +100,6 @@ function findOne(settings, callback) {
 /**
  * Does an item already exist?
  *
- * @method exists
  * @param {object} settings - Request settings.
  * @param {function} callback - A callback function.
  * @return {function} - Returns error object on failure, null on success.

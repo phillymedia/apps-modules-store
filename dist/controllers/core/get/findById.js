@@ -13,7 +13,6 @@ var _phillyHelpers = require("philly-helpers");
 /**
  * Get an item by its ID.
  *
- * @method findById
  * @param {object} Schema - The schema used by the parent module.
  * @param {string} id - The ID to search by.
  * @param {function} callback - A callback function.

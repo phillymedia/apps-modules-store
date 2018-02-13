@@ -34,7 +34,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /**
  * Does an item already exist?
  *
- * @method exists
  * @param {object} settings - Settings.
  * @param {function} callback - Returns error or result
  * @return {function}
@@ -51,7 +50,6 @@ function exists(settings, callback) {
 /**
  * Get all item(s).
  *
- * @method findAll
  * @param {function} callback - Returns error or result
  * @return {function}
  */
@@ -70,7 +68,6 @@ function findAll(settings, callback) {
 /**
  * Get an item by hint.
  *
- * @method findByHint
  * @param {object} settings - Settings.
  * @param {function} callback - Returns error or result
  * @return {function}
@@ -101,7 +98,6 @@ function findByHint(settings, callback) {
 /**
  * Get an item by arn.
  *
- * @method findByArn
  * @param {object} settings - Settings.
  * @param {function} callback - Returns error or result
  * @return {function}
@@ -130,7 +126,6 @@ function findByArn(settings, callback) {
 /**
  * Get item by top-level parameter.
  *
- * @method findByParam
  * @param {object} settings - Settings.
  * @param {function} callback - Returns error or result
  * @return {function}
@@ -150,7 +145,6 @@ function findByParam(settings, callback) {
 /**
  * Get an item by nested attribute.
  *
- * @method findByAttribute
  * @param {object} settings - Settings.
  * @param {function} callback - Returns error or result
  * @return {function}

@@ -23,9 +23,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Clear store.
  *
- * @method clear
- * @param {Function} callback - A callback function.
- * @return {Function} core._add - The shared setter.
+ * @param {function} callback - A callback function.
+ * @return {function} core.add - The shared setter.
  */
 
 // APP -------------------------------

@@ -29,12 +29,12 @@ var _type = _store.type.articles;
 // PUBLIC  -------------------------------
 
 /**
-* Get store.
-*
-* @method get
-* @param {String} name - Name of the store.
-* @return {Function} core._find - The shared getter.
-*/
+ * Get store.
+ *
+ * @param {string} name - Name of the store.
+ * @param {function} callback - A callback function.
+ * @return {function} core.find - The shared getter.
+ */
 function get(name, callback) {
   var settings = {
     source: _source,

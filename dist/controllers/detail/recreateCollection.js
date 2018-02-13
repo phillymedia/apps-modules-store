@@ -17,7 +17,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Drop and recreate store.
  *
- * @method recreateCollection
  * @param {function} callback - A callback function.
  * @return {function} core.recreateCollection - The shared setter.
  */

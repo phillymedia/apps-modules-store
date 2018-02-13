@@ -38,7 +38,6 @@ var _size = _store.collectionSize;
 /**
  * Drop collection.
  *
- * @method recreateCollection
  * @param {function} callback - A callback function.
  * @return {function} - Returns error object on failure, null on success.
  */

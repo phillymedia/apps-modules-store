@@ -26,7 +26,6 @@ var _schema = _db.db.model("Subscription");
 /**
  * Remove all from store.
  *
- * @method all
  * @return {function} core.remove
  */
 
@@ -42,7 +41,6 @@ function all(callback) {
 /**
  * Remove from store - by ARN.
  *
- * @method byArn
  * @param {string} arn - Arn to remove.
  * @return {function} core.remove
  */

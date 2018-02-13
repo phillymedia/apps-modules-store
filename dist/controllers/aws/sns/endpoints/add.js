@@ -26,7 +26,6 @@ var _schema = _db.db.model("Endpoint");
 /**
  * Add to store.
  *
- * @method add
  * @param {object} endpoint
  * @param {function} callback
  */
@@ -46,7 +45,6 @@ function add(endpoint, callback) {
 /**
  * Add many to store.
  *
- * @method addMany
  * @param {array} contents - Data to store.
  * @param {function} callback - A callback function.
  * @return {function} core.addMany - The shared setter.

@@ -22,7 +22,6 @@ var db = _db.connection.db;
 /**
  * Generic function to create collection.
  *
- * @method createCollection
  * @param {object} colName - The name of the collection to create.
  * @param {object} params - The details of the creation.
  * @param {function} callback - A callback function.

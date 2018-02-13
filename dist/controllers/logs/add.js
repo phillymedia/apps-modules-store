@@ -21,11 +21,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Insert a new item. Automatically delete the oldest at the same time.
  *
- * @method add
- * @param {Object} settings - Settings for the request.
- * @param {Function} callback - Returns error or result.
- * @return {Function}
-*/
+ * @param {object} settings - Settings for the request.
+ * @param {function} callback - Returns error or result.
+ * @return {function}
+ */
 // DEPENDENCIES
 // =============================================================================
 // APP -------------------------------

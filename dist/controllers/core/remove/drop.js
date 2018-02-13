@@ -13,7 +13,6 @@ var _phillyHelpers = require("philly-helpers");
 /**
  * Generic function to drop collection.
  *
- * @method drop
  * @param {object} Schema - The schema used by the parent module.
  * @param {function} callback - A callback function.
  * @return {function} - Returns error or array.

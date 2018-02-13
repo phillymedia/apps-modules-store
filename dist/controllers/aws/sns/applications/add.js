@@ -26,7 +26,6 @@ var _schema = _db.db.model("Application");
 /**
  * Add to store.
  *
- * @method add
  * @param {object} application
  * @param {function} callback
  */
@@ -46,7 +45,6 @@ function add(application, callback) {
 /**
  * Add many to store.
  *
- * @method addMany
  * @param {array} contents - Data to store.
  * @param {function} callback - A callback function.
  * @return {function}
