@@ -24,7 +24,7 @@ var _store = _config.store.sports;
 var _source = _store.source;
 var _name = _store.name;
 var _type = _store.type.articles;
-var _delay = _store.expiresInMinutes;
+var _delay = _store.expiresInMinutes.articles;
 
 // METHODS
 // =============================================================================

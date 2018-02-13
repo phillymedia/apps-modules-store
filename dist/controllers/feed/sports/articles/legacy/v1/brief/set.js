@@ -24,7 +24,7 @@ var _store = _config.store.mainLegacy.v1;
 var _source = _store.source + "brief";
 var _name = _store.name;
 var _type = _store.type.articles;
-var _delay = _store.expiresInMinutes;
+var _delay = _store.expiresInMinutes.articles;
 
 // METHODS
 // =============================================================================
