@@ -31,7 +31,7 @@ function callAfterSectionsPhilly(done) {
   feed.clearSectionsPhilly((err) => {
     // handle errors
     if (err) {
-      log.error(err);
+      return done(err);
     }
     // otherwise...
     log.debug("Successfully deleted.");
@@ -53,6 +53,10 @@ function callAfterSectionsPhilly(done) {
  */
 function getSections(done) {
   feed.getSectionsPhilly((err, data) => {
+    // handle errors
+    if (err) {
+      return done(err);
+    }
     expect(err).to.be.null;
     expect(data).to.be.an("array");
     return done();
@@ -68,6 +72,10 @@ function getSections(done) {
  */
 function setSections(done) {
   feed.setSectionsPhilly(expectedContent, (err, data) => {
+    // handle errors
+    if (err) {
+      return done(err);
+    }
     expect(err).to.be.null;
     expect(data).to.be.an("array");
     expect(data).to.deep.equal(expectedContent);
