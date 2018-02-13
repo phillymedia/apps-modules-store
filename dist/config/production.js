@@ -32,11 +32,13 @@ var longExpires = 60;
 var vLongExpires = 1440;
 _global2.default.store.sports.expiresInMinutes = {
   combined: shortExpires,
+  articles: shortExpires,
   games: shortExpires,
   tweets: shortExpires
 };
 _global2.default.store.sportsLegacy.v1.expiresInMinutes = {
   combined: shortExpires,
+  articles: shortExpires,
   games: shortExpires,
   tweets: shortExpires
 };

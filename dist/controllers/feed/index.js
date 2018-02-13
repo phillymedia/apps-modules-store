@@ -155,6 +155,10 @@ exports.default = {
   // sports now
   getSportsFeed: _sports2.default.getFeed,
   setSportsFeed: _sports2.default.setFeed,
+  getArticlesSports: _sports2.default.getArticles,
+  setArticlesSports: _sports2.default.setArticles,
+  getArticlesSportsBrief: _sports2.default.getArticlesBrief,
+  setArticlesSportsBrief: _sports2.default.setArticlesBrief,
   getSportsGames: _sports2.default.getGames,
   setSportsGames: _sports2.default.setGames,
   getSportsTweets: _sports2.default.getTweets,
@@ -162,6 +166,10 @@ exports.default = {
   clearSports: _sports2.default.clear,
   getSportsFeedV1: _sports2.default.getFeedV1,
   setSportsFeedV1: _sports2.default.setFeedV1,
+  getArticlesSportsV1: _sports2.default.getArticlesV1,
+  setArticlesSportsV1: _sports2.default.setArticlesV1,
+  getArticlesSportsBriefV1: _sports2.default.getArticlesBriefV1,
+  setArticlesSportsBriefV1: _sports2.default.setArticlesBriefV1,
   clearSportsV1: _sports2.default.clearV1,
   // search
   getSearchSports: _sports2.default.getSearch,
