@@ -4176,9 +4176,10 @@ performance-now@^0.2.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
 
 "philly-helpers@https://github.com/phillymedia/apps-modules-helpers":
-  version "1.5.1"
-  resolved "https://github.com/phillymedia/apps-modules-helpers#1dac2423df067bb770ac8d3c2f74b55aefe30fe0"
+  version "1.6.2"
+  resolved "https://github.com/phillymedia/apps-modules-helpers#3420f77eb75c6d85d8f47653fddd3c68b1f63893"
   dependencies:
+    babel-runtime "^6.26.0"
     html-entities "*"
     lodash "*"
     mongoose "*"
