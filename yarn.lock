@@ -3725,8 +3725,8 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
 
 mongoose@*:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.0.4.tgz#de30d256ff10c6d93654317ce7624c12ddeeb34f"
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.0.5.tgz#19277743efe45ef178b94050aad94338e7e3e9ee"
   dependencies:
     async "2.1.4"
     bson "~1.0.4"
@@ -4176,8 +4176,8 @@ performance-now@^0.2.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
 
 "philly-helpers@https://github.com/phillymedia/apps-modules-helpers":
-  version "1.4.8"
-  resolved "https://github.com/phillymedia/apps-modules-helpers#7557594c5bc8c2b6cd6614f116da8b1ad1c2eed3"
+  version "1.5.1"
+  resolved "https://github.com/phillymedia/apps-modules-helpers#1dac2423df067bb770ac8d3c2f74b55aefe30fe0"
   dependencies:
     html-entities "*"
     lodash "*"
