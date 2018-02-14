@@ -20,7 +20,6 @@ const mockedData = testUtils.mocked.aws.sns.topics.data;
 /**
  * Test the get method - no errors.
  *
- * @method noErrors
  * @param {function} done
  * @return {function}
  */

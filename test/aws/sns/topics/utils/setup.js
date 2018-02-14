@@ -15,7 +15,6 @@ const { remove } = topics;
 /**
  * After method.
  *
- * @method cleanup
  * @param {function} done
  * @return {function}
  */

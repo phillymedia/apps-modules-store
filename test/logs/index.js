@@ -33,7 +33,6 @@ const testLog = {
 /**
  * Test the get method.
  *
- * @method get
  * @param {function} done
  * @return {function}
  */
@@ -48,7 +47,6 @@ function get(done) {
 /**
  * Test the add method.
  *
- * @method add
  * @param {function} done
  * @return {function}
  */
@@ -66,7 +64,6 @@ function add(done) {
 /**
  * Test the exists method.
  *
- * @method exists
  * @param {function} done
  * @return {function}
  */

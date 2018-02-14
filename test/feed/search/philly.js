@@ -25,7 +25,6 @@ const expectedContent = {
 /**
  * Philly.com after method.
  *
- * @method callAfter
  * @param {function} done
  * @return {function}
  */
@@ -52,7 +51,6 @@ function callAfterSearchPhilly(done) {
 /**
  * Test the getSearchPhilly method.
  *
- * @method getSearch
  * @param {function} done
  * @return {function}
  */
@@ -67,7 +65,6 @@ function getSearch(done) {
 /**
  * Test the setSearchPhilly method.
  *
- * @method setSearch
  * @param {function} done
  * @return {function}
  */
