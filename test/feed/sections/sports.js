@@ -20,7 +20,6 @@ const expectedContent = [{
 /**
  * Philly.com after method.
  *
- * @method callAfter
  * @param {function} done
  * @return {function}
  */
@@ -47,7 +46,6 @@ function callAfterSectionsSports(done) {
 /**
  * Test the getSectionsSports method.
  *
- * @method getSections
  * @param {function} done
  * @return {function}
  */
@@ -62,7 +60,6 @@ function getSections(done) {
 /**
  * Test the setSectionsSports method.
  *
- * @method setSections
  * @param {function} done
  * @return {function}
  */

@@ -18,7 +18,6 @@ const mockedData = testUtils.mocked.aws.sns.applications.data;
 /**
  * Test the add method.
  *
- * @method noErrors
  * @param {function} done
  * @return {function}
  */

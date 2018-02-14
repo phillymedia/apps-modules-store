@@ -15,7 +15,6 @@ const { remove } = endpoints;
 /**
  * After method.
  *
- * @method cleanup
  * @param {function} done
  * @return {function}
  */

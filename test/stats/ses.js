@@ -18,7 +18,6 @@ let deleteAfterRun = false; // eslint-disable-line no-unused-vars
 /**
  * SES before method.
  *
- * @method callBefore
  * @param {function} done
  * @return {function}
  */
@@ -42,7 +41,6 @@ function callBefore(done) {
 /**
  * SES after method.
  *
- * @method callAfter
  * @param {function} done
  * @return {function}
  */
@@ -76,7 +74,6 @@ function callAfterStatsSES(done) {
 /**
  * Test the getSesCount method.
  *
- * @method getCount
  * @param {function} done
  * @return {function}
  */
@@ -91,7 +88,6 @@ function getCount(done) {
 /**
  * Test the setSesCount method.
  *
- * @method setCount
  * @param {function} done
  * @return {function}
  */
@@ -117,7 +113,6 @@ function setCount(done) {
 /**
  * Test the getSesData method.
  *
- * @method getData
  * @param {function} done
  * @return {function}
  */
@@ -132,7 +127,6 @@ function getData(done) {
 /**
  * Test the setSesData method.
  *
- * @method setData
  * @param {function} done
  * @return {function}
  */

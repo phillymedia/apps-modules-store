@@ -15,7 +15,6 @@ const { remove } = applications;
 /**
  * After method.
  *
- * @method cleanup
  * @param {function} done
  * @return {function}
  */

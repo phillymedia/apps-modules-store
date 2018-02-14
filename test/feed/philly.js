@@ -21,7 +21,6 @@ expectedContent.push({
 /**
  * Test the getArticlesPhilly method.
  *
- * @method getArticles
  * @param {function} done
  * @return {function}
  */
@@ -36,7 +35,6 @@ function getArticles(done) {
 /**
  * Test the setArticlesPhilly method.
  *
- * @method setArticles
  * @param {function} done
  * @return {function}
  */
@@ -52,7 +50,6 @@ function setArticles(done) {
 /**
  * Test the getArticlesTodayPhilly method.
  *
- * @method getArticlesToday
  * @param {function} done
  * @return {function}
  */
@@ -67,7 +64,6 @@ function getArticlesToday(done) {
 /**
  * Test the setArticlesTodayPhilly method.
  *
- * @method setArticlesToday
  * @param {function} done
  * @return {function}
  */
@@ -83,7 +79,6 @@ function setArticlesToday(done) {
 /**
  * Test the getArticlesTodayPhilly method.
  *
- * @method getArticlesWatch
  * @param {function} done
  * @return {function}
  */
@@ -98,7 +93,6 @@ function getArticlesWatch(done) {
 /**
  * Test the setArticlesTodayPhilly method.
  *
- * @method setArticlesWatch
  * @param {function} done
  * @return {function}
  */

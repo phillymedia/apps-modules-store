@@ -36,7 +36,6 @@ const insertedContents = map([0, 1, 2, 3, 4, 5], num => ({
 /**
  * Before method.
  *
- * @method callBefore
  * @param {function} done
  * @return {function}
  */
@@ -72,7 +71,6 @@ function callBefore(done) {
 /**
  * Test the getDetail method.
  *
- * @method getDetail
  * @param {function} done
  * @return {function}
  */
@@ -95,7 +93,6 @@ function getDetail(done) {
 /**
  * Test the getDetail method.
  *
- * @method getDetails
  * @param {function} done
  * @return {function}
  */
@@ -120,7 +117,6 @@ function getDetails(done) {
 /**
  * Test the getDetail method.
  *
- * @method getBadDetail
  * @param {function} done
  * @return {function}
  */
@@ -140,7 +136,6 @@ function getBadDetail(done) {
 /**
  * Test the addDetail method.
  *
- * @method addDetail
  * @param {function} done
  * @return {function}
  */

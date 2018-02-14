@@ -33,7 +33,6 @@ const expectedEndpoint = {
 /**
  * Test the add method.
  *
- * @method add
  * @param {function} done
  * @return {function}
  */
@@ -57,7 +56,6 @@ function add(done) {
 /**
  * Test the add method.
  *
- * @method addError
  * @param {function} done
  * @return {function}
  */
@@ -84,7 +82,6 @@ function addError(done) {
 /**
  * Test the find method.
  *
- * @method findByParams
  * @param {function} done
  * @return {function}
  */

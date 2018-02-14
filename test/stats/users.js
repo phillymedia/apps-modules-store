@@ -14,7 +14,6 @@ import { log } from "philly-helpers";
 /**
  * Test the getUsers method.
  *
- * @method get
  * @param {function} done
  * @return {function}
  */
@@ -29,7 +28,6 @@ function get(done) {
 /**
  * Test the setUsers method.
  *
- * @method set
  * @param {function} done
  * @return {function}
  */

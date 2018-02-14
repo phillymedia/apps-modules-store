@@ -18,7 +18,6 @@ let deleteAfterRun = false; // eslint-disable-line no-unused-vars
 /**
  * SES before method.
  *
- * @method callBefore
  * @param {function} done
  * @return {function}
  */
@@ -46,7 +45,6 @@ function callBefore(done) {
 /**
  * Test the getSubscriptions method.
  *
- * @method get
  * @param {function} done
  * @return {function}
  */
@@ -61,7 +59,6 @@ function get(done) {
 /**
  * Test the setSubscriptions method.
  *
- * @method set
  * @param {function} done
  * @return {function}
  */
