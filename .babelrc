@@ -4,6 +4,7 @@
 		["minify", { "mangle": false }]
   ],
 	"plugins": [
+		"transform-runtime",
     ["module-resolver", {
 			"alias": {
 				"APP": "./lib",
