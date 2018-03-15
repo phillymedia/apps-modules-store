@@ -24,7 +24,7 @@
     "jsdoc": "^3.5.5",
     "lodash": "*",
     "mongoose": "^4.10.7",
-    "philly-helpers": "https://github.com/phillymedia/apps-modules-helpers",
+    "philly-helpers": "git+ssh://git@github.com:phillymedia/apps-modules-helpers.git",
     "sinon-mongoose": "^2.0.2"
   },
   "devDependencies": {
