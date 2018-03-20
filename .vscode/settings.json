@@ -1,0 +1,9 @@
+{
+    "path-intellisense.mappings": {
+        "APP": "${workspaceRoot}/lib",
+        "MAIN": "${workspaceRoot}/lib/app",
+        "SERVER": "${workspaceRoot}/lib/server",
+        "COMP": "${workspaceRoot}/lib/controllers",
+        "TEST": "${workspaceRoot}/test"
+    }
+}

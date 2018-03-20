@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "~/*": [
+        "lib/*"
+      ],
+
+      "APP/*": [
+        "lib/*"
+      ],
+
+      "MAIN/*": [
+        "lib/app/*"
+      ],
+
+      "SERVER": [
+        "lib/server"
+      ],
+
+      "COMP": [
+        "lib/controllers"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
