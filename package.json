@@ -5,7 +5,7 @@
   "description": "A group of hopefully-reusable store functions.",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:phillymedia/apps-modules-store.git"
+    "url": "https://github.com/phillymedia/apps-modules-store.git"
   },
   "main": "./dist/app.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "jsdoc": "^3.5.5",
     "lodash": "*",
     "mongoose": "^4.10.7",
-    "philly-helpers": "git+ssh://git@github.com:phillymedia/apps-modules-helpers.git",
+    "philly-helpers": "https://github.com/phillymedia/apps-modules-helpers.git",
     "sinon-mongoose": "^2.0.2"
   },
   "devDependencies": {
