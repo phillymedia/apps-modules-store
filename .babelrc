@@ -1,7 +1,6 @@
 {
 	"presets": [
-    ["env", { "targets": { "node": "current", "useBuiltIns": true } }],
-		["minify", { "mangle": false }]
+    ["env", { "targets": { "node": "current", "useBuiltIns": true } }]
   ],
 	"plugins": [
 		"transform-runtime",
